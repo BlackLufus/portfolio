@@ -1,0 +1,108 @@
+.project {
+    display: block;
+    overflow: hidden;
+    height: 430px;
+    width: 440px;
+    background-color: var(--primary-background-color);
+    margin: 8px;
+    border-radius: 12px;
+    transition: transform 0.35s ease;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+}
+
+.project_image {
+    height: 190px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-position: center; /* zentriert den sichtbaren Teil */
+    transition: scale 0.35s ease;
+}
+
+.project:hover .project_image img {
+    scale: 1.1;
+}
+
+.project_title {
+    padding: 0 10px;
+    justify-items: left;
+    align-content: center;
+    height: 50px;
+    transition: color 0.35s ease;
+}
+
+.project_title > h1 {
+    font-weight: bold;
+    font-size: var(--third-font-size);
+    color: var(--primary-color);
+}
+
+.project:hover .project_title > h1 {
+    transition: color 0.35s ease;
+    color: var(--preferred-color);
+}
+
+.project_description {
+    padding: 0 10px;
+    height: 60px;
+}
+
+.project_description > span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    font-size: var(--fourth-font-size);
+    color: var(--fourth-color);
+}
+
+.project_labels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: center;
+    gap: 6px;
+    padding: 0 6px;
+    height: 80px;
+}
+
+.label {
+    height: fit-content;
+    padding: 2px 8px;
+    border-radius: 8px;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-boarder-color);
+    font-size: var(--sixth-font-size);
+}
+
+.project_links {
+    display: block;
+    align-items: center;
+    margin: 6px 10px;
+    background-color: #0080FF;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.project_links a {
+    width: 100%;
+    display: inline-block;
+    margin-right: 4px;
+    padding: 4px;
+    font-size: var(--sixth-font-size);
+    color: var(--seventh-color);
+    text-decoration: underline;
+}

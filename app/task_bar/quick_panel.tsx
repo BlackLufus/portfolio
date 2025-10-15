@@ -1,0 +1,7 @@
+
+class QuickPanel {
+    
+    public constructor() {
+
+    }
+}
