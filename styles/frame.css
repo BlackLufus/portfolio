@@ -9,23 +9,43 @@
 .frame_header {
     display: flex;
     justify-content: space-between;
-    background-color: var(--menu-background-color);
+    background-color: var(--primary-frame-header-background-color);
     cursor: pointer;
     width: 100%;
     height: 34px;
     user-select: none;
-    backdrop-filter: blur(4px);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    border-bottom: 1px solid var(--secondary-boarder-color);
+    backdrop-filter: blur(10px);
+}
+
+.frame_header > div {
+    display: flex;
+    width: 100%;
+}
+
+.frame_header > div > div {
+    align-content: center;
+    justify-items: center;
+    padding: 0 4px;
+}
+
+.frame_header > div > div > img {
+    height: 28px;
+    width: 28px;
+    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-position: center; /* zentriert den sichtbaren Teil */
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .frame_title {
     width: 100%;
     text-align: left;
-    padding: 0 8px;
     font-family: var(--primary-font-family);
     font-size: 22px;
-    color: var(--secondary-color);
+    color: var(--second-color);
 }
 
 .frame_button {
@@ -64,7 +84,28 @@
 }
 
 .frame_content {
+    position: relative;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.frame_background {
+    top: 34px;
+    position: absolute;
+    height: calc(100% - 34px);
+    width: 100%;
     background-color: var(--secondary-background-color);
+}
+
+:root[data-theme="dark"] .frame_background > img {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.03;
+    object-fit: cover;
+    object-position: center;
+}
+
+:root[data-theme="light"] .frame_background > img {
+    display: none;
 }

@@ -7,6 +7,7 @@
     margin: 8px;
     border-radius: 12px;
     transition: transform 0.35s ease;
+    box-shadow: 2px 2px 8px #0008;
 }
 
 .project:hover {
@@ -26,8 +27,10 @@
     height: 100%;
     width: 100%;
     object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
-    object-position: center; /* zentriert den sichtbaren Teil */
+    object-position: center; /* zentriert den sichtbarens Teil */
     transition: scale 0.35s ease;
+    filter: brightness(0.9) contrast(1.1);
+    mask-image: radial-gradient(ellipse, white 60%, #0002 100%);
 }
 
 .project:hover .project_image img {
@@ -37,12 +40,17 @@
 .project_title {
     padding: 0 10px;
     justify-items: left;
+    text-align: left;
     align-content: center;
     height: 50px;
     transition: color 0.35s ease;
 }
 
 .project_title > h1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
     font-weight: bold;
     font-size: var(--third-font-size);
     color: var(--primary-color);
@@ -83,7 +91,7 @@
     height: fit-content;
     padding: 2px 8px;
     border-radius: 8px;
-    color: var(--secondary-color);
+    color: var(--second-color);
     border: 1px solid var(--secondary-boarder-color);
     font-size: var(--sixth-font-size);
 }

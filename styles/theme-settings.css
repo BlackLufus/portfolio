@@ -9,12 +9,36 @@
     --fifth-font-size: 18px;
     --sixth-font-size: 16px;
 
-    /* Bevorzugte Farbe */
-    --preferred-color: #1976D2; /* Ein etwas dunkleres Blau, das besser im hellen Modus lesbar ist */
+    --preferred-color: #2196F3;
+    
+    --primary-color: #000;
+    --secondary-color: #222;
+    --third-color: #444;
+    --fourth-color: #666;
+    --fifth-color: #888;
+    --sixth-color: #aaa;
+    --seventh-color: #ddd;
+
+    --primary-background-color: #f9f9f9;
+    --secondary-background-color: #eeeeee;
+    --third-background-color: #cccccc;
+    --fourth-background-color: #ffffff;
+    --fifth-background-color: #ddd;
+
+    
+    --footer-background-color: #eaeaeaaa;
+    --secondary-frame-header-background-color: #ccca;
+
+    
+    --primary-frame-header-background-color: #ffffff88;
+
+
+    --primary-boarder-color: #999;
+    --secondary-boarder-color: #ddd;
 
     /* Primärfarben */
     --primary-color: #000; /* Schwarz, damit es auf einem hellen Hintergrund gut lesbar ist */
-    --secondary-color: #222; /* Dunkles Grau für Texte und Elemente mit etwas weniger Gewicht */
+    --second-color: #222; /* Dunkles Grau für Texte und Elemente mit etwas weniger Gewicht */
     --third-color: #444; /* Etwas helleres Grau für Sekundärtexte */
     --fourth-color: #666; /* Für dezentere Texte */
     --fifth-color: #888; /* Noch helleres Grau */
@@ -55,7 +79,7 @@
     --preferred-color: #2196F3;
     
     --primary-color: #fff;
-    --secondary-color: #ddd;
+    --second-color: #ddd;
     --third-color: #bbb;
     --fourth-color: #888;
     --fifth-color: #555;
@@ -64,7 +88,7 @@
 
     --primary-background-color: #222;
     --secondary-background-color: #333;
-    --third-background-color: #333;
+    --third-background-color: #444;
     --fourth-background-color: #666;
     --fifth-background-color: #ddd;
 
@@ -72,7 +96,8 @@
     --footer-background-color: #252525aa;
 
     
-    --primary-frame-header-background-color: #4448;
+    --primary-frame-header-background-color: #252525aa;
+    --secondary-frame-header-background-color: #444a;
 
 
     --primary-boarder-color: #888;

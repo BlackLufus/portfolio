@@ -1,0 +1,178 @@
+.education_content {
+    display: block;
+    width: 1120px;
+    margin-bottom: 20px;
+}
+
+.education_timeline {
+    position: relative;
+    justify-content: center;
+    height: 100%;
+}
+
+.education_timeline::before {
+    position: absolute;
+    content: "";
+    background-color: var(--third-background-color);
+    height: 100%;
+    width: 4px;
+    bottom: 0;
+    left: 558px;
+    border-radius: 100px;
+    z-index: 1;
+}
+
+.education_timeline::after {
+    position: absolute;
+    content: "";
+    background-color: var(--preferred-color);
+    height: var(--fill-height, 0%);;
+    width: 4px;
+    top: 0;
+    left: 558px;
+    border-radius: 100px;
+    z-index: 1;
+    transition: height 0.5s ease-out;
+}
+
+.education_timeline_line{
+    position: absolute;
+    left: 558px;
+    width: 4px;
+    background-color: red;
+    z-index: 2;
+}
+
+.education_timeline_fill {
+    position: sticky;
+    top: 0; /* bleibt im Viewport */
+    width: 4px;
+    height: 100%; /* läuft mit, wenn der Container scrollt */
+    background: linear-gradient(to bottom, var(--secondary), var(--primary));
+    background-color: aqua;
+}
+
+.education_timeline_point {
+    position: relative;
+    z-index: 3;
+    justify-self: center;
+    justify-items: center;
+    align-content: center;
+    margin-top: 80px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--primary-background-color);
+    border: 2px solid var(--preferred-color);
+    border-radius: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.education_timeline_point:first-child {
+    margin-top: 0px;
+}
+
+.education_timeline_point > img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+}
+
+.education_panel {
+    display: block;
+    width: 520px;
+    background-color: var(--primary-background-color);
+    padding: 15px;
+    border-radius: 12px;
+    transition: transform 0.35s ease;
+    box-shadow: 2px 2px 8px #0008;
+}
+
+/* .education_panel:nth-child(4n) {
+    justify-self: right;
+} */
+
+.education_content_left { 
+    justify-self: left; 
+    /* transform: translateX(50px);
+    transition: all 0.6s ease-out; */
+}
+.education_content_right { 
+    justify-self: right; 
+    margin-left: auto;
+    /* transform: translateX(-50px);
+    transition: all 0.6s ease-out; */
+}
+
+.education_panel_degree_and_period {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.education_degree {
+    font-weight: bold;
+    font-size: var(--third-font-size);
+    color: var(--primary-color);
+}
+
+.education_period {
+    align-content: center;
+    padding: 0 12px;
+    margin: 4px 0;
+    background-color: var(--third-background-color);
+    border-radius: 20px;
+}
+
+.education_period > span {
+    font-size: var(--sixth-font-size);
+    color: var(--third-color);
+}
+
+.education_panel_institution {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.education_institution_image {
+    align-content: center;
+}
+
+.education_institution_image > img{
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.education_institution > span {
+    font-size: var(--fifth-font-size);
+    color: var(--fourth-color);
+}
+
+.education_summary {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--secondary-background-color);
+    text-align: left;
+}
+
+.education_summary > span {
+    font-size: var(--fouth-font-size);
+    color: var(--second-color);
+}
+
+.education_additionalInfo {
+    text-align: left;
+}
+
+.education_additionalInfo > span {
+    font-size: var(--fifth-font-size);
+    color: var(--fourth-color);
+}
+
+.application_filler {
+    height: 1000px;
+}

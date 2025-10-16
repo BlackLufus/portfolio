@@ -23,13 +23,14 @@
 
 .application_description > span {
     font-size: var(--fourth-font-size);
-    color: var(--secondary-color);
+    color: var(--second-color);
 }
 
 .application_content {
     display: flex;
     justify-content: center;
     justify-items: center;
+    margin-top: 60px;
 }
 
 .application_content_project {
