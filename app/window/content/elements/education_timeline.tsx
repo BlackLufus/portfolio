@@ -37,7 +37,7 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
             const scrollTop = container.scrollTop;
             const timelineTop = timeline.offsetTop;
             const timelineHeight = timeline.scrollHeight;
-            const maxScroll = timelineTop + timelineHeight - container.clientHeight;
+            const maxScroll = timelineTop + timelineHeight - container.clientHeight + 250;
 
             const percent = Math.min(Math.max((scrollTop / maxScroll) * 100, 0), 100);
             // console.log(percent);

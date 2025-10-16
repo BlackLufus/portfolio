@@ -3,7 +3,7 @@
     overflow: hidden;
     height: 430px;
     width: 440px;
-    background-color: var(--primary-background-color);
+    background-color: var(--background-color-2);
     margin: 8px;
     border-radius: 12px;
     transition: transform 0.35s ease;
@@ -52,13 +52,13 @@
     -webkit-line-clamp: 1;
     overflow: hidden;
     font-weight: bold;
-    font-size: var(--third-font-size);
-    color: var(--primary-color);
+    font-size: var(--font-size-5);
+    color: var(--font-color-1);
 }
 
 .project:hover .project_title > h1 {
     transition: color 0.35s ease;
-    color: var(--preferred-color);
+    color: var(--font-color-p);
 }
 
 .project_description {
@@ -73,8 +73,8 @@
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
-    font-size: var(--fourth-font-size);
-    color: var(--fourth-color);
+    font-size: var(--font-size-7);
+    color: var(--font-color-4);
 }
 
 .project_labels {
@@ -91,9 +91,9 @@
     height: fit-content;
     padding: 2px 8px;
     border-radius: 8px;
-    color: var(--second-color);
-    border: 1px solid var(--secondary-boarder-color);
-    font-size: var(--sixth-font-size);
+    color: var(--font-color-2);
+    border: 1px solid var(--boarder-color-2);
+    font-size: var(--font-size-9);
 }
 
 .project_links {
@@ -110,7 +110,7 @@
     display: inline-block;
     margin-right: 4px;
     padding: 4px;
-    font-size: var(--sixth-font-size);
-    color: var(--seventh-color);
+    font-size: var(--font-size-9);
+    color: var(--font-color-7);
     text-decoration: underline;
 }

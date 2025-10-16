@@ -1,14 +1,15 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import Project, { Link } from "./elements/Project";
 import Frame from "../frame";
 
 interface ProjectsProps {
     title: string,
-    icon_url: string
+    icon_url: string,
+    raw?: boolean
 }
 
-export default function Projects({title, icon_url}: ProjectsProps) {
+export default function Projects({title, icon_url, raw = false}: ProjectsProps) {
     useEffect(() => {
         console.log("Projects mounted");
         // super.addEventListeners();
@@ -18,12 +19,8 @@ export default function Projects({title, icon_url}: ProjectsProps) {
         console.log("Projects: terminated");
     };
 
-    return (
-        <Frame
-            title={title}
-            icon_url={icon_url}
-            onClose={terminate}
-        >
+    const build = (): ReactNode => {
+        return(
             <div className="application">
                 <div className="application_title">
                     <h1>Projekte</h1>
@@ -80,6 +77,18 @@ export default function Projects({title, icon_url}: ProjectsProps) {
                     </div>
                 </div>
             </div>
-        </Frame>
+        );
+    }
+
+    return (
+        raw ? build() : (
+            <Frame
+                title={title}
+                icon_url={icon_url}
+                onClose={terminate}
+            >
+                {build()}
+            </Frame>
+        )
     );
 }

@@ -1,18 +1,21 @@
 "use client";
+import build from "next/dist/build";
 import Frame from "../frame";
 import { EducationItem } from "./elements/education_panel";
 import EducationTimeline from "./elements/education_timeline";
+import { ReactNode } from "react";
 
 interface EducationProps {
     title: string,
-    icon_url: string
+    icon_url: string,
+    raw?: boolean
 }
 
 class EducationAttributes {
     public static id: number = 0;
 }
 
-export default function Education({title, icon_url}: EducationProps) {
+export default function Education({title, icon_url, raw = false}: EducationProps) {
 
     const id = EducationAttributes.id++;
 
@@ -56,12 +59,8 @@ export default function Education({title, icon_url}: EducationProps) {
         }
     ];
 
-    return(
-        <Frame
-            title={title}
-            icon_url={icon_url}
-            onClose={terminate}
-        >
+    const build = ():ReactNode => {
+        return(
             <div id={`application_${id}`} className="application">
                 <div className="application_title">
                     <h1>
@@ -80,6 +79,18 @@ export default function Education({title, icon_url}: EducationProps) {
                     
                 </div>
             </div>
-        </Frame>
+        );
+    }
+
+    return(
+        raw ? build() : (
+            <Frame
+                title={title}
+                icon_url={icon_url}
+                onClose={terminate}
+            >
+                {build()}
+            </Frame>
+        )
     )
 }

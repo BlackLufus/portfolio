@@ -12,8 +12,8 @@
 
 .application_title > h1 {
     font-weight: bold;
-    font-size: var(--primary-font-size);
-    color: var(--preferred-color);
+    font-size: var(--font-size-2);
+    color: var(--font-color-p);
 }
 
 .application_description {
@@ -22,8 +22,8 @@
 }
 
 .application_description > span {
-    font-size: var(--fourth-font-size);
-    color: var(--second-color);
+    font-size: var(--font-size-5);
+    color: var(--font-color-2);
 }
 
 .application_content {

@@ -3,6 +3,7 @@ import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
 import "../styles/content/projects.css";
+import "../styles/content/elements/about_me.css";
 import "../styles/content/elements/Project.css";
 import "../styles/content/elements/education.css";
 import { ReactNode, useEffect, useState } from "react";
@@ -21,10 +22,6 @@ export default function Home() {
       setOpenComponents(prev => [...prev, frame]);
     }
   }
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  })
   return (
     <div>
       <main id="desktop" className="desktop">
@@ -35,9 +32,10 @@ export default function Home() {
           ))}
         </div>
         <div id="desktop_task" className="desktop_task">
+          <Task task_id={TaskId.ABOUTME} open_task={handleTaskClick}/>
           <Task task_id={TaskId.PROJECTS} open_task={handleTaskClick}/>
           <Task task_id={TaskId.EDUCATION} open_task={handleTaskClick}/>
-          <Task task_id={TaskId.SCROLL} open_task={handleTaskClick}/>
+          <Task task_id={TaskId.CONTACT} open_task={handleTaskClick}/>
         </div>
       </main>
       <footer>

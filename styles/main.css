@@ -13,7 +13,7 @@ html, body {
     display: block;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--primary-background-color);
+    background-color: var(--background-color-2);
 }
 
 body > div {
@@ -21,7 +21,7 @@ body > div {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: var(--font-size-5);
 }
 
 main {
@@ -52,10 +52,6 @@ main {
     /* backdrop-filter: blur(10px); */
 }
 
-main > div > p {
-    font-size: 30px;
-}
-
 .desktop_task {
     position: relative;
     display: inline-grid;
@@ -73,7 +69,7 @@ main > div > p {
 }
 
 .task:hover {
-    background-color: var(--secondary-frame-header-background-color);
+    background-color: var(--background-color-t4);
 }
 
 .task > div {
@@ -94,7 +90,7 @@ main > div > p {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    color: var(--second-color);
+    color: var(--font-color-2);
 }
 
 footer {
@@ -105,13 +101,9 @@ footer {
     align-items: center;
     width: 100%;
     height: 60px;
-    background-color: var(--footer-background-color);
-    border-top: 2px solid var(--menu-border-color);
+    background-color: var(--background-color-t5);
+    border-top: 1px solid var(--boarder-color-2);
     backdrop-filter: blur(20px);
-}
-
-footer > div > p {
-    font-size: 30px;
 }
 
 .task_button {
@@ -154,7 +146,7 @@ footer > div > p {
 }
 
 .start_button:hover > div {
-    background-color: var(--secondary-frame-header-background-color);
+    background-color: var(--background-color-t4);
 }
 
 .start_button > div > img {
@@ -178,11 +170,11 @@ footer > div > p {
 }
 
 .language:hover > div {
-    background-color: var(--secondary-frame-header-background-color);
+    background-color: var(--background-color-t4);
 }
 
 .language > div > div > span {
-    color: var(--second-color);
+    color: var(--font-color-2);
     display: block;
     animation-name: show;
     animation-duration: 0.25s;
@@ -205,7 +197,7 @@ footer > div > p {
 }
 
 .dark_mode:hover > div {
-    background-color: var(--secondary-frame-header-background-color);
+    background-color: var(--background-color-t4);
 }
 
 .dark_mode > div > div > img {
@@ -243,9 +235,9 @@ footer > div > p {
 }
 
 .time_and_date:hover > div {
-    background-color: var(--secondary-frame-header-background-color);
+    background-color: var(--background-color-t4);
 }
 
 .time_and_date > div > div > span {
-    color: var(--second-color);
+    color: var(--font-color-2);
 }

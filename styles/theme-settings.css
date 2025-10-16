@@ -2,125 +2,78 @@
 :root {
     --primary-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
-    --primary-font-size: 48px;
-    --secondary-font-size: 32px;
-    --third-font-size: 26px;
-    --fourth-font-size: 20px;
-    --fifth-font-size: 18px;
-    --sixth-font-size: 16px;
+    --font-size-1: 72px;
+    --font-size-2: 56px;
+    --font-size-3: 48px;
+    --font-size-4: 32px;
+    --font-size-5: 26px;
+    --font-size-6: 22px;
+    --font-size-7: 20px;
+    --font-size-8: 18px;
+    --font-size-9: 16px;
 
-    --preferred-color: #2196F3;
+    --font-color-p: #2196F3;
     
-    --primary-color: #000;
-    --secondary-color: #222;
-    --third-color: #444;
-    --fourth-color: #666;
-    --fifth-color: #888;
-    --sixth-color: #aaa;
-    --seventh-color: #ddd;
+    --font-color-1: #000;
+    --font-color-2: #222;
+    --font-color-3: #444;
+    --font-color-4: #666;
+    --font-color-5: #888;
+    --font-color-6: #aaa;
+    --font-color-7: #ddd;
 
-    --primary-background-color: #f9f9f9;
-    --secondary-background-color: #eeeeee;
-    --third-background-color: #cccccc;
-    --fourth-background-color: #ffffff;
-    --fifth-background-color: #ddd;
+    --background-color-1: #fff;
+    --background-color-2: #ddd;
+    --background-color-3: #ccc;
+    --background-color-4: #bbb;
+    --background-color-5: #999;
+    --background-color-6: #222;
+    --background-color-7: #000;
 
-    
-    --footer-background-color: #eaeaeaaa;
-    --secondary-frame-header-background-color: #ccca;
+    --background-color-t1: #000a;
+    --background-color-t2: #252525aa;
+    --background-color-t3: #444a;
+    --background-color-t4: #bbba;
+    --background-color-t5: #ccca;
+    --background-color-t6: #dadadaaa;
+    --background-color-t7: #fffa;
 
-    
-    --primary-frame-header-background-color: #ffffff88;
-
-
-    --primary-boarder-color: #999;
-    --secondary-boarder-color: #ddd;
-
-    /* Primärfarben */
-    --primary-color: #000; /* Schwarz, damit es auf einem hellen Hintergrund gut lesbar ist */
-    --second-color: #222; /* Dunkles Grau für Texte und Elemente mit etwas weniger Gewicht */
-    --third-color: #444; /* Etwas helleres Grau für Sekundärtexte */
-    --fourth-color: #666; /* Für dezentere Texte */
-    --fifth-color: #888; /* Noch helleres Grau */
-    --sixth-color: #aaa; /* Noch heller, aber immer noch sichtbar auf einem hellen Hintergrund */
-
-    /* Hintergrundfarben */
-    --primary-background-color: #f9f9f9; /* Sehr helles Grau statt dunklem Hintergrund */
-    --secondary-background-color: #eeeeee; /* Ein leicht dunkleres Grau */
-    --third-background-color: #cccccc; /* Helleres Grau */
-    --fourth-background-color: #ffffff; /* Reines Weiß als zusätzliche Hintergrundfarbe */
-
-    /* Randfarbe */
-    --primary-border-color: #ccc; /* Hellgrauer Rand, passend zum hellen Hintergrund */
-
-    --primary-dialog-background-color: #fffc;
-    --secondary-dialog-background-color: #eee8;
-    --third-dialog-background-color: #ddd8;
-
-    /* Menüfarben */
-    --menu-background-color: #ffffff88; /* Halbtransparenter Weißton für das Menü */
-    --menu-header-background-color: #f0f0f088; /* Halbtransparenter heller Ton für den Header */
-    --menu-section-background-color: #dcdcdc; /* Sehr helles Grau für den Menübereich */
-    --menu-list-item-background-color: #fafafabb; /* Fast weiß für Listenelemente */
-    --menu-list-item-hover-background-color: #ebebebaa;
-    --menu-list-item-active-background-color: #dcdcdcaa;
-    --menu-footer-background-color: #e0e0e0cc; /* Leicht transparentes hellgrau für den Footer */
-    --menu-box-shadow-color: #bbbbbb; /* Hellgrauer Schatten für das Menü */
-    --menu-border-color: #dddddd; /* Hellgrauer Rand für das Menü */
-
-    /* Farben für Knoten und Kanten */
-    --node-color: #d32f2f; /* Heller Rotton, damit er auf hellen Hintergründen sichtbar bleibt */
-    --node-color-selected: green; /* Leuchtendes Rot für ausgewählte Knoten */
-    --edge-color: #1976d2; /* Passendes, kräftiges Blau für die Kanten */
+    --boarder-color-1: #ccc;
+    --boarder-color-2: #999;
+    --boarder-color-3: #666;
+    --boarder-color-4: #333;
 }
 
 [data-theme="dark"] {
 
-    --preferred-color: #2196F3;
-    
-    --primary-color: #fff;
-    --second-color: #ddd;
-    --third-color: #bbb;
-    --fourth-color: #888;
-    --fifth-color: #555;
-    --sixth-color: #333;
-    --seventh-color: #222;
+    --font-color-p: #2196F3;
 
-    --primary-background-color: #222;
-    --secondary-background-color: #333;
-    --third-background-color: #444;
-    --fourth-background-color: #666;
-    --fifth-background-color: #ddd;
+    --font-color-1: #fff;
+    --font-color-2: #ddd;
+    --font-color-3: #bbb;
+    --font-color-4: #888;
+    --font-color-5: #555;
+    --font-color-6: #333;
+    --font-color-7: #222;
 
-    
-    --footer-background-color: #252525aa;
+    --background-color-1: #000;
+    --background-color-2: #222;
+    --background-color-3: #333;
+    --background-color-4: #444;
+    --background-color-5: #666;
+    --background-color-6: #ddd;
+    --background-color-7: #fff;
 
-    
-    --primary-frame-header-background-color: #252525aa;
-    --secondary-frame-header-background-color: #444a;
+    --background-color-t1: #fffa;
+    --background-color-t2: #dadadaaa;
+    --background-color-t3: #888a;
+    --background-color-t4: #444a;
+    --background-color-t5: #383838aa;
+    --background-color-t6: #252525aa;
+    --background-color-t7: #000a;
 
-
-    --primary-boarder-color: #888;
-    --secondary-boarder-color: #333;
-
-
-
-    --primary-border-color: #333;
-
-    --primary-dialog-background-color: #000c;
-    --secondary-dialog-background-color: #222e;
-    --third-dialog-background-color: #444e;
-
-    --menu-background-color: #252525aa;
-    --menu-header-background-color: #4448;
-    --menu-section-background-color: #0005;
-    --menu-list-item-background-color: #777b;
-    --menu-list-item-hover-background-color: #888a;
-    --menu-list-item-active-background-color: #999a;
-    --menu-footer-background-color: #3338;
-    --menu-box-shadow-color: #8884;
-    --menu-border-color: #555;
-
-    --node-color: #ff0000;
-    --edge-color: #0000ff;
+    --boarder-color-1: #333;
+    --boarder-color-2: #666;
+    --boarder-color-3: #999;
+    --boarder-color-4: #ccc;
 }
