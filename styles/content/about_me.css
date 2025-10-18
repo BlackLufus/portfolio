@@ -1,0 +1,102 @@
+.about_me {
+    max-width: 1300px;
+}
+
+.about_me_title {
+    text-align: center;
+    margin: 14px 0 10px 0;
+}
+
+.about_me_title > span {
+    font-weight: bold;
+    font-size: var(--font-size-2);
+    color: var(--font-color-p);
+}
+
+.about_me_description {
+    margin: 0 200px 20px 200px;
+    max-width: 1300px;
+    text-align: center;
+}
+
+.about_me_description > span {
+    font-size: var(--font-size-5);
+    color: var(--font-color-2);
+}
+
+/*  ################
+    # Additional
+    ################
+*/
+
+.about_me_additional {
+    display: flex;
+}
+
+/*  ################
+    # Personal
+    ################
+*/
+
+.about_me_personal {
+    display: grid;
+}
+
+.about_me_personal_title {
+
+}
+
+.about_me_personal_title > span {
+    font-weight: bold;
+    font-size: var(--font-size-4);
+    color: var(--font-color-p);
+}
+
+.about_me_personal_description {
+    padding-bottom: 20px;
+}
+
+.about_me_personal_description > span {
+    font-size: var(--font-size-8);
+    color: var(--font-color-3);
+}
+
+.about_me_personal_panels {
+    display: grid;
+    grid-template-columns: repeat(2, 340px);
+    gap: 15px;
+}
+
+.personal {
+    display: flex;
+    width: 340px;
+    padding: 5px 10px;
+    border: 1px solid var(--boarder-color-2);
+    border-radius: 10px;
+}
+
+.personal_image {
+    display: block;
+    height: 40px;
+    width: 40px;
+    align-content: center;
+    justify-items: center;
+}
+
+.personal_image > img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-position: center;
+}
+
+.personal_text {
+    display: block;
+    align-content: center;
+}
+
+.personal_text > span {
+    font-size: var(--font-size-7);
+    color: var(--font-color-2);
+}
+

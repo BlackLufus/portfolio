@@ -1,12 +1,14 @@
 import Education from "@/window/content/eduction";
 import Projects from "@/window/content/projects";
 import AboutMe from "@/window/content/about_me";
+import Overview from "@/window/content/overview";
 
 export enum TaskId {
-    ABOUTME = 0,
-    PROJECTS = 1,
-    EDUCATION = 2,
-    CONTACT = 3
+    OVERVIEW = 0,
+    ABOUTME = 1,
+    PROJECTS = 2,
+    EDUCATION = 3,
+    CONTACT = 4
 }
 
 interface TaskProps {
@@ -21,6 +23,16 @@ export default function Task({task_id, open_task}: TaskProps) {
     }
 
     const tasks = {
+        [TaskId.OVERVIEW]: {
+            name: "Übersicht",
+            image: "images/home.png",
+            component: <Overview title="Übersicht" icon_url="images/home.png" />
+        },
+        [TaskId.ABOUTME]: {
+            name: "Über mich",
+            image: "images/person.png",
+            component: <AboutMe title="Über mich" icon_url="images/person.png" />
+        },
         [TaskId.PROJECTS]: {
             name: "Projekte",
             image: "images/project.png",
@@ -30,11 +42,6 @@ export default function Task({task_id, open_task}: TaskProps) {
             name: "Bildung und Berufserfahrung",
             image: "images/education.png",
             component: <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" />
-        },
-        [TaskId.ABOUTME]: {
-            name: "Über mich",
-            image: "images/person.png",
-            component: <AboutMe title="Über mich" icon_url="images/person.png" />
         },
         [TaskId.CONTACT]: {
             name: "Kontakt",

@@ -1,6 +1,6 @@
 /* Themesettings */
 :root {
-    --primary-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --primary-font-family: "Gill Sans", sans-serif;
 
     --font-size-1: 72px;
     --font-size-2: 56px;
@@ -23,10 +23,10 @@
     --font-color-7: #ddd;
 
     --background-color-1: #fff;
-    --background-color-2: #ddd;
-    --background-color-3: #ccc;
-    --background-color-4: #bbb;
-    --background-color-5: #999;
+    --background-color-2: #eee;
+    --background-color-3: #ddd;
+    --background-color-4: #ccc;
+    --background-color-5: #aaa;
     --background-color-6: #222;
     --background-color-7: #000;
 
@@ -70,7 +70,7 @@
     --background-color-t4: #444a;
     --background-color-t5: #383838aa;
     --background-color-t6: #252525aa;
-    --background-color-t7: #000a;
+    --background-color-t7: #111a;
 
     --boarder-color-1: #333;
     --boarder-color-2: #666;

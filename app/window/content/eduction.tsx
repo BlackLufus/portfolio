@@ -61,23 +61,21 @@ export default function Education({title, icon_url, raw = false}: EducationProps
 
     const build = ():ReactNode => {
         return(
-            <div id={`application_${id}`} className="application">
-                <div className="application_title">
+            <div id={raw ? "education" : `education_${id}`} className={raw ? "" : "education"}>
+                <div className="education_title">
                     <h1>
                         Bildung und Berufserfahrung
                     </h1>
                 </div>
-                <div className="application_description">
+                <div className="education_description">
                     <span>
                         Mein aka­de­mi­scher Wer­de­gang und mein be­ruf­li­che Lauf­bahn.
                     </span>
                 </div>
-                <div id="application_content" className="application_content">
-                    <EducationTimeline id={id} education_item_list={educationItems}/>
-                </div>
-                <div className="application_filler">
+                <EducationTimeline id={raw ? undefined : id} education_item_list={educationItems}/>
+                {/* <div className="application_filler">
                     
-                </div>
+                </div> */}
             </div>
         );
     }

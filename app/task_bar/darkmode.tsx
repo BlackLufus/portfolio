@@ -2,39 +2,45 @@
 
 import { useEffect, useState } from "react";
 
-export default function DarkMode() {
-    const [isDarkMode, setIsDarkMode] = useState(true);
+interface DarkmodeProbs {
+    state: boolean,
+    onclick: Function
+}
+
+export default function DarkMode({state, onclick}:DarkmodeProbs) {
 
     useEffect(() => {
         document.documentElement.setAttribute(
             'data-theme', 
-            isDarkMode ? 'dark' : 'light'
+            state ? 'dark' : 'light'
         );
-        console.log(isDarkMode ? 'dark' : 'light');
-    }, [isDarkMode]);
-
-    const toggleMode = () => {
-        setIsDarkMode(!isDarkMode);
-        console.log("Mode toggled");
+        console.log(state ? 'dark' : 'light');
+    }, [state]);
+    
+    const handleClick = () => {
+        onclick(!state)
     };
 
     return (
-        <div id="dark_mode" className="dark_mode" onClick={toggleMode}>
+        <div id="dark_mode" className="dark_mode" onClick={handleClick}>
             <div>
-                <div>
-                    <img
-                        src="../images/night.png"
-                        alt="moon"
-                        className={isDarkMode ? "" : "hidden_image"}
-                    />
-                </div>
-                <div>
-                    <img
-                        src="../images/day.png"
-                        alt="sun"
-                        className={isDarkMode ? "hidden_image" : ""}
-                    />
-                </div>
+                {
+                    state
+                    ? <div>
+                        <img
+                            src="../images/night.png"
+                            alt="moon"
+                            // className={isDarkMode ? "" : "hidden_image"}
+                        />
+                    </div>
+                    : <div>
+                        <img
+                            src="../images/day.png"
+                            alt="sun"
+                            // className={isDarkMode ? "hidden_image" : ""}
+                        />
+                    </div>
+                }
             </div>
         </div>
     );

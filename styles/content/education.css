@@ -1,6 +1,36 @@
+.education {
+    max-width: 1300px;
+    height: 850px;
+    overflow-y: scroll;
+    padding: 20px 40px;
+}
+
+.education_title {
+    text-align: center;
+    margin: 14px 0 10px 0;
+}
+
+.education_title > h1 {
+    font-weight: bold;
+    font-size: var(--font-size-2);
+    color: var(--font-color-p);
+}
+
+.education_description {
+    margin: 0 200px 20px 200px;
+    max-width: 1300px;
+    text-align: center;
+}
+
+.education_description > span {
+    font-size: var(--font-size-5);
+    color: var(--font-color-2);
+}
+
 .education_content {
     display: block;
     width: 1120px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 
@@ -32,7 +62,7 @@
     left: 558px;
     border-radius: 100px;
     z-index: 1;
-    transition: height 0.5s ease-out;
+    transition: height 1s ease-out;
 }
 
 .education_timeline_line{
@@ -61,11 +91,16 @@
     margin-top: 80px;
     height: 50px;
     width: 50px;
-    background-color: var(--background-color-2);
+    background-color: var(--background-color-3);
     border: 2px solid var(--font-color-p);
     border-radius: 100%;
     margin-right: auto; /* For Firefox */
     margin-left: auto;  /* For Firefox */
+}
+
+
+:root[data-theme="light"] .education_timeline_point {
+    background-color: var(--background-color-1);
 }
 
 .education_timeline_point:first-child {
@@ -88,6 +123,11 @@
     border-radius: 12px;
     transition: transform 0.35s ease;
     box-shadow: 2px 2px 8px #0008;
+}
+
+
+:root[data-theme="light"] .education_panel {
+    background-color: var(--background-color-1);
 }
 
 /* .education_panel:nth-child(4n) {
@@ -124,6 +164,11 @@
     margin: 4px 0;
     background-color: var(--background-color-4);
     border-radius: 20px;
+}
+
+
+:root[data-theme="light"] .education_period {
+    background-color: var(--background-color-2);
 }
 
 .education_period > span {

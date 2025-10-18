@@ -1,6 +1,7 @@
 "use client";
 import Frame from "../frame";
 import { ReactNode } from "react";
+import PersonalPanel from "./elements/personal_panel";
 
 interface AboutMeProps {
     title: string,
@@ -17,28 +18,40 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
     const build = (): ReactNode => {
         return(
             <div className="about_me">
-                <div className="about_me_information">
-                    <div className="about_me_header">
-                        <span>
-                            Fullstack Entwickler
-                        </span>
-                    </div>
-                    <div className="about_me_description">
-                        <span>
-                            Ich ent­wick­le mo­der­ne, re­spon­si­ve Web­an­wen­dun­gen mit mo­derns­ten Tech­no­lo­gi­en. Spe­zia­li­siert auf Re­act, Next.js und Full-Stack-Ent­wick­lung, um au­ßer­ge­wöhn­li­che di­gi­ta­le Er­leb­nis­se zu schaf­fen.
-                        </span>
-                    </div>
-                    <div className="about_me_buttons">
-                        <div className="about_me_button_my_project">
-                            <a href="">Meine Projekte</a>
-                        </div>
-                        <div className="about_me_button_contact">
-                            <a href="">Kontakt</a>
-                        </div>
-                    </div>
+                <div className="about_me_title">
+                    <span>
+                        Über mich
+                    </span>
                 </div>
-                <div className="about_me_image">
-                    <img src="images/squirrel.png" alt="" />
+                <div className="about_me_description">
+                    <span>
+                        Ein Full­stack-Ent­wick­ler, der sich auf Re­act- und Next.js-An­wen­dun­gen spe­zia­li­siert hat und ein Auge für De­sign hat.
+                    </span>
+                </div>
+                <div className="about_me_additional">
+                    <div className="about_me_">
+                       <div className="about_me_personal">
+                            <div className="about_me_personal_title">
+                                <span>
+                                    Persönliches
+                                </span>
+                            </div>
+                            <div className="about_me_personal_description">
+                                <span>
+                                    Krea­ti­ver Den­ker mit ei­ner Lei­den­schaft für ele­gan­te Lö­sun­gen und Lie­be zum De­tail
+                                </span>
+                            </div>
+                            <div className="about_me_personal_panels">
+                                <PersonalPanel icon="images/project.png" text="Problemlöser" />
+                                <PersonalPanel icon="images/project.png" text="Kreativer Denker" />
+                                <PersonalPanel icon="images/project.png" text="Schneller Lerner" />
+                                <PersonalPanel icon="images/project.png" text="Detailorientiert" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="">
+                        awdawd
+                    </div>
                 </div>
             </div>
         );

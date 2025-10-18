@@ -1,45 +1,47 @@
-.about_me {
+.overview {
     display: flex;
+    max-width: 1300px;
 }
 
-.about_me_information {
+.overview_information {
     width: 700px;
-    margin: auto 60px;
+    margin: auto 50px;
 }
 
-.about_me_information > div {
+.overview_information > div {
     text-align: left;
 }
 
-.about_me_header > span {
+.overview_header > span {
+    line-height: 99%;
     font-weight: bold;
     font-size: var(--font-size-1);
     color: var(--font-color-p);
 }
 
-.about_me_description {
+.overview_description {
     margin: 20px 0 50px;
     max-width: 600px;
 }
 
-.about_me_description > span {
+.overview_description > span {
     font-size: var(--font-size-5);
     color: var(--font-color-2);
 }
 
-.about_me_buttons {
+.overview_buttons {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-.about_me_button_my_project > a {
+.overview_button_my_project > a {
     padding: 10px 20px;
     border-radius: 40px;
     background-color: var(--font-color-p);
 }
 
-.about_me_button_contact {
+.overview_button_contact {
     position: relative;
     background: none;
     border: none;
@@ -47,7 +49,7 @@
     padding-bottom: 4px;
 }
 
-.about_me_button_contact::after {
+.overview_button_contact::after {
     content: "";
     position: absolute;
     left: 0;
@@ -62,23 +64,23 @@
     transition: transform 0.3s ease-out;
 }
 
-.about_me_button_contact:hover::after {
+.overview_button_contact:hover::after {
     transform: scaleX(1);       /* Voll sichtbar beim Hover */
 }
 
-.about_me_buttons > div > a {
+.overview_buttons > div > a {
     font-size: var(--font-size-5);
     color: var(--font-color-2);
 }
 
-.about_me_image {
+.overview_image {
     margin: 10px 20px;
     border: 1px solid var(--boarder-color-2);
     border-radius: 20px;
     overflow: hidden;
 }
 
-.about_me_image > img {
+.overview_image > img {
     height: 500px;
     object-fit: cover;
     object-position: center;

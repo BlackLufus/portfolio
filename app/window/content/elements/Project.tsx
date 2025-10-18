@@ -1,6 +1,7 @@
 import { Url } from "next/dist/shared/lib/router/router";
 
 type ProjectProps = {
+  image: string;
   title: string;
   description: string;
   labels: string[];
@@ -17,11 +18,11 @@ export class Link {
     }
 }
 
-export default function Project({ title, description, labels, links }: ProjectProps) {
+export default function Project({ image, title, description, labels, links }: ProjectProps) {
     return (
-        <div className="project">
+        <li className="project_list_item">
             <div className="project_image">
-                <img src="images/image.png" alt="test" />
+                <img src={image} alt="" />
             </div>
             <div className="project_title">
                 <h1>{title}</h1>
@@ -39,6 +40,6 @@ export default function Project({ title, description, labels, links }: ProjectPr
                     <a key={index} href={link.link} target="_blank" rel="noopener noreferrer">{link.title}</a>
                 ))}
             </div>
-        </div>
+        </li>
     );
 }
