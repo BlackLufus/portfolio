@@ -19,26 +19,26 @@ export default function Overview({title, icon_url, raw=false}: OverviewProps) {
             <div className="overview">
                 <div className="overview_information">
                     <div className="overview_header">
-                        <span>
+                        <span className="header1">
                             Fullstack Entwickler
                         </span>
                     </div>
                     <div className="overview_description">
-                        <span>
+                        <span className="description1">
                             Ich ent­wick­le mo­der­ne, re­spon­si­ve Web­an­wen­dun­gen mit mo­derns­ten Tech­no­lo­gi­en. Spe­zia­li­siert auf Re­act, Next.js und Full-Stack-Ent­wick­lung, um au­ßer­ge­wöhn­li­che di­gi­ta­le Er­leb­nis­se zu schaf­fen.
                         </span>
                     </div>
                     <div className="overview_buttons">
-                        <div className="overview_button_my_project">
+                        <div className="overview_button overview_button_my_project">
                             <a href="">Meine Projekte</a>
                         </div>
-                        <div className="overview_button_contact">
+                        <div className="overview_button overview_button_contact">
                             <a href="">Kontakt</a>
                         </div>
                     </div>
                 </div>
-                <div className="overview_image">
-                    <img src="images/squirrel.png" alt="" />
+                <div className="overview_image_container">
+                    <img className="overview_image" src="images/squirrel.png" alt="" />
                 </div>
             </div>
         );

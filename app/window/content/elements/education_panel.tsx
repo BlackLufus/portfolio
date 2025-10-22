@@ -1,3 +1,5 @@
+import { it } from "node:test";
+
 export class EducationItem {
     public readonly degree: string;
     public readonly period: string;
@@ -28,14 +30,16 @@ interface EducationPanelProps {
 export default function EducationPanel({item, class_name}:EducationPanelProps) {
     return (
         <div className={`education_panel ${class_name}`}>
-            <div className="education_panel_degree_and_period">
-                <div className="education_degree">
-                    <span>
+            <div className="education_panel_border_top" />
+            <div className="education_panel_wraper">
+                <div className="education_panel_degree_and_period">
+                <div>
+                    <span className="education_degree">
                         {item.degree}
                     </span>
                 </div>
-                <div className="education_period">
-                    <span>
+                <div className="education_period_container">
+                    <span className="education_period">
                         {item.period}
                     </span>
                 </div>
@@ -44,21 +48,25 @@ export default function EducationPanel({item, class_name}:EducationPanelProps) {
                 <div className="education_institution_image">
                     <img src="images/colored/museum.png" alt="" />
                 </div>
-                <div className="education_institution">
-                    <span>
+                <div>
+                    <span className="education_institution">
                         {item.institution}
                     </span>
                 </div>
             </div>
-            <div className="education_summary">
-                <span>
+            <div className="education_summary_container">
+                <span className="education_summary">
                     {item.summary}
                 </span>
             </div>
-            <div className="education_additionalInfo">
-                <span>
-                    {item.additionalInfo}
-                </span>
+            {item.additionalInfo
+                ? <div className="education_additional_info_container">
+                    <span className="education_additional_info">
+                        {item.additionalInfo}
+                    </span>
+                </div>
+                : null
+            }
             </div>
         </div>
     )

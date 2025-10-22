@@ -21,12 +21,14 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
 
     const build = (): ReactNode => {
         return(
-            <div className={raw ? "" : "projects"}>
+            <div className={`projects ${raw ? "" : "projects_with_scrollbar"}`}>
                 <div className="projects_title">
-                    <h1>Projekte</h1>
+                    <span className="header2">
+                        Projekte
+                    </span>
                 </div>
                 <div className="projects_description">
-                    <span>
+                    <span className="description1">
                         Ent­de­cken Sie mein An­wen­dungs­port­fo­lio, wel­ches mei­ne Kennt­nis­se in der Front­end-, Ba­ckend-, Full-Stack- so­wie App-Ent­wick­lung zeigt.
                     </span>
                 </div>

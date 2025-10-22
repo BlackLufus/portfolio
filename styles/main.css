@@ -21,26 +21,24 @@ body > div {
     height: 100%;
 }
 
-h1 {
-    font-size: var(--font-size-5);
-}
-
 .webpage {
     display: block;
-    justify-content: center;
-    justify-items: center;
-    overflow-y: auto;
 }
 
 .webpage_container {
     position: relative;
     display: block;
-    justify-items: center;
+    padding-top: 20px;
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1;
 }
 
 .webpage_container > div {
     margin-bottom: 180px;
+    margin-left: auto;
+    margin-right: auto;
     z-index: 1000;
 }
 
@@ -50,9 +48,12 @@ h1 {
 
 .webpage_background {
     position: absolute;
+    width: 100%;
+    height: 100%;
     object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
     object-position: center;
     filter: blur(75px);
+    z-index: 0;
 }
 
 .webpage_header {
@@ -60,7 +61,6 @@ h1 {
     width: 100%;
     max-width: 1300px;
     padding: 5px 20px;
-    margin-top: 20px;
     align-content: center;
     align-items: center;
     justify-content: space-between;
@@ -293,7 +293,6 @@ footer {
     height: 60px;
     width: 60px;
     align-content: center;
-    justify-items: center;
     padding: 0 5px;
     border-radius: 12px;
 }
@@ -306,6 +305,7 @@ footer {
     display: block;
     height: 40px;
     width: 40px;
+    margin: auto;
     animation-name: show;
     animation-duration: 0.35s;
 }

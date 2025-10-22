@@ -4,7 +4,7 @@
 }
 
 .overview_information {
-    width: 700px;
+    max-width: 700px;
     margin: auto 50px;
 }
 
@@ -12,21 +12,9 @@
     text-align: left;
 }
 
-.overview_header > span {
-    line-height: 99%;
-    font-weight: bold;
-    font-size: var(--font-size-1);
-    color: var(--font-color-p);
-}
-
 .overview_description {
     margin: 20px 0 50px;
-    max-width: 600px;
-}
-
-.overview_description > span {
-    font-size: var(--font-size-5);
-    color: var(--font-color-2);
+    max-width: 700px;
 }
 
 .overview_buttons {
@@ -68,20 +56,61 @@
     transform: scaleX(1);       /* Voll sichtbar beim Hover */
 }
 
-.overview_buttons > div > a {
+.overview_button > a {
     font-size: var(--font-size-5);
     color: var(--font-color-2);
 }
 
-.overview_image {
+.overview_image_container {
     margin: 10px 20px;
     border: 1px solid var(--boarder-color-2);
     border-radius: 20px;
     overflow: hidden;
 }
 
-.overview_image > img {
-    height: 500px;
+.overview_image {
+    max-height: 440px;
     object-fit: cover;
     object-position: center;
+}
+
+@media screen and (max-width: 966px) {
+    .overview {
+        flex-direction: column;
+        max-width: 100%;
+        padding-inline: 15px;
+    }
+
+    .overview_information {
+        max-width: 100%;
+        margin-inline: auto;
+    }
+
+    .overview_buttons {
+        position: relative;
+        display: block;
+        width: 100%;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .overview_button_my_project > a, .overview_button_contact > a {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .overview_button:first-child {
+        margin-bottom: 20px;
+    }
+
+    .overview_image_container {
+        margin-top: 80px;
+        margin-inline: auto;
+    }
+
+    .overview_image {
+        margin-inline: auto;
+    }
+
 }

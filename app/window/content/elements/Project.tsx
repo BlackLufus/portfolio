@@ -22,15 +22,21 @@ export default function Project({ image, title, description, labels, links }: Pr
             <div className="project_image">
                 <img src={image} alt="" />
             </div>
-            <div className="project_title">
-                <h1>{title}</h1>
+            <div className="project_title_container">
+                <span className="project_title">
+                    {title}
+                </span>
             </div>
-            <div className="project_description">
-                <span>{description}</span>
+            <div className="project_description_container">
+                <span className="project_description">
+                    {description}
+                </span>
             </div>
-            <div className="project_labels">
+            <div className="project_labels_container">
                 {labels.map((label, index) => (
-                    <span key={index} className="label">{label}</span>
+                    <span key={index} className="project_label">
+                        {label}
+                    </span>
                 ))}
             </div>
             <div className="project_links">

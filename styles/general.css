@@ -1,0 +1,34 @@
+.header1 {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-2);
+    color: var(--font-color-p);
+}
+
+.header2 {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-3);
+    color: var(--font-color-p);
+}
+
+.header3 {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-4);
+    color: var(--font-color-p);
+}
+
+.description1 {
+    font-size: var(--font-size-7);
+    color: var(--font-color-2);
+}
+
+.description2 {
+    font-size: var(--font-size-8);
+    color: var(--font-color-3);
+}
+
+.profil_image {
+    
+}

@@ -1,6 +1,10 @@
 .projects {
     max-width: 1300px;
+}
+
+.projects_with_scrollbar {
     height: 850px;
+    max-width: 1300px;
     overflow-y: scroll;
 }
 
@@ -9,21 +13,11 @@
     margin: 14px 0 10px 0;
 }
 
-.projects_title > h1 {
-    font-weight: bold;
-    font-size: var(--font-size-2);
-    color: var(--font-color-p);
-}
-
 .projects_description {
-    margin: 0 200px 20px 200px;
     max-width: 1300px;
     text-align: center;
-}
-
-.projects_description > span {
-    font-size: var(--font-size-5);
-    color: var(--font-color-2);
+    margin-inline: auto;
+    margin-top: 20px;
 }
 
 :root[data-theme="light"] .project {
@@ -31,18 +25,20 @@
 }
 
 .project_unsorted_list {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 400px);
+    max-width: 1300px;
+    margin-inline: auto;
+    grid-template-columns: repeat(auto-fit, 380px);
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 60px;
     gap: 20px 40px;
 }
 
 .project_list_item {
     display: block;
     overflow: hidden;
-    width: 400px;
-    height: 430px;
+    padding-bottom: 5px;
     border-radius: 12px;
     box-shadow: 2px 2px 8px #0008;
     background-color: var(--background-color-2);
@@ -82,7 +78,7 @@
     scale: 1.1;
 }
 
-.project_title {
+.project_title_container {
     padding: 0 10px;
     justify-items: left;
     text-align: left;
@@ -91,51 +87,51 @@
     transition: color 0.35s ease;
 }
 
-.project_title > h1 {
+.project_title {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
     font-weight: bold;
-    font-size: var(--font-size-5);
+    font-size: var(--font-size-6);
     color: var(--font-color-1);
     cursor: pointer;
 }
 
-.project_list_item:hover .project_title > h1 {
+.project_list_item:hover .project_title {
     transition: color 0.35s ease;
     color: var(--font-color-p);
 }
 
-.project_description {
+.project_description_container {
     padding: 0 10px;
     height: 60px;
 }
 
-.project_description > span {
+.project_description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
-    font-size: var(--font-size-7);
+    font-size: var(--font-size-8);
     color: var(--font-color-4);
 }
 
-.project_labels {
+.project_labels_container {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    align-content: center;
     gap: 6px;
     padding: 0 6px;
-    height: 80px;
+    height: 70px;
 }
 
-.label {
+.project_label {
     height: fit-content;
     padding: 2px 8px;
+    margin-bottom: auto;
     border-radius: 8px;
     color: var(--font-color-2);
     border: 1px solid var(--boarder-color-2);
@@ -158,4 +154,15 @@
     padding: 4px;
     font-size: var(--font-size-9);
     color: #fff;
+}
+
+@media screen and (max-width: 1300px) {
+
+    .projects {
+        padding-inline: 15px;
+    }
+
+    .project_list_item {
+        margin-inline: 15px;
+    }
 }

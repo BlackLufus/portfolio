@@ -62,19 +62,17 @@ export default function Education({title, icon_url, raw = false}: EducationProps
         return(
             <div id={raw ? "education" : `education_${id}`} className={raw ? "" : "education"}>
                 <div className="education_title">
-                    <h1>
+                    <span className="header2">
                         Bildung und Berufserfahrung
-                    </h1>
+                    </span>
                 </div>
                 <div className="education_description">
-                    <span>
+                    <span className="description1">
                         Mein aka­de­mi­scher Wer­de­gang und mein be­ruf­li­che Lauf­bahn.
                     </span>
                 </div>
                 <EducationTimeline id={raw ? undefined : id} education_item_list={educationItems}/>
-                {/* <div className="application_filler">
-                    
-                </div> */}
+
             </div>
         );
     }

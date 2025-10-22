@@ -19,7 +19,7 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
 
     useEffect(() => {
         const handleScroll = () => {
-            const scroll_container = document.getElementById(id == undefined ? "webpage" : `education_${id}`)!;
+            const scroll_container = document.getElementById(id == undefined ? "webpage_container" : `education_${id}`)!;
             const timeline_element = containerRef.current!;
 
             const scroll_top = scroll_container.scrollTop;
@@ -47,7 +47,7 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
         }
 
         EventListener.addEventListener(
-            document.getElementById(id == undefined ? "webpage" : `education_${id}`),
+            document.getElementById(id == undefined ? "webpage_container" : `education_${id}`),
             'scroll',
             handleScroll,
             false,
@@ -63,7 +63,7 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
                 {education_item_list.map((item, index) => (
                     <React.Fragment key={index}>
                         <EducationTimeLinePoint />
-                        <EducationPanel item={item} class_name={`education_content_${index % 2 ? "right" : "left"}`} />
+                        <EducationPanel item={item} class_name={""} />
                     </React.Fragment>
                 ))}
             </div>

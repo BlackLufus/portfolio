@@ -1,4 +1,5 @@
 "use client";
+import "../styles/general.css";
 import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
@@ -40,9 +41,9 @@ export default function Home() {
 
   return (
     websiteState
-    ? <div id="webpage" className="webpage">
+    ? <div className="webpage">
       <img className="webpage_background" src="/images/bubbles.png" alt="" />
-      <div className="webpage_container">
+      <div id="webpage_container" className="webpage_container">
         <div className="webpage_header">
           <div className="webpage_header_name">
             <span>
