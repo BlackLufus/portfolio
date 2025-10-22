@@ -13,11 +13,6 @@ export default function StartButton() {
         console.log(isDarkMode ? 'dark' : 'light');
     }, [isDarkMode]);
 
-    const toggleMode = () => {
-        setIsDarkMode(!isDarkMode);
-        console.log("Mode toggled");
-    };
-
     return (
         <div id="start_button" className="start_button">
             <div>

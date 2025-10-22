@@ -6,7 +6,7 @@ import "../styles/content/overview.css";
 import "../styles/content/about_me.css";
 import "../styles/content/Project.css";
 import "../styles/content/education.css";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import DesktopWebsite from "./task_bar/desktop_website";
 import DarkMode from "./task_bar/darkmode";
 import TimeAndDate from "./task_bar/time";
@@ -35,7 +35,7 @@ export default function Home() {
   }
 
   function handleWebsiteClick (state: boolean) {
-    setWebsiteState(!state);
+    setWebsiteState(state);
   }
 
   return (
@@ -53,7 +53,7 @@ export default function Home() {
             </span>
           </div>
           <div className="webpage_header_buttons">
-            <DesktopWebsite state={true} onClick={setWebsiteState}></DesktopWebsite>
+            <DesktopWebsite state={true} onClick={handleWebsiteClick}></DesktopWebsite>
             <DarkMode state={darkmode} onclick={handleDarkmode}/>
           </div>
         </div>

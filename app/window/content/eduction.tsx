@@ -1,5 +1,4 @@
 "use client";
-import build from "next/dist/build";
 import Frame from "../frame";
 import { EducationItem } from "./elements/education_panel";
 import EducationTimeline from "./elements/education_timeline";

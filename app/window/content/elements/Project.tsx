@@ -1,5 +1,3 @@
-import { Url } from "next/dist/shared/lib/router/router";
-
 type ProjectProps = {
   image: string;
   title: string;

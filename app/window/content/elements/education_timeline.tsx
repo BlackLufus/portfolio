@@ -30,10 +30,10 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
             const element_top = timeline_element.offsetTop;
             const element_height = timeline_element.scrollHeight;
 
-            let scrolled_into_view = scroll_top + viewport_height - element_top - viewport_buffer;
-            let total_scrollable_height = element_top + element_height - element_top;
+            const scrolled_into_view = scroll_top + viewport_height - element_top - viewport_buffer;
+            const total_scrollable_height = element_top + element_height - element_top;
 
-            let current_scroll_value = (scrolled_into_view / total_scrollable_height) * 100;
+            const current_scroll_value = (scrolled_into_view / total_scrollable_height) * 100;
 
             if (scrolled_into_view <= 0 || scroll_top == 0) {
                 setScrollPercent(0);
@@ -55,7 +55,7 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
         );
 
         return () => EventListener.removeAllListeners(`education_timeline-${id}`);
-    }, [scrollPercent]);
+    });
 
     return(
         <div ref={containerRef} className="education_content">

@@ -2,13 +2,13 @@
 
 interface DesktopWebsiteProbs {
     state: boolean
-    onClick: Function
+    onClick: (newState: boolean) => void
 }
 
 export default function DesktopWebsite({state, onClick}:DesktopWebsiteProbs) {
 
     const handleClick = () => {
-        onClick();
+        onClick(!state);
     }
 
     return (

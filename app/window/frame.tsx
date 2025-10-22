@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import EventListener from "../miscs/EventListener";
 import Point from "../miscs/point";
 
@@ -99,7 +99,7 @@ export default function Frame({ title, icon_url, onClose, children }: FrameProps
         EventListener.addEventListener(
             frameHeaderRef.current!,
             'mousedown',
-            (rootEvent: any) => {
+            (rootEvent: MouseEvent) => {
 
                 focus(rootEvent);
 
@@ -153,7 +153,7 @@ export default function Frame({ title, icon_url, onClose, children }: FrameProps
 
     useEffect(() => {
         addEventListeners();
-    }, []);
+    });
 
     return (
         <div ref={frameRef} className="frame" style={{ zIndex: zCounter }}>

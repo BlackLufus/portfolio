@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface DarkmodeProbs {
     state: boolean,
-    onclick: Function
+    onclick: (newState: boolean) => void
 }
 
 export default function DarkMode({state, onclick}:DarkmodeProbs) {

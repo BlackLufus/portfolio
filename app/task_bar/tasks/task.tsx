@@ -2,6 +2,7 @@ import Education from "@/window/content/eduction";
 import Projects from "@/window/content/projects";
 import AboutMe from "@/window/content/about_me";
 import Overview from "@/window/content/overview";
+import { ReactNode } from "react";
 
 export enum TaskId {
     OVERVIEW = 0,
@@ -13,7 +14,7 @@ export enum TaskId {
 
 interface TaskProps {
     task_id: TaskId;
-    open_task: Function;
+    open_task: (task: ReactNode) => void;
 }
 
 export default function Task({task_id, open_task}: TaskProps) {
