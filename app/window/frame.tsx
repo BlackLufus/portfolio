@@ -6,6 +6,8 @@ import Point from "../miscs/point";
 interface FrameProps {
   title: string;
   icon_url: string;
+  heigth?: string;
+  width?: string;
   onClose?: () => void;
   children: React.ReactNode;
 }
@@ -23,7 +25,7 @@ class FrameAttributes {
     public static zCounter: number = 1000;
 }
 
-export default function Frame({ title, icon_url, onClose, children }: FrameProps) {
+export default function Frame({ title, icon_url, heigth = "auto", width = "auto", onClose, children }: FrameProps) {
     const frameRef = useRef<HTMLDivElement>(null);
     const frameHeaderRef = useRef<HTMLDivElement>(null);
     const zCounter= FrameAttributes.zCounter++;
@@ -171,7 +173,7 @@ export default function Frame({ title, icon_url, onClose, children }: FrameProps
                 </div>
                 <button className="frame_close" onClick={() => {dispose()}}/>
             </header>
-            <main className="frame_content">
+            <main className="frame_content" style={{ width: width, height: heigth }}>
                 <div>
                     {children}
                 </div>

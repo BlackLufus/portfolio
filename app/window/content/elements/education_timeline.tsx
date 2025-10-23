@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import EducationPanel, { EducationItem } from "./education_panel";
+import EducationPanel, { EducationData } from "./education_panel";
 import EducationTimeLinePoint from "./education_timeline_point";
 import EventListener from "@/miscs/EventListener";
 
 
 interface TimelineProps {
     id: number | undefined;
-    education_item_list: EducationItem[];
+    education_data_list: EducationData[];
 }
 
-export default function EducationTimeline({id, education_item_list}:TimelineProps ) {
+export default function EducationTimeline({id, education_data_list}:TimelineProps ) {
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -60,10 +60,10 @@ export default function EducationTimeline({id, education_item_list}:TimelineProp
     return(
         <div ref={containerRef} className="education_content">
             <div className="education_timeline" style={{"--fill-height": `${scrollPercent}%`} as React.CSSProperties} >
-                {education_item_list.map((item, index) => (
+                {education_data_list.map((data, index) => (
                     <React.Fragment key={index}>
                         <EducationTimeLinePoint />
-                        <EducationPanel item={item} class_name={""} />
+                        <EducationPanel data={data} class_name={""} />
                     </React.Fragment>
                 ))}
             </div>

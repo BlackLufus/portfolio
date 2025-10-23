@@ -13,6 +13,7 @@ html, body {
     padding: 0;
     display: block;
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     background-color: var(--background-color-2);
 }
@@ -32,6 +33,7 @@ body > div {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    scroll-behavior: smooth;
     z-index: 1;
 }
 
@@ -57,15 +59,19 @@ body > div {
 }
 
 .webpage_header {
+    position: sticky;
+    top: 0;
     display: flex;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1380px;
     padding: 5px 20px;
     align-content: center;
     align-items: center;
     justify-content: space-between;
     border: 1px solid var(--boarder-color-2);
     border-radius: 100px;
+    backdrop-filter: blur(10px);;
+    background-color: var(--background-color-t6);
 }
 
 .webpage_header_name {

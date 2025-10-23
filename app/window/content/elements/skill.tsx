@@ -7,6 +7,12 @@ export enum SkillLevel {
     SPEZIALIST = 5
 }
 
+export interface SkillData {
+    title: string;
+    description: string;
+    level: SkillLevel
+}
+
 interface SkillItemProps {
     title: string,
     description: string,

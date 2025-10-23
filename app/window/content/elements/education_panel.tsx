@@ -1,33 +1,20 @@
 import { it } from "node:test";
 
-export class EducationItem {
-    public readonly degree: string;
-    public readonly period: string;
-    public readonly institution: string;
-    public readonly summary: string;
-    public readonly additionalInfo?: string;
-    
-    constructor (
-        degree: string,
-        period: string,
-        institution: string,
-        summary: string,
-        additionalInfo?: string
-    ) {
-        this.degree = degree;
-        this.period = period;
-        this.institution = institution;
-        this.summary = summary;
-        this.additionalInfo = additionalInfo;
-    }
+export interface EducationData {
+    image: string;
+    degree: string;
+    period: string;
+    institution: string;
+    summary: string;
+    additionalInfo?: string;
 }
 
 interface EducationPanelProps {
-    item: EducationItem,
+    data: EducationData,
     class_name?: string;
 }
 
-export default function EducationPanel({item, class_name}:EducationPanelProps) {
+export default function EducationPanel({data, class_name}:EducationPanelProps) {
     return (
         <div className={`education_panel ${class_name}`}>
             <div className="education_panel_border_top" />
@@ -35,34 +22,34 @@ export default function EducationPanel({item, class_name}:EducationPanelProps) {
                 <div className="education_panel_degree_and_period">
                 <div>
                     <span className="education_degree">
-                        {item.degree}
+                        {data.degree}
                     </span>
                 </div>
                 <div className="education_period_container">
                     <span className="education_period">
-                        {item.period}
+                        {data.period}
                     </span>
                 </div>
             </div>
             <div className="education_panel_institution">
                 <div className="education_institution_image">
-                    <img src="images/colored/museum.png" alt="" />
+                    <img src={data.image} alt="" />
                 </div>
                 <div>
                     <span className="education_institution">
-                        {item.institution}
+                        {data.institution}
                     </span>
                 </div>
             </div>
             <div className="education_summary_container">
                 <span className="education_summary">
-                    {item.summary}
+                    {data.summary}
                 </span>
             </div>
-            {item.additionalInfo
+            {data.additionalInfo
                 ? <div className="education_additional_info_container">
                     <span className="education_additional_info">
-                        {item.additionalInfo}
+                        {data.additionalInfo}
                     </span>
                 </div>
                 : null

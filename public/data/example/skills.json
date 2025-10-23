@@ -1,0 +1,67 @@
+{
+    "title": "Meine Fähigkeiten",
+    "description": "Ich habe mein Know-how in die­sen Tech­no­lo­gi­en ver­fei­nert, um mo­der­ne, ef­fi­zi­en­te Lö­sun­gen zu er­stel­len.",
+    "level_description": "Kompetenzlevel",
+    "skill_list": [
+        {
+            "title": "Fähigkeit1",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit2",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit3",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit4",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit5",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit6",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit7",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit8",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit9",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit10",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit11",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 4
+        },
+        {
+            "title": "Fähigkeit12",
+            "description": "Das ist eine beschreibung für eine Fähigkeit.",
+            "level": 6
+        }
+    ]
+}

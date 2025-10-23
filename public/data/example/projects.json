@@ -1,0 +1,76 @@
+{
+    "title": "Projekte",
+    "description": "Ent­de­cken Sie mein An­wen­dungs­port­fo­lio, wel­ches mei­ne Kennt­nis­se in der Front­end-, Ba­ckend-, Full-Stack- so­wie App-Ent­wick­lung zeigt.",
+    "project_list": [
+        {
+            "image": "images/image.png",
+            "title": "Port­fo­lio Web­site",
+            "description": "Die­se Web­site ist eine Prä­sen­ta­ti­on mei­ner Pro­jek­te, Fä­hig­kei­ten und Er­fah­run­gen in der Soft­ware­ent­wick­lung. Sie zeich­net sich durch ein mo­dernes Design aus.",
+            "labels": ["React", "Next.js", "TypeScript", "Framemotion"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        },
+        {
+            "image": "images/image.png",
+            "title": "Neural Network (Number Detector)",
+            "description": "Ein Projekt um die tiefen geheimnisse Neuronaler Netze zu erknungen. Diese Projekt dient ausschließlich zur bildungszwecken.",
+            "labels": ["Neurnale Netze", "KI", "Python", "numpy"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        },
+        {
+            "image": "images/island_traveler.png",
+            "title": "Island Traveler",
+            "description": "Island Traveler ist ein 3D-Abenteuer-Action-Jump-’n’-Run-Spiel, bei dem der Spieler über verschiedene fliegende Inseln und Jump ’n’ Run Abschnitte zur Zielinselgelangen muss.\n\nDabei wird er auf seinem Weg durch verschiedenste Gegner aufgehalten, diese kanner mit seinem Schwert besiegen. Zudem ist es dem Spieler möglich Edelsteine einzusammeln, welche ihn zum Ende des Spiels belohnen werden. Erst wenn alle Gegnerauf einer Insel besiegt wurden, wird der Weg zur nächsten Insel freigeschaltet.\n\nZiel des Spielers ist es die letzte fliegende Insel zu erreichen, um dort schließlich dieverbleibenden Gegner zu besiegen, ohne vorher alle drei seiner Herzen verloren zuhaben.",
+            "labels": ["Unity", "Assets"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        },
+        {
+            "image": "images/image.png",
+            "title": "Projekt Title",
+            "description": "Das ist eine Beispiel beschreibung eines Projektes",
+            "labels": ["test1", "test2", "test3", "test4"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        },
+        {
+            "image": "images/image.png",
+            "title": "Projekt Title",
+            "description": "Das ist eine Beispiel beschreibung eines Projektes",
+            "labels": ["test1", "test2", "test3", "test4"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        },
+        {
+            "image": "images/image.png",
+            "title": "Projekt Title",
+            "description": "Das ist eine Beispiel beschreibung eines Projektes",
+            "labels": ["test1", "test2", "test3", "test4"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        },
+        {
+            "image": "images/image.png",
+            "title": "Projekt Title",
+            "description": "Das ist eine Beispiel beschreibung eines Projektes",
+            "labels": ["Vogel", "Schildkröte", "Katze", "Maus", "Hund", "Schwein", "Fisch", "Kuh", "Huhn"],
+            "links": [{
+                "title": "Details", 
+                "link": "https://google.com"
+            }]
+        }
+    ]
+}

@@ -1,8 +1,10 @@
 .education {
-    max-width: 1300px;
+    max-width: 1380px;
+}
+
+.projects_with_scrollbar {
     height: 850px;
     overflow-y: scroll;
-    padding: 20px 40px;
 }
 
 .education_title {
@@ -11,7 +13,7 @@
 }
 
 .education_description {
-    max-width: 1300px;
+    max-width: 966px;
     text-align: center;
     margin-inline: auto;
     margin-top: 20px;
@@ -19,8 +21,9 @@
 
 .education_content {
     display: block;
-    max-width: 1300px;
-    margin: 60px auto 0 auto;
+    max-width: 1380px;
+    padding-inline: 15px;
+    margin: 60px auto 15px auto;
 }
 
 .education_timeline {
@@ -109,7 +112,7 @@
     display: block;
     width: 100%;
     max-width: 600px;
-    margin: 10px 0 0 0;
+    margin-top: 20px;
     background-color: var(--background-color-t7);
     border-radius: 10px;
     transition: transform 0.35s ease;
@@ -129,7 +132,7 @@
 
 
 :root[data-theme="light"] .education_panel {
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-t7);
 }
 
 /* .education_panel:nth-child(4n) {
@@ -150,13 +153,15 @@
 
 .education_degree {
     font-weight: bold;
-    font-size: var(--font-size-8);
+    font-size: var(--font-size-7);
     color: var(--font-color-1);
 }
 
 .education_period_container {
+    min-width: fit-content;
     align-content: center;
-    padding: 0 10px;
+    padding: 3px 10px;
+    margin-block: auto;
     line-height: 99%;
     text-align: center;
     background-color: var(--background-color-4);
@@ -176,7 +181,7 @@
 .education_panel_institution {
     display: flex;
     gap: 5px;
-    margin-bottom: 10px;
+    margin-block: 20px 10px;
 }
 
 .education_institution_image {
@@ -209,6 +214,7 @@
 .education_additional_info_container {
     text-align: left;
     padding-top: 10px;
+    white-space: pre-line;
 }
 
 .education_additional_info {
@@ -221,7 +227,7 @@
 }
 
 @media screen and (max-width: 1300px) {
-    .education_content {
+    .education {
         margin-inline: 10px;
     }
 

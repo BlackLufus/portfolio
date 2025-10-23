@@ -1,10 +1,10 @@
 .projects {
-    max-width: 1300px;
+    max-width: 1380px;
+    padding-inline: 15px;
 }
 
 .projects_with_scrollbar {
     height: 850px;
-    max-width: 1300px;
     overflow-y: scroll;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .projects_description {
-    max-width: 1300px;
+    max-width: 966px;
     text-align: center;
     margin-inline: auto;
     margin-top: 20px;
@@ -27,12 +27,11 @@
 .project_unsorted_list {
     position: relative;
     display: grid;
-    max-width: 1300px;
     margin-inline: auto;
-    grid-template-columns: repeat(auto-fit, 380px);
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     justify-content: center;
     margin-top: 60px;
-    gap: 20px 40px;
+    gap: 20px 30px;
 }
 
 .project_list_item {
@@ -54,7 +53,7 @@
     transform: translateY(-10px);
 }
 
-.project_image {
+.project_image_container {
     height: 190px;
     width: 100%;
     overflow: hidden;
@@ -63,7 +62,7 @@
     justify-content: center;
 }
 
-.project_image img {
+.project_image {
     height: 100%;
     width: 100%;
     object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
@@ -156,13 +155,12 @@
     color: #fff;
 }
 
-@media screen and (max-width: 1300px) {
+/* @media screen and (max-width: 1300px) {
 
-    .projects {
-        padding-inline: 15px;
-    }
+} */
 
+@media screen and (max-width: 768px) {
     .project_list_item {
-        margin-inline: 15px;
+        margin-inline: 10px;
     }
 }

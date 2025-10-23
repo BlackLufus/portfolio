@@ -1,26 +1,33 @@
-type ProjectProps = {
+interface LinkData {
+    title: string;
+    link: string;
+}
+
+export interface LinksListData {
+    link_list: LinkData[];
+}
+
+export interface ProjectData {
+    image: string;
+    title: string;
+    description: string;
+    labels: Array<string>;
+    links: LinkData[];
+}
+
+interface ProjectProps {
   image: string;
   title: string;
   description: string;
   labels: string[];
-  links: Link[];
+  links: LinkData[];
 };
-
-export class Link {
-    public readonly title: string;
-    public readonly link: string;
-
-    public constructor(title: string, link: string) {
-        this.title = title;
-        this.link = link
-    }
-}
 
 export default function Project({ image, title, description, labels, links }: ProjectProps) {
     return (
         <li className="project_list_item">
-            <div className="project_image">
-                <img src={image} alt="" />
+            <div className="project_image_container">
+                <img className="project_image" src={image} alt="" />
             </div>
             <div className="project_title_container">
                 <span className="project_title">

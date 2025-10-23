@@ -14,40 +14,35 @@ export enum TaskId {
 
 interface TaskProps {
     task_id: TaskId;
-    open_task: (task: ReactNode) => void;
+    open_task: (task: TaskId) => void;
 }
 
 export default function Task({task_id, open_task}: TaskProps) {
 
     const click = () => {
-        open_task(tasks[task_id].component)
+        open_task(task_id)
     }
 
     const tasks = {
         [TaskId.OVERVIEW]: {
             name: "Übersicht",
             image: "images/home.png",
-            component: <Overview title="Übersicht" icon_url="images/home.png" />
         },
         [TaskId.ABOUTME]: {
             name: "Über mich",
             image: "images/person.png",
-            component: <AboutMe title="Über mich" icon_url="images/person.png" />
         },
         [TaskId.PROJECTS]: {
             name: "Projekte",
             image: "images/project.png",
-            component: <Projects title="Projekte" icon_url="images/project.png"/>
         },
         [TaskId.EDUCATION]: {
             name: "Bildung und Berufserfahrung",
             image: "images/education.png",
-            component: <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" />
         },
         [TaskId.CONTACT]: {
             name: "Kontakt",
             image: "images/contact.png",
-            component: <AboutMe title="Kontakt" icon_url="images/contact.png" />
         }
     }
 

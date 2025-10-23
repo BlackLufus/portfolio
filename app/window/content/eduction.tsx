@@ -1,8 +1,15 @@
 "use client";
+import loadData, { DataType } from "@/load_data";
 import Frame from "../frame";
-import { EducationItem } from "./elements/education_panel";
+import { EducationData } from "./elements/education_panel";
 import EducationTimeline from "./elements/education_timeline";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
+
+interface EducationGeneralData {
+    title: string;
+    description: string;
+    education_data_list: EducationData[];
+}
 
 interface EducationProps {
     title: string,
@@ -16,51 +23,29 @@ class EducationAttributes {
 
 export default function Education({title, icon_url, raw = false}: EducationProps) {
 
+    const [data, setSkillData] = useState<EducationGeneralData | null>(null);
+
     const id = EducationAttributes.id++;
 
     const terminate = () => {
         console.log("Education: terminated");
     };
 
-    const educationItems: EducationItem[] = [
-        {
-            degree: "Bachelor of Science",
-            period: "2015 - 2018",
-            institution: "Universität Musterstadt",
-            summary: "Studium der Informatik mit Schwerpunkt Softwareentwicklung.",
-            additionalInfo: "Abschlussnote: 1,5"
-        },
-        {
-            degree: "Master of Science",
-            period: "2018 - 2020",
-            institution: "Universität Musterstadt",
-            summary: "Vertiefung in Künstlicher Intelligenz und Machine Learning.",
-            additionalInfo: "Masterarbeit über neuronale Netze"
-        },
-        {
-            degree: "Werkstudent Softwareentwicklung",
-            period: "2017 - 2018",
-            institution: "Tech Solutions GmbH",
-            summary: "Entwicklung von Webanwendungen mit React und Node.js.",
-        },
-        {
-            degree: "Praktikum Backend-Entwicklung",
-            period: "Sommer 2016",
-            institution: "Innovative Apps AG",
-            summary: "Erstellung von REST-APIs mit Python und Django.",
-            additionalInfo: "Teamarbeit in agilem Umfeld"
-        },
-        {
-            degree: "Abitur",
-            period: "2010 - 2015",
-            institution: "Gymnasium Beispielstadt",
-            summary: "Schwerpunkt Mathematik und Informatik.",
-        }
-    ];
+    useEffect(() => {
+        loadData<EducationGeneralData>(DataType.EDUCATION).then((res) => {
+            setSkillData(res);
+        });
+    }, []);
 
     const build = ():ReactNode => {
+        if (!data) return(
+            <div>
+                No data available.
+            </div>
+        )
         return(
-            <div id={raw ? "education" : `education_${id}`} className={raw ? "" : "education"}>
+            // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
+            <div id="education" className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
                 <div className="education_title">
                     <span className="header2">
                         Bildung und Berufserfahrung
@@ -71,7 +56,7 @@ export default function Education({title, icon_url, raw = false}: EducationProps
                         Mein aka­de­mi­scher Wer­de­gang und mein be­ruf­li­che Lauf­bahn.
                     </span>
                 </div>
-                <EducationTimeline id={raw ? undefined : id} education_item_list={educationItems}/>
+                <EducationTimeline id={raw ? undefined : id} education_data_list={data.education_data_list}/>
 
             </div>
         );
@@ -82,6 +67,7 @@ export default function Education({title, icon_url, raw = false}: EducationProps
             <Frame
                 title={title}
                 icon_url={icon_url}
+                width={"1380px"}
                 onClose={terminate}
             >
                 {build()}

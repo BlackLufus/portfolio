@@ -1,0 +1,48 @@
+{
+    "title": "Über mich",
+    "description": "Ein Full­stack-Ent­wick­ler, der sich auf Re­act- und Next.js-An­wen­dun­gen spe­zia­li­siert hat und ein Auge für De­sign hat.",
+    "personal": {
+        "title": "Persönliches",
+        "description": "Krea­ti­ver Den­ker mit ei­ner Lei­den­schaft für ele­gan­te Lö­sun­gen und Lie­be zum De­tail.",
+        "characteristics_list": [
+            {
+                "image": "images/project.png",
+                "text": "Problemlöser"
+            },
+            {
+                "image": "images/project.png",
+                "text": "Kreativer Denker"
+            },
+            {
+                "image": "images/project.png",
+                "text": "Schneller Lerner"
+            },
+            {
+                "image": "images/project.png",
+                "text": "Detailorientiert"
+            }
+        ]
+    },
+    "professional": {
+        "title": "Berufliches",
+        "description": "Lie­fe­rung wir­kungs­vol­ler Lö­sun­gen bei gleich­zei­ti­ger Er­kun­dung neu­er Tech­no­lo­gi­en.",
+        "characteristics_list": [
+            {
+                "image": "images/project.png",
+                "text": "Problemlöser"
+            },
+            {
+                "image": "images/project.png",
+                "text": "Kreativer Denker"
+            },
+            {
+                "image": "images/project.png",
+                "text": "Schneller Lerner"
+            },
+            {
+                "image": "images/project.png",
+                "text": "Detailorientiert"
+            }
+        ]
+    }
+}

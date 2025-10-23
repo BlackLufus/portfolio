@@ -7,7 +7,7 @@ import "../styles/content/overview.css";
 import "../styles/content/about_me.css";
 import "../styles/content/Project.css";
 import "../styles/content/education.css";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import DesktopWebsite from "./task_bar/desktop_website";
 import DarkMode from "./task_bar/darkmode";
 import TimeAndDate from "./task_bar/time";
@@ -16,8 +16,13 @@ import StartButton from "./task_bar/start_button";
 import Task, { TaskId } from "./task_bar/tasks/task";
 import Overview from "./window/content/overview";
 import AboutMe from "./window/content/about_me";
-import Projects from "./window/content/projects";
+import Projects, { ProjectsData } from "./window/content/projects";
 import Education from "./window/content/eduction";
+import loadData from "./load_data";
+
+interface Data {
+  projects: ProjectsData
+}
 
 export default function Home() {
 
@@ -29,13 +34,26 @@ export default function Home() {
     setDarkmodeState(state);
   }
 
-  function handleTaskClick(frame: ReactNode) {
-    if (frame) {
-      setOpenComponents(prev => [...prev, frame]);
+  async function handleTaskClick(taskId: TaskId) {
+    const frame = async (taskId: TaskId): Promise<ReactNode> => {
+      switch (taskId) {
+        case TaskId.OVERVIEW:
+          return <Overview title="Übersicht" icon_url="images/home.png" />
+        case TaskId.OVERVIEW:
+          return <AboutMe title="Über mich" icon_url="images/person.png" />
+        case TaskId.OVERVIEW:
+          return <Projects title="Projekte" icon_url="images/project.png"/>
+        case TaskId.OVERVIEW:
+          return <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" />
+        case TaskId.OVERVIEW:
+          return <AboutMe title="Kontakt" icon_url="images/contact.png" />
+      }
     }
+    const node = await frame(taskId);
+    setOpenComponents((prev) => [...prev, node]);
   }
 
-  function handleWebsiteClick (state: boolean) {
+  const handleWebsiteClick = (state: boolean) => {
     setWebsiteState(state);
   }
 

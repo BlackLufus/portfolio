@@ -1,0 +1,44 @@
+{
+    "title": "Bildung und Berufserfahrung",
+    "description": "Mein aka­de­mi­scher Wer­de­gang und mein be­ruf­li­che Lauf­bahn.",
+    "education_data_list": [
+        {
+            "image": "images/colored/museum.png",
+            "degree": "Bachelor of Science",
+            "period": "2015 - 2018",
+            "institution": "Universität Musterstadt",
+            "summary": "Studium der Informatik mit Schwerpunkt Softwareentwicklung.",
+            "additionalInfo": "Abschlussnote: 1,5"
+        },
+        {
+            "image": "images/colored/museum.png",
+            "degree": "Master of Science",
+            "period": "2018 - 2020",
+            "institution": "Universität Musterstadt",
+            "summary": "Vertiefung in Künstlicher Intelligenz und Machine Learning.",
+            "additionalInfo": "Masterarbeit über neuronale Netze"
+        }, 
+        {
+            "image": "images/colored/museum.png",
+            "degree": "Werkstudent Softwareentwicklung",
+            "period": "2017 - 2018",
+            "institution": "Tech Solutions GmbH",
+            "summary": "Entwicklung von Webanwendungen mit React und Node.js."
+        },
+        {
+            "image": "images/colored/museum.png",
+            "degree": "Praktikum Backend-Entwicklung",
+            "period": "Sommer 2016",
+            "institution": "Innovative Apps AG",
+            "summary": "Erstellung von REST-APIs mit Python und Django.",
+            "additionalInfo": "Teamarbeit in agilem Umfeld"
+        },
+        {
+            "image": "images/colored/museum.png",
+            "degree": "Abitur",
+            "period": "2010 - 2015",
+            "institution": "Gymnasium Beispielstadt",
+            "summary": "Schwerpunkt Mathematik und Informatik."
+        }
+    ]
+}
