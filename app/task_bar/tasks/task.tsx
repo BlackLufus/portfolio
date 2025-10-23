@@ -1,9 +1,3 @@
-import Education from "@/window/content/eduction";
-import Projects from "@/window/content/projects";
-import AboutMe from "@/window/content/about_me";
-import Overview from "@/window/content/overview";
-import { ReactNode } from "react";
-
 export enum TaskId {
     OVERVIEW = 0,
     ABOUTME = 1,

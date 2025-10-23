@@ -11,14 +11,14 @@ export enum DataType {
 
 export default async function loadData<T>(dataType: DataType):Promise<T> {
     const lang = "de";
-    let response = await fetch(
+    const response = await fetch(
         `${document.location.href}/data/${lang}/${dataType.valueOf()}`,
     )
     console.log(`${document.location.href}/data/${lang}/${dataType.valueOf()}`);
     if (response.status === 401) {
         alert("No data found!");
     }
-    let result = await response.json()
+    const result = await response.json()
     console.log(result)
     return result;
 }
