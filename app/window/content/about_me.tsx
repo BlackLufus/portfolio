@@ -107,6 +107,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
     const setSelectedBox = (index: number) => {
         const oldSelected = document.getElementById(`skills_custom_box_${selectedBox}`) as HTMLDivElement;
         oldSelected.className = "skills_custom_box"
+        console.log(selectedBox)
         selectedBox = index;
         const newSelected = document.getElementById(`skills_custom_box_${selectedBox}`) as HTMLDivElement;
         newSelected.className = "skills_custom_box skills_custom_box_selected"
@@ -183,11 +184,12 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
         loadData<AboutMeData>(DataType.ABOUTME).then((res) => {
             setAboutMeData(res);
-            addEventListeners();
         });
 
         loadData<SkillsData>(DataType.SKILLS).then((res) => {
             setSkillData(res);
+            addEventListeners();
+            onScrollLeftChange();
             calcNumBoxes();
         });
 

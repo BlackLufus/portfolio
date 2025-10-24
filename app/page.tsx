@@ -16,19 +16,37 @@ import StartButton from "./task_bar/start_button";
 import Task, { TaskId } from "./task_bar/tasks/task";
 import Overview from "./window/content/overview";
 import AboutMe from "./window/content/about_me";
-import Projects, { ProjectsData } from "./window/content/projects";
+import Projects from "./window/content/projects";
 import Education from "./window/content/eduction";
-import loadData from "./load_data";
+import loadData, { DataType } from "./load_data";
+import Icon from "./widgets/icon";
 
-interface Data {
-  projects: ProjectsData
+interface GeneralData {
+  firstname: string;
+  lastname: string;
+  about_me: string;
+  projects: string;
+  education: string;
+  contact: string;
+  year: string;
+  all_rights_reserved: string;
+  link_text: string;
+  linkedin_link: string;
+  github_link: string;
 }
 
 export default function Home() {
 
+  const [data, setGeneralData] = useState<GeneralData | null>(null);
   const [darkmode, setDarkmodeState] = useState(true);
   const [websiteState, setWebsiteState] = useState(true);
   const [openComponents, setOpenComponents] = useState<React.ReactNode[]>([]);
+
+  useEffect(() => {
+    loadData<GeneralData>(DataType.GENERAL).then((res) => {
+        setGeneralData(res);
+    });
+  }, []);
 
   const handleDarkmode = (state: boolean) => {
     setDarkmodeState(state);
@@ -57,20 +75,43 @@ export default function Home() {
     setWebsiteState(state);
   }
 
+  if (!data) return(
+    <div>
+      Data is loading, please hold on.
+    </div>
+  )
+
   return (
     websiteState
     ? <div className="webpage">
       <img className="webpage_background" src="/images/bubbles.png" alt="" />
       <div id="webpage_container" className="webpage_container">
         <div className="webpage_header">
-          <div className="webpage_header_name">
-            <span>
-              Firstname
+          <div className="webpage_header_name_container">
+            <span className="webpage_header_name_firstname">
+              {data.firstname}
             </span>
-            <span>
-              Lastname
+            <span className="webpage_header_name_lastname">
+              {data.lastname}
+            </span>
+            <span className="webpage_header_name_lastname_short">
+              {data.lastname.split("")[0]}.
             </span>
           </div>
+          <ul className="webpage_header_menu_ulist">
+            <li className="webpage_header_menu_ulist_item">
+              <a className="webpage_header_menu_ulist_a" href="#about_me">{data.about_me}</a>
+            </li>
+            <li className="webpage_header_menu_ulist_item">
+              <a className="webpage_header_menu_ulist_a" href="#projects">{data.projects}</a>
+            </li>
+            <li className="webpage_header_menu_ulist_item">
+              <a className="webpage_header_menu_ulist_a" href="#education">{data.education}</a>
+            </li>
+            <li className="webpage_header_menu_ulist_item">
+              <a className="webpage_header_menu_ulist_a" href="#contact">{data.contact}</a>
+            </li>
+          </ul>
           <div className="webpage_header_buttons">
             <DesktopWebsite state={true} onClick={handleWebsiteClick}></DesktopWebsite>
             <DarkMode state={darkmode} onclick={handleDarkmode}/>
@@ -80,16 +121,39 @@ export default function Home() {
         <AboutMe title="Über mich" icon_url="images/person.png" raw />
         <Projects title="Projekte" icon_url="images/project.png" raw />
         <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" raw={true} />
-        <div className="webpage_footer">  
-          <div>
-            <span>
-              Firstname Lastname
-            </span>
+        <div className="webpage_footer">
+          <div className="webpage_footer_left">
+            <div>
+              <span className="webpage_footer_name">
+                {data.firstname} {data.lastname}
+              </span>
+            </div>
+            <div>
+              <span className="webpage_footer_copyright">
+                {data.year} &copy; {data.all_rights_reserved}
+              </span>
+            </div>
           </div>
-          <div>
-            <span>
-              2025 &copy; Alle Rechte Vorbehalten
-            </span>
+          <div className="webpage_footer_right">
+            <div className="webpage_footer_title_container">
+              <span className="webpage_footer_title">
+                {data.link_text}
+              </span>
+            </div>
+            <div className="webpage_footer_links">
+              <a className="webpage_footer_link_href" href={data.github_link}>
+                <Icon 
+                    src="svg/github.svg"
+                    className="webpage_footer_link_icon"
+                  />
+              </a>
+              <a className="webpage_footer_link_href" href={data.linkedin_link}>
+                <Icon 
+                    src="svg/linkedin.svg"
+                    className="webpage_footer_link_icon"
+                  />
+              </a>
+            </div>
           </div>
         </div>
       </div>

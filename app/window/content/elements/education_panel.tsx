@@ -1,5 +1,3 @@
-import { it } from "node:test";
-
 export interface EducationData {
     image: string;
     degree: string;

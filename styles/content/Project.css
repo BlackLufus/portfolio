@@ -73,7 +73,7 @@
     cursor: pointer;
 }
 
-.project_list_item:hover .project_image img {
+.project_list_item:hover .project_image {
     scale: 1.1;
 }
 

@@ -38,3 +38,4 @@ next-env.d.ts
 
 /public/data/de/*.json
 /public/data/en/*.json
+/public/images/data
