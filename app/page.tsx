@@ -19,7 +19,7 @@ import AboutMe from "./window/content/about_me";
 import Projects from "./window/content/projects";
 import Education from "./window/content/eduction";
 import loadData, { DataType } from "./load_data";
-import Icon from "./widgets/icon";
+import IconSvg from "./widgets/icon_svg";
 
 interface GeneralData {
   firstname: string;
@@ -142,13 +142,13 @@ export default function Home() {
             </div>
             <div className="webpage_footer_links">
               <a className="webpage_footer_link_href" href={data.github_link}>
-                <Icon 
+                <IconSvg
                     src="svg/github.svg"
                     className="webpage_footer_link_icon"
                   />
               </a>
               <a className="webpage_footer_link_href" href={data.linkedin_link}>
-                <Icon 
+                <IconSvg 
                     src="svg/linkedin.svg"
                     className="webpage_footer_link_icon"
                   />

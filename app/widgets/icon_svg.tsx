@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 
 interface IconProbs {
@@ -5,7 +6,7 @@ interface IconProbs {
     className: string;
 }
 
-export default function Icon({src, className}:IconProbs) {
+export default function IconSvg({src, className}:IconProbs) {
 
     const [svg, setSvg] = useState("");
 
