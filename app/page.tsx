@@ -7,7 +7,7 @@ import "../styles/content/overview.css";
 import "../styles/content/about_me.css";
 import "../styles/content/Project.css";
 import "../styles/content/education.css";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import DesktopWebsite from "./task_bar/desktop_website";
 import DarkMode from "./task_bar/darkmode";
 import TimeAndDate from "./task_bar/time";
@@ -42,6 +42,8 @@ export default function Home() {
   const [websiteState, setWebsiteState] = useState(true);
   const [openComponents, setOpenComponents] = useState<React.ReactNode[]>([]);
 
+  const webpage_container = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     loadData<GeneralData>(DataType.GENERAL).then((res) => {
         setGeneralData(res);
@@ -57,13 +59,13 @@ export default function Home() {
       switch (taskId) {
         case TaskId.OVERVIEW:
           return <Overview title="Übersicht" icon_url="images/home.png" />
-        case TaskId.OVERVIEW:
+        case TaskId.ABOUTME:
           return <AboutMe title="Über mich" icon_url="images/person.png" />
-        case TaskId.OVERVIEW:
+        case TaskId.PROJECTS:
           return <Projects title="Projekte" icon_url="images/project.png"/>
-        case TaskId.OVERVIEW:
+        case TaskId.EDUCATION:
           return <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" />
-        case TaskId.OVERVIEW:
+        case TaskId.CONTACT:
           return <AboutMe title="Kontakt" icon_url="images/contact.png" />
       }
     }
@@ -85,7 +87,7 @@ export default function Home() {
     websiteState
     ? <div className="webpage">
       <img className="webpage_background" src="/images/bubbles.png" alt="" />
-      <div id="webpage_container" className="webpage_container">
+      <div ref={webpage_container} className="webpage_container">
         <div className="webpage_header">
           <div className="webpage_header_name_container">
             <span className="webpage_header_name_firstname">
@@ -120,7 +122,7 @@ export default function Home() {
         <Overview title="Übersicht" icon_url="images/home.png" raw />
         <AboutMe title="Über mich" icon_url="images/person.png" raw />
         <Projects title="Projekte" icon_url="images/project.png" raw />
-        <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" raw={true} />
+        <Education ref={webpage_container} title="Bildung und Berufserfahrung" icon_url="images/education.png" raw={true} />
         <div className="webpage_footer">
           <div className="webpage_footer_left">
             <div>
@@ -166,7 +168,7 @@ export default function Home() {
             <div key={index}>{comp}</div>
           ))}
         </div>
-        <div id="desktop_task" className="desktop_task">
+        <div className="desktop_task">
           <Task task_id={TaskId.OVERVIEW} open_task={handleTaskClick}/>
           <Task task_id={TaskId.ABOUTME} open_task={handleTaskClick}/>
           <Task task_id={TaskId.PROJECTS} open_task={handleTaskClick}/>

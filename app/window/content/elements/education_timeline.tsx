@@ -7,11 +7,12 @@ import EventListener from "@/miscs/EventListener";
 
 
 interface TimelineProps {
-    id: number | undefined;
+    id: number;
+    ref: React.RefObject<HTMLDivElement | null>;
     education_data_list: EducationData[];
 }
 
-export default function EducationTimeline({id, education_data_list}:TimelineProps ) {
+export default function EducationTimeline({id, ref, education_data_list}:TimelineProps ) {
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +20,7 @@ export default function EducationTimeline({id, education_data_list}:TimelineProp
 
     useEffect(() => {
         const handleScroll = () => {
-            const scroll_container = document.getElementById(id == undefined ? "webpage_container" : `education_${id}`)!;
+            const scroll_container = ref.current!;
             const timeline_element = containerRef.current!;
 
             const scroll_top = scroll_container.scrollTop;
@@ -47,7 +48,7 @@ export default function EducationTimeline({id, education_data_list}:TimelineProp
         }
 
         EventListener.addEventListener(
-            document.getElementById(id == undefined ? "webpage_container" : `education_${id}`),
+            ref.current!,
             'scroll',
             handleScroll,
             false,

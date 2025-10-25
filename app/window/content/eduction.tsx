@@ -3,7 +3,7 @@ import loadData, { DataType } from "@/load_data";
 import Frame from "../frame";
 import { EducationData } from "./elements/education_panel";
 import EducationTimeline from "./elements/education_timeline";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface EducationGeneralData {
     title: string;
@@ -14,6 +14,7 @@ interface EducationGeneralData {
 interface EducationProps {
     title: string,
     icon_url: string,
+    ref?: React.RefObject<HTMLDivElement | null>;
     raw?: boolean
 }
 
@@ -21,9 +22,11 @@ class EducationAttributes {
     public static id: number = 0;
 }
 
-export default function Education({title, icon_url, raw = false}: EducationProps) {
+export default function Education({title, icon_url, ref, raw = false}: EducationProps) {
 
     const [data, setSkillData] = useState<EducationGeneralData | null>(null);
+
+    const education = useRef<HTMLDivElement>(null);
 
     const id = EducationAttributes.id++;
 
@@ -32,6 +35,7 @@ export default function Education({title, icon_url, raw = false}: EducationProps
     };
 
     useEffect(() => {
+
         loadData<EducationGeneralData>(DataType.EDUCATION).then((res) => {
             setSkillData(res);
         });
@@ -45,7 +49,7 @@ export default function Education({title, icon_url, raw = false}: EducationProps
         )
         return(
             // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
-            <div id="education" className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
+            <div ref={education} id="education" className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
                 <div className="education_title">
                     <span className="header2">
                         Bildung und Berufserfahrung
@@ -56,11 +60,13 @@ export default function Education({title, icon_url, raw = false}: EducationProps
                         Mein aka­de­mi­scher Wer­de­gang und mein be­ruf­li­che Lauf­bahn.
                     </span>
                 </div>
-                <EducationTimeline id={raw ? undefined : id} education_data_list={data.education_data_list}/>
+                <EducationTimeline id={id} ref={ref ? ref :education} education_data_list={data.education_data_list}/>
 
             </div>
         );
     }
+
+    console.log("Initial Education")
 
     return(
         raw ? build() : (
