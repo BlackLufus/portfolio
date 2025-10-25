@@ -5,8 +5,8 @@ export interface NavigatorItemProbs {
 
 export default function NavigatorItem({title, href}: NavigatorItemProbs) {
     return(
-        <li>
-            <a href={href}>
+        <li className="navigator_item">
+            <a className="navigator_link" href={href}>
                 {title}
             </a>
         </li>

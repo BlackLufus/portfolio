@@ -3,10 +3,10 @@ import "../styles/general.css";
 import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
-import "../styles/content/overview.css";
-import "../styles/content/about_me.css";
-import "../styles/content/Project.css";
-import "../styles/content/education.css";
+import "../styles/components/overview.css";
+import "../styles/components/about_me.css";
+import "../styles/components/Project.css";
+import "../styles/components/education.css";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import DesktopWebsite from "./task_bar/desktop_website";
 import DarkMode from "./task_bar/darkmode";

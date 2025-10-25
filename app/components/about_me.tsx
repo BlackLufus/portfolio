@@ -2,7 +2,7 @@
 import Frame from "./frame";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import PersonalPanel from "./personal_panel";
-import SkillItem, { SkillData } from "./skill";
+import SkillItem from "./skill";
 import EventListener from "@/miscs/EventListener";
 import loadData, { DataType } from "@/services/load_data";
 
@@ -30,6 +30,14 @@ interface AboutMeData {
     professional: ProfessionalData;
 }
 
+interface SkillData {
+    title: string;
+    logo: string;
+    description: string;
+    level_text: string;
+    percent: number
+}
+
 interface SkillsData {
     title: string;
     description: string;
@@ -53,28 +61,26 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
     const itemSize:number = 280 + 20;
     const [numBoxes, setNumBoxes] = useState(1);
-    let itemFitInTotalViewWith: number = 1;
-    let viewBoxSize: number = itemSize;
     let selectedBox = 0;
 
     const calcNumBoxes = () => {
         console.log("calcNumBoxes")
         if (!skillsUlRef.current) return;
-        // Get Unsorted List element
+        // Gets Unsorted List element
         const container = skillsUlRef.current;
-        // Determines 
-        const totalScrollWidth = container.scrollWidth;
-        // Get visibile with of container element
+        // Gets total scroll width
+        const scrollWidth = container.scrollWidth;
+        // Gets visibile with of container element
         const viewWidth = container.clientWidth;
 
-        // Calculate how many times SkillItem element fits to container element
+        // Calculates how many times SkillItem element fits to container element
         const itemFitInTotalViewWith = Math.floor(viewWidth / itemSize)
 
-        // Calculate how far to scroll when clicken a box item
+        // Calculates how far to scroll when clicken a box item
         const viewBoxSize = itemSize * itemFitInTotalViewWith;
 
         // Calculates the max boxes to fast scroll
-        const numBoxes = Math.ceil(totalScrollWidth / viewBoxSize);
+        const numBoxes = Math.ceil(scrollWidth / viewBoxSize);
         setNumBoxes(numBoxes);
     }
 
@@ -103,7 +109,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
         if (!skillsUlRef.current) return;
         // Gets current scroll width
         const scrollLeft = skillsUlRef.current.scrollLeft;
-        // Get max scoll width
+        // Gets total scoll width
         const scrollWidth = skillsUlRef.current.scrollWidth;
         // Gets container element
         const container = skillsUlRef.current;
@@ -118,9 +124,12 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
         // Calculates which box to select or heighlight it
         const currentBoxIndex = Math.round(scrollLeft / viewBoxSize);
-        
+
+        // Calculates the max boxes to fast scroll
+        const numBoxes = Math.ceil(scrollWidth / viewBoxSize);
+
         // Selects the box index
-        setSelectedBox(currentBoxIndex);
+        setSelectedBox(scrollLeft + viewWidth == scrollWidth ? numBoxes - 1 : currentBoxIndex);
     }
 
     const setSelectedBox = (index: number) => {
@@ -302,6 +311,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
                                 <SkillItem 
                                     key={index}
                                     title={data.title}
+                                    logo={data.logo}
                                     description={data.description}
                                     level_text={skill_data.level_description}
                                     percent={data.percent}

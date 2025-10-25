@@ -179,7 +179,15 @@
 }
 
 .skill_item_header_container {
+    display: flex;
     padding-block: 15px;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill_item_logo > svg {
+    height: 25px;
+    width: 25px;
 }
 
 .skill_item_header {

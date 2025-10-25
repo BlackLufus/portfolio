@@ -1,23 +1,20 @@
-export interface SkillData {
-    title: string;
-    description: string;
-    level_text: string;
-    percent: number
-}
+import IconSvg from "@/widgets/icon_svg";
 
 interface SkillItemProps {
-    title: string,
-    description: string,
+    title: string;
+    logo: string;
+    description: string;
     level_text: string;
     percent: number;
 }
 
-export default function SkillItem({title, description, level_text, percent}:SkillItemProps) {
+export default function SkillItem({title, logo, description, level_text, percent}:SkillItemProps) {
     return (
         <li className="skill_item">
             <div className="skill_item_border_top" />
             <div className="skill_item_content">
                 <div className="skill_item_header_container">
+                    <IconSvg src={logo} className="skill_item_logo" />
                     <span className="skill_item_header">
                         {title}
                     </span>

@@ -1,4 +1,4 @@
-import NavigatorItem, { NavigatorItemProbs } from "./navigaor_item";
+import NavigatorItem, { NavigatorItemProbs } from "./navigator_item";
 
 interface NavigatorProbs {
     navigator_list: NavigatorItemProbs[]
@@ -6,8 +6,8 @@ interface NavigatorProbs {
 
 export default function Navigator({ navigator_list }:NavigatorProbs) {
     return(
-        <nav>
-            <ul>
+        <nav className="navigator">
+            <ul className="navigator_ulist">
                 {navigator_list.map((item) => (
                     <NavigatorItem title={item.title} href={item.href} />
                 ))}
