@@ -1,8 +1,8 @@
 "use client";
 import React, { ReactNode, useEffect, useState } from "react";
-import Frame from "../frame";
-import Project, { ProjectData } from "./elements/Project";
-import loadData, { DataType } from "@/load_data";
+import Frame from "./frame";
+import Project, { ProjectData } from "./Project";
+import loadData, { DataType } from "@/services/load_data";
 
 export interface ProjectsData {
   title: string;

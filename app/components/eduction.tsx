@@ -1,8 +1,8 @@
 "use client";
-import loadData, { DataType } from "@/load_data";
-import Frame from "../frame";
-import { EducationData } from "./elements/education_panel";
-import EducationTimeline from "./elements/education_timeline";
+import loadData, { DataType } from "@/services/load_data";
+import Frame from "./frame";
+import { EducationData } from "./education_panel";
+import EducationTimeline from "./education_timeline";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 interface EducationGeneralData {

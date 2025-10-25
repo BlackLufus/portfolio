@@ -1,6 +1,6 @@
 "use client";
-import loadData, { DataType } from "@/load_data";
-import Frame from "../frame";
+import loadData, { DataType } from "@/services/load_data";
+import Frame from "./frame";
 import { ReactNode, useEffect, useState } from "react";
 
 interface OverviewData {

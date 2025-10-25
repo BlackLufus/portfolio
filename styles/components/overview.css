@@ -1,0 +1,116 @@
+.overview {
+    display: flex;
+    max-width: 1300px;
+}
+
+.overview_information {
+    max-width: 700px;
+    margin: auto 50px;
+}
+
+.overview_information > div {
+    text-align: left;
+}
+
+.overview_description {
+    margin: 20px 0 50px;
+    max-width: 700px;
+}
+
+.overview_buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.overview_button_my_project > a {
+    padding: 10px 20px;
+    border-radius: 40px;
+    background-color: var(--font-color-p);
+}
+
+.overview_button_contact {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-bottom: 4px;
+}
+
+.overview_button_contact::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px; /* Höhe des Strichs */
+    width: 100%;
+    background-color: var(--background-color-6);
+    border-radius: 40px;
+
+    transform: scaleX(0);       /* Start unsichtbar */
+    transform-origin: left;      /* Animation von links nach rechts */
+    transition: transform 0.3s ease-out;
+}
+
+.overview_button_contact:hover::after {
+    transform: scaleX(1);       /* Voll sichtbar beim Hover */
+}
+
+.overview_button > a {
+    font-size: var(--font-size-5);
+    color: var(--font-color-2);
+}
+
+.overview_image_container {
+    margin: 10px 20px;
+    border: 1px solid var(--boarder-color-2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.overview_image {
+    max-height: 440px;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (max-width: 966px) {
+    .overview {
+        flex-direction: column;
+        max-width: 100%;
+        padding-inline: 15px;
+    }
+
+    .overview_information {
+        max-width: 100%;
+        margin-inline: auto;
+    }
+
+    .overview_buttons {
+        position: relative;
+        display: block;
+        width: 100%;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    .overview_button_my_project > a, .overview_button_contact > a {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .overview_button:first-child {
+        margin-bottom: 20px;
+    }
+
+    .overview_image_container {
+        margin-top: 80px;
+        margin-inline: auto;
+    }
+
+    .overview_image {
+        margin-inline: auto;
+    }
+
+}

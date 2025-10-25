@@ -1,10 +1,10 @@
 "use client";
-import Frame from "../frame";
+import Frame from "./frame";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import PersonalPanel from "./elements/personal_panel";
-import SkillItem, { SkillData } from "./elements/skill";
+import PersonalPanel from "./personal_panel";
+import SkillItem, { SkillData } from "./skill";
 import EventListener from "@/miscs/EventListener";
-import loadData, { DataType } from "@/load_data";
+import loadData, { DataType } from "@/services/load_data";
 
 interface CharacteristicsData {
     image: string;
@@ -47,39 +47,52 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
     const [about_me_data, setAboutMeData] = useState<AboutMeData | null>(null);
     const [skill_data, setSkillData] = useState<SkillsData | null>(null);
+    const [data_loaded, setDataLoaded] = useState(false);
 
     const skillsUlRef = useRef<HTMLUListElement>(null);
+
+    const itemSize:number = 280 + 20;
     const [numBoxes, setNumBoxes] = useState(1);
+    let itemFitInTotalViewWith: number = 1;
+    let viewBoxSize: number = itemSize;
     let selectedBox = 0;
 
     const calcNumBoxes = () => {
         console.log("calcNumBoxes")
         if (!skillsUlRef.current) return;
+        // Get Unsorted List element
         const container = skillsUlRef.current;
+        // Determines 
         const totalScrollWidth = container.scrollWidth;
+        // Get visibile with of container element
         const viewWidth = container.clientWidth;
 
-        // Anzahl der "Seiten" (z. B. 3, wenn du 3 Viewports breit bist)
-        const numBoxes = Math.ceil(totalScrollWidth / (viewWidth));
+        // Calculate how many times SkillItem element fits to container element
+        const itemFitInTotalViewWith = Math.floor(viewWidth / itemSize)
+
+        // Calculate how far to scroll when clicken a box item
+        const viewBoxSize = itemSize * itemFitInTotalViewWith;
+
+        // Calculates the max boxes to fast scroll
+        const numBoxes = Math.ceil(totalScrollWidth / viewBoxSize);
         setNumBoxes(numBoxes);
     }
 
     const onClickBox = (index: number) => {
         if (!skillsUlRef.current) return;
-        // const scrollLeft = skillsUlRef.current.scrollLeft;
+        // Gets Unsorted List element
         const container = skillsUlRef.current;
-        const totalScrollWidth = container.scrollWidth;
+        // Gets visibile with of container element
         const viewWidth = container.clientWidth;
 
-        // Anzahl der "Seiten" (z. B. 3, wenn du 3 Viewports breit bist)
-        const numBoxes = Math.ceil(totalScrollWidth / (viewWidth));
+        // Calculates how many times SkillItem element fits to container element
+        const itemFitInTotalViewWith = Math.floor(viewWidth / itemSize)
 
-        // Pixel-Breite einer "Box"
-        const boxWidth = totalScrollWidth / numBoxes;
+        // Calculates how far to scroll when clicken a box item
+        const viewBoxSize = itemSize * itemFitInTotalViewWith;
 
-        // const currentBoxIndex = Math.round(scrollLeft / boxWidth);
-
-        const newScrollLeft = (index) * boxWidth;
+        // Calculates new scroll size to scroll to
+        const newScrollLeft = index * viewBoxSize;
         skillsUlRef.current.scrollTo({
             left: newScrollLeft,
             behavior: "smooth"
@@ -88,19 +101,25 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
     const onScrollLeftChange = () => {
         if (!skillsUlRef.current) return;
+        // Gets current scroll width
         const scrollLeft = skillsUlRef.current.scrollLeft;
+        // Get max scoll width
+        const scrollWidth = skillsUlRef.current.scrollWidth;
+        // Gets container element
         const container = skillsUlRef.current;
-        const totalScrollWidth = container.scrollWidth;
+        // Gets visibile with of container element
         const viewWidth = container.clientWidth;
-
-        // Anzahl der "Seiten" (z. B. 3, wenn du 3 Viewports breit bist)
-        const numBoxes = Math.ceil(totalScrollWidth / (viewWidth));
-
-        // Pixel-Breite einer "Box"
-        const boxWidth = totalScrollWidth / numBoxes;
-
-        const currentBoxIndex = Math.round(scrollLeft / boxWidth);
         
+        // Calculates how many times SkillItem element fits to container element
+        const itemFitInTotalViewWith = Math.floor(viewWidth / itemSize)
+
+        // Calculates how far to scroll when clicken a box item
+        const viewBoxSize = itemSize * itemFitInTotalViewWith;
+
+        // Calculates which box to select or heighlight it
+        const currentBoxIndex = Math.round(scrollLeft / viewBoxSize);
+        
+        // Selects the box index
         setSelectedBox(currentBoxIndex);
     }
 
@@ -183,22 +202,27 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
     useEffect(() => {
 
-        loadData<AboutMeData>(DataType.ABOUTME).then((res) => {
-            setAboutMeData(res);
-        });
+        if (!data_loaded) {
 
-        loadData<SkillsData>(DataType.SKILLS).then((res) => {
-            setSkillData(res);
+            loadData<AboutMeData>(DataType.ABOUTME).then((res) => {
+                setAboutMeData(res);
+            });
+
+            loadData<SkillsData>(DataType.SKILLS).then((res) => {
+                setSkillData(res);
+                setDataLoaded(true);
+            });   
+            return (() => {
+                EventListener.removeAllListeners('skills_ul_ref_mousemove');
+                EventListener.removeAllListeners('skills_ul_ref');
+            })
+        }
+        else {
             addEventListeners();
             onScrollLeftChange();
             calcNumBoxes();
-        });
-
-        return (() => {
-            EventListener.removeAllListeners('skills_ul_ref_mousemove');
-            EventListener.removeAllListeners('skills_ul_ref');
-        })
-    }, []);
+        }
+    }, [data_loaded]);
 
     const terminate = () => {
         console.log("AboutMe: terminated");
@@ -307,7 +331,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
                 icon_url={icon_url}
                 onClose={terminate}
             >
-                {build()}
+                { build() }
             </Frame>
         )
     )

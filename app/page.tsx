@@ -14,11 +14,11 @@ import TimeAndDate from "./task_bar/time";
 import Language from "./task_bar/language";
 import StartButton from "./task_bar/start_button";
 import Task, { TaskId } from "./task_bar/tasks/task";
-import Overview from "./window/content/overview";
-import AboutMe from "./window/content/about_me";
-import Projects from "./window/content/projects";
-import Education from "./window/content/eduction";
-import loadData, { DataType } from "./load_data";
+import Overview from "./components/overview";
+import AboutMe from "./components/about_me";
+import Projects from "./components/projects";
+import Education from "./components/eduction";
+import loadData, { DataType } from "./services/load_data";
 import IconSvg from "./widgets/icon_svg";
 
 interface GeneralData {

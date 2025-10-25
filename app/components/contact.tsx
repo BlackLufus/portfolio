@@ -1,5 +1,5 @@
 "use client";
-import Frame from "../frame";
+import Frame from "./frame";
 import { ReactNode } from "react";
 
 interface ContactProps {
