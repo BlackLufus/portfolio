@@ -8,8 +8,8 @@ export default function Navigator({ navigator_list }:NavigatorProbs) {
     return(
         <nav className="navigator">
             <ul className="navigator_ulist">
-                {navigator_list.map((item) => (
-                    <NavigatorItem title={item.title} href={item.href} />
+                {navigator_list.map((item, index) => (
+                    <NavigatorItem key={index} title={item.title} href={item.href} />
                 ))}
             </ul>
         </nav>

@@ -20,6 +20,7 @@ import Projects from "./components/projects";
 import Education from "./components/eduction";
 import loadData, { DataType } from "./services/load_data";
 import IconSvg from "./widgets/icon_svg";
+import Loading from "./widgets/loader";
 
 interface GeneralData {
   firstname: string;
@@ -78,9 +79,13 @@ export default function Home() {
   }
 
   if (!data) return(
-    <div>
-      Data is loading, please hold on.
-    </div>
+    <Loading 
+      width="100px" 
+      height="100px"
+      align_items="center"
+      justify_content="center"
+      text="Data is loading ..."
+    />
   )
 
   return (

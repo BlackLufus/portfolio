@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export interface EducationData {
     image: string;
     degree: string;

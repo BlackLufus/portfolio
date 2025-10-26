@@ -58,19 +58,18 @@
 
 .about_me_personal_professional_panels {
     display: grid;
-    grid-template-columns: repeat(2, 310px);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-.personal {
+.personal, .professional {
     display: flex;
-    max-width: 310px;
     padding: 5px 10px;
     border: 1px solid var(--boarder-color-2);
     border-radius: 10px;
 }
 
-.personal_image {
+.personal_image_container {
     display: block;
     height: 40px;
     width: 40px;
@@ -78,19 +77,24 @@
     justify-items: center;
 }
 
-.personal_image > img {
+.personal_image {
     height: 30px;
     width: 30px;
-    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-fit: cover;
     object-position: center;
 }
 
-.personal_text {
-    display: block;
-    align-content: center;
+.personal_text_container, .professional_data_container, .professional_text_container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.personal_text > span {
+.professional_data {
+    font-weight: bold;
+}
+
+.personal_text, .professional_data, .professional_text {
     font-size: var(--font-size-7);
     color: var(--font-color-2);
 }

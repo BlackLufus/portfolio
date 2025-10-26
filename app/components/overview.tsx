@@ -2,6 +2,7 @@
 import loadData, { DataType } from "@/services/load_data";
 import Frame from "./frame";
 import { ReactNode, useEffect, useState } from "react";
+import Loading from "@/widgets/loader";
 
 interface OverviewData {
     title: string;
@@ -32,9 +33,12 @@ export default function Overview({title, icon_url, raw=false}: OverviewProps) {
 
     const build = (): ReactNode => {
         if (!data) return(
-            <div>
-                No data available
-            </div>
+            <Loading
+                width="50px"
+                height="50px"
+                justify_content="center"
+                text="Data is loading ..."
+            />
         )
         return(
             <div id="overview" className="overview">

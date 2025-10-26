@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import Frame from "./frame";
 import Project, { ProjectData } from "./Project";
 import loadData, { DataType } from "@/services/load_data";
+import Loading from "@/widgets/loader";
 
 export interface ProjectsData {
   title: string;
@@ -32,9 +33,12 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
 
     const build = (): ReactNode => {
         if (!data) return (
-            <div>
-                No data available.
-            </div>
+            <Loading
+                width="50px"
+                height="50px"
+                justify_content="center"
+                text="Data is loading ..."
+            />
         )
         return(
             <div id="projects" className={`projects ${raw ? "" : "projects_with_scrollbar"}`}>

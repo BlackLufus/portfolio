@@ -4,6 +4,7 @@ import Frame from "./frame";
 import { EducationData } from "./education_panel";
 import EducationTimeline from "./education_timeline";
 import { ReactNode, useEffect, useRef, useState } from "react";
+import Loading from "@/widgets/loader";
 
 interface EducationGeneralData {
     title: string;
@@ -43,9 +44,12 @@ export default function Education({title, icon_url, ref, raw = false}: Education
 
     const build = ():ReactNode => {
         if (!data) return(
-            <div>
-                No data available.
-            </div>
+            <Loading
+                width="50px"
+                height="50px"
+                justify_content="center"
+                text="Data is loading ..."
+            />
         )
         return(
             // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>

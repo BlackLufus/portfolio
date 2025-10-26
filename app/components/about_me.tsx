@@ -1,13 +1,16 @@
 "use client";
 import Frame from "./frame";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import PersonalPanel from "./personal_panel";
+import Personal from "./personal_panel";
 import SkillItem from "./skill";
 import EventListener from "@/miscs/EventListener";
 import loadData, { DataType } from "@/services/load_data";
+import Professional from "./professional";
+import Loading from "@/widgets/loader";
 
 interface CharacteristicsData {
     image: string;
+    data?: string;
     text: string;
 }
 
@@ -238,6 +241,16 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
     };
 
     const build = (): ReactNode => {
+        if (!data_loaded) {
+            return(
+                <Loading
+                    width="50px"
+                    height="50px"
+                    justify_content="center"
+                    text="Data is loading ..."
+                />
+            )
+        }
         return(
             <div id="about_me" className="about_me">
                 <div className="about_me_title">
@@ -265,7 +278,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
                             </div>
                             <div className="about_me_personal_professional_panels">
                                 {about_me_data?.personal.characteristics_list.map((data, index) => (
-                                    <PersonalPanel 
+                                    <Personal 
                                         key={index}
                                         icon={data.image}
                                         text={data.text}
@@ -286,9 +299,9 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
                             </div>
                             <div className="about_me_personal_professional_panels">
                                 {about_me_data?.professional.characteristics_list.map((data, index) => (
-                                    <PersonalPanel 
+                                    <Professional 
                                         key={index}
-                                        icon={data.image}
+                                        data={data.data!}
                                         text={data.text}
                                     />
                                 ))}
