@@ -4,7 +4,7 @@
     padding-bottom: 80px;
 }
 
-.projects_with_scrollbar {
+.education_with_scrollbar {
     height: 850px;
     overflow-y: scroll;
 }

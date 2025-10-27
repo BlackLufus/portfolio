@@ -20,7 +20,10 @@ export default function EducationTimeline({id, ref, education_data_list}:Timelin
 
     useEffect(() => {
         const handleScroll = () => {
+
+            // Gets scroll container
             const scroll_container = ref.current!;
+            // Gets timeline element
             const timeline_element = containerRef.current!;
 
             const scroll_top = scroll_container.scrollTop;
@@ -36,10 +39,12 @@ export default function EducationTimeline({id, ref, education_data_list}:Timelin
 
             const current_scroll_value = (scrolled_into_view / total_scrollable_height) * 100;
 
+            const epsilon = 1;
+            console.log(scrolled_into_view, ">", element_height - epsilon, "||", scroll_top + viewport_height, ">=", scroll_height - epsilon);
             if (scrolled_into_view <= 0 || scroll_top == 0) {
                 setScrollPercent(0);
             }
-            else if (scrolled_into_view > element_height || scroll_top + viewport_height >= scroll_height) {
+            else if (scrolled_into_view > element_height || scroll_top + viewport_height >= scroll_height - epsilon) {
                 setScrollPercent(100);
             }
             else {

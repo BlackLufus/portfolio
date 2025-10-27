@@ -267,7 +267,6 @@ main {
     justify-content: none;
     align-items: center;
     flex: 1;
-    text-align: center;
     min-height: calc(100% - 60px);
 }
 
@@ -312,6 +311,7 @@ main {
     padding: 2px 5px;
     width: 140px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .task:hover {
@@ -331,6 +331,7 @@ main {
 }
 
 .task > div > span {
+    text-align: center;
     line-height: 99%;
     display: -webkit-box;
     -webkit-box-orient: vertical;

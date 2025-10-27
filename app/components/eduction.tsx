@@ -53,7 +53,7 @@ export default function Education({title, icon_url, ref, raw = false}: Education
         )
         return(
             // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
-            <div ref={education} id="education" className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
+            <div ref={education} id="education" className={`education ${raw ? "" : "education_with_scrollbar"}`}>
                 <div className="education_title">
                     <span className="header2">
                         Bildung und Berufserfahrung

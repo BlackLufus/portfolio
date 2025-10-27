@@ -5,6 +5,11 @@
     padding-bottom: 80px;
 }
 
+.about_me_with_scrollbar {
+    height: 850px;
+    overflow-y: auto;
+}
+
 .about_me_title {
     text-align: center;
     margin: 14px 0 10px 0;

@@ -238,7 +238,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
     const terminate = () => {
         console.log("AboutMe: terminated");
-    };
+    };7
 
     const build = (): ReactNode => {
         if (!data_loaded) {
@@ -252,7 +252,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
             )
         }
         return(
-            <div id="about_me" className="about_me">
+            <div id="about_me" className={`about_me ${raw ? "" : "about_me_with_scrollbar"}`}>
                 <div className="about_me_title">
                     <span className="header2">
                         {about_me_data?.title}
@@ -319,28 +319,36 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
                                 {skill_data?.description}
                             </span>
                         </div>
-                        <ul ref={skillsUlRef} className="about_me_skills_container">
-                            {skill_data?.skill_list.map((data, index) => (
-                                <SkillItem 
-                                    key={index}
-                                    title={data.title}
-                                    logo={data.logo}
-                                    description={data.description}
-                                    level_text={skill_data.level_description}
-                                    percent={data.percent}
-                                />
-                            ))}
-                        </ul>
-                        <div className="skills_custom_scroll_bar">
-                            {Array.from({ length: numBoxes }).map((_, i) => (
-                                <div
-                                key={i}
-                                id={`skills_custom_box_${i}`}
-                                onClick={() => onClickBox?.(i)}
-                                className="skills_custom_box"
-                                />
-                            ))}
-                        </div>
+                        {
+                            skill_data
+                            ? <ul ref={skillsUlRef} className="about_me_skills_container">
+                                {skill_data?.skill_list.map((data, index) => (
+                                    <SkillItem 
+                                        key={index}
+                                        title={data.title}
+                                        logo={data.logo}
+                                        description={data.description}
+                                        level_text={skill_data.level_description}
+                                        percent={data.percent}
+                                    />
+                                ))}
+                            </ul>
+                            : null
+                        }
+                        {
+                            skill_data || numBoxes != Infinity
+                            ? <div className="skills_custom_scroll_bar">
+                                {Array.from({ length: numBoxes }).map((_, i) => (
+                                    <div
+                                    key={i}
+                                    id={`skills_custom_box_${i}`}
+                                    onClick={() => onClickBox?.(i)}
+                                    className="skills_custom_box"
+                                    />
+                                ))}
+                            </div>
+                            : null
+                        }
                     </div>
                 </div>
             </div>

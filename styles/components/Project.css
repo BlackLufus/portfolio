@@ -220,6 +220,7 @@
 }
 
 .project_info_wrapper {
+    position: relative;
     display: block;
     border-radius: 20px;
     border: 1px solid var(--boarder-color-1);
