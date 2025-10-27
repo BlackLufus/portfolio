@@ -70,8 +70,6 @@ export default function Education({title, icon_url, ref, raw = false}: Education
         );
     }
 
-    console.log("Initial Education")
-
     return(
         raw ? build() : (
             <Frame

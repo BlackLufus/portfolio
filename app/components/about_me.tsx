@@ -131,7 +131,7 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
         const numBoxes = Math.ceil(scrollWidth / viewBoxSize);
 
         // Selects the box index
-        setSelectedBox(scrollLeft + viewWidth == scrollWidth ? numBoxes - 1 : currentBoxIndex);
+        setSelectedBox(scrollLeft + viewWidth >= scrollWidth ? numBoxes - 1 : currentBoxIndex);
     }
 
     const setSelectedBox = (index: number) => {

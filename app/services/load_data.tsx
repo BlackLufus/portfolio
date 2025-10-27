@@ -14,11 +14,11 @@ export default async function loadData<T>(dataType: DataType):Promise<T> {
     const response = await fetch(
         `${document.location.origin}/data/${lang}/${dataType.valueOf()}`,
     )
-    console.log(`${document.location.origin}/data/${lang}/${dataType.valueOf()}`);
+    // console.log(`${document.location.origin}/data/${lang}/${dataType.valueOf()}`);
     if (response.status === 401) {
         alert("No data found!");
     }
     const result = await response.json()
-    console.log(result)
+    // console.log(result)
     return result;
 }

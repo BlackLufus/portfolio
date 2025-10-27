@@ -265,7 +265,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 4px;
 }
 
 .project_info_label_container {
@@ -302,7 +302,7 @@
     color: var(--font-color-1);
 }
 
-.project_info_overview_content, .project_info_features_content {
+.project_info_overview_content {
     padding-block: 20px;
 }
 
@@ -310,6 +310,31 @@
     white-space: pre-line;
     font-size: var(--font-size-8);
     color: var(--font-color-3);
+}
+
+.project_info_features_content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr));
+    padding-block: 20px;
+    gap: 10px;
+}
+
+.project_info_features {
+    position: relative;
+    padding-left: 16px;
+    font-size: var(--font-size-9);
+    color: var(--font-color-3);
+}
+
+.project_info_features::after {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 6px;
+    left: 0;
+    top: calc(50% - 3px);
+    background-color: var(--font-color-p);
+    border-radius: 20px;
 }
 
 .project_info_content_right {
@@ -325,13 +350,26 @@
 }
 
 .project_info_categorie_title, .project_info_technologies, .project_info_project_title_links {
-    font-size: var(--font-size-8);
+    font-size: var(--font-size-9);
     color: var(--font-color-3);
 }
 
 .project_info_categorie {
+    position: relative;
+    padding-left: 16px;
     font-size: var(--font-size-8);
     color: var(--font-color-1);
+}
+
+.project_info_categorie::after {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 6px;
+    left: 0;
+    top: calc(50% - 3px);
+    background-color: var(--font-color-p);
+    border-radius: 20px;
 }
 
 .project_info_project_link_button_container {
@@ -360,7 +398,7 @@
 }
 
 .project_info_project_link_href_text {
-    font-size: var(--font-size-8);
+    font-size: var(--font-size-10);
     color: var(--font-color-1);
 }
 

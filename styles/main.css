@@ -110,7 +110,7 @@ body > div {
     border-top: 0;
     border-radius: 0 0 40px 40px;
     backdrop-filter: blur(10px);;
-    background-color: var(--background-color-t6);
+    background-color: var(--background-color-t7);
 }
 
 .webpage_header_name_container {
@@ -152,7 +152,7 @@ body > div {
 }
 
 .webpage_header_menu_ulist_a {
-    color: var(--font-color-2);
+    color: var(--font-color-3);
     font-size: var(--font-size-8);
 }
 
