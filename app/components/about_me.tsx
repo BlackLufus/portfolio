@@ -67,7 +67,6 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
     let selectedBox = 0;
 
     const calcNumBoxes = () => {
-        console.log("calcNumBoxes")
         if (!skillsUlRef.current) return;
         // Gets Unsorted List element
         const container = skillsUlRef.current;
@@ -137,8 +136,9 @@ export default function AboutMe({title, icon_url, raw=false}: AboutMeProps) {
 
     const setSelectedBox = (index: number) => {
         const oldSelected = document.getElementById(`skills_custom_box_${selectedBox}`) as HTMLDivElement;
-        if (!oldSelected) return;
-        oldSelected.className = "skills_custom_box"
+        if (oldSelected) {
+            oldSelected.className = "skills_custom_box"
+        }
         selectedBox = index;
         const newSelected = document.getElementById(`skills_custom_box_${selectedBox}`) as HTMLDivElement;
         if (!newSelected) return;
