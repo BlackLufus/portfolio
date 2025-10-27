@@ -1,6 +1,8 @@
 .about_me {
     max-width: 1380px;
     padding-inline: 10px;
+    padding-top: 100px;
+    padding-bottom: 80px;
 }
 
 .about_me_title {
@@ -54,6 +56,7 @@
 
 .about_me_personal_professional_description {
     padding-bottom: 20px;
+    max-width: 1150px;
 }
 
 .about_me_personal_professional_panels {
@@ -117,6 +120,7 @@
     padding-bottom: 20px;
     text-align: center;
     margin-inline: auto;
+    max-width: 1150px;
 }
 
 .about_me_skills_container {
@@ -202,6 +206,7 @@
 }
 
 .skill_item_description {
+    max-width: 1150px;
     font-size: var(--font-size-9);
     color: var(--font-color-2);
 }

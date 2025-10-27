@@ -1,6 +1,8 @@
 .projects {
     max-width: 1380px;
     padding-inline: 15px;
+    padding-top: 100px;
+    padding-bottom: 80px;
 }
 
 .projects_with_scrollbar {
@@ -14,7 +16,7 @@
 }
 
 .projects_description {
-    max-width: 966px;
+    max-width: 1150px;
     text-align: center;
     margin-inline: auto;
     margin-top: 20px;
@@ -43,6 +45,21 @@
     background-color: var(--background-color-2);
     flex-direction: column;
     transition: transform 0.35s ease;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: project_list_item_popup 0.6s ease both;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes project_list_item_popup {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 :root[data-theme="light"] .project_list_item {
@@ -69,7 +86,7 @@
     object-position: center; /* zentriert den sichtbarens Teil */
     transition: scale 0.35s ease;
     filter: brightness(0.9) contrast(1.1);
-    mask-image: radial-gradient(ellipse, white 60%, #0002 100%);
+    mask-image: radial-gradient(ellipse, white 65%, #0002 110%);
     cursor: pointer;
 }
 
@@ -138,15 +155,16 @@
     font-size: var(--font-size-9);
 }
 
-.project_links {
+.project_link_container {
     display: block;
     margin: 6px 10px;
     background-color: #0080FF;
     border-radius: 8px;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.project_links > a {
+.project_link {
     width: 100%;
     display: inline-block;
     text-align: center;
@@ -156,12 +174,218 @@
     color: #fff;
 }
 
-/* @media screen and (max-width: 1300px) {
+/*  #####
+    # Project Info
+    #####*/
 
-} */
+.project_info {
+    position: relative;
+    display: block;
+    max-width: 1000px;
+    margin-inline: auto;
+    padding-inline: 5px;
+    animation: project_info_popup 0.6s ease both;
+}
+
+@keyframes project_info_popup {
+    0% {
+        opacity: 0;
+        transform: translateY(40);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project_info_close_wrapper {
+    position: relative;
+    display: flex;
+    padding-block: 20px;
+}
+
+.project_info_close_container {
+    padding: 4px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.project_info_close_container:hover {
+    background-color: var(--background-color-3);
+}
+
+.project_info_close {
+    font-size: var(--font-size-8);
+    color: var(--font-color-3);
+}
+
+.project_info_wrapper {
+    display: block;
+    border-radius: 20px;
+    border: 1px solid var(--boarder-color-1);
+    overflow: hidden;
+}
+
+.project_info_header {
+    position: relative;
+    height: 310px;
+    overflow: hidden;
+}
+
+.project_info_image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-position: center;
+}
+
+.project_info_header_content {
+    position: absolute;
+    display: block;
+    margin-top: auto;
+    align-content: end;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(0deg, var(--background-color-2), transparent 70%) no-repeat;
+}
+
+.project_info_title_container {
+    position: relative;
+}
+
+.project_info_title {
+    font-weight: bold;
+    font-size: var(--font-size-4);
+    color: var(--font-color-1);
+}
+
+.project_info_label_list_container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project_info_label_container {
+    padding: 2px 10px;
+    background-color: var(--background-color-t7);
+    border: 1px solid var(--boarder-color-1);
+    border-radius: 8px;
+}
+
+.project_info_label {
+    font-size: var(--font-size-10);
+    color: var(--font-color-1);
+}
+
+.project_info_content {
+    position: relative;
+    display: flex;
+    margin-inline: auto;
+    max-width: 1000px;
+    padding: 30px;
+    background-color: var(--background-color-t7);
+}
+
+.project_info_content_left {
+    display: block;
+    padding-right: 30px;
+    max-width: 70%;
+    border-right: 1px solid var(--boarder-color-1);
+}
+
+.project_info_overview_title, .project_info_features_title, .project_info_details_title {
+    font-weight: bold;
+    font-size: var(--font-size-6);
+    color: var(--font-color-1);
+}
+
+.project_info_overview_content, .project_info_features_content {
+    padding-block: 20px;
+}
+
+.project_info_overview {
+    white-space: pre-line;
+    font-size: var(--font-size-8);
+    color: var(--font-color-3);
+}
+
+.project_info_content_right {
+    display: block;
+    max-width: 30%;
+    width: 100%;
+    padding-left: 30px;
+}
+
+.project_info_categorie_title_container, .project_info_technologies_container, .project_info_projekt_links_title_container {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.project_info_categorie_title, .project_info_technologies, .project_info_project_title_links {
+    font-size: var(--font-size-8);
+    color: var(--font-color-3);
+}
+
+.project_info_categorie {
+    font-size: var(--font-size-8);
+    color: var(--font-color-1);
+}
+
+.project_info_project_link_button_container {
+    display: flex;
+    gap: 5px;
+}
+
+.project_info_project_link_button {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    border: 1px solid var(--boarder-color-1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.project_info_project_link_button:hover {
+    background-color: var(--font-color-p);
+}
+
+.project_info_project_link_href {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-block: 4px;
+}
+
+.project_info_project_link_href_text {
+    font-size: var(--font-size-8);
+    color: var(--font-color-1);
+}
+
+@media screen and (max-width: 966px) {
+}
 
 @media screen and (max-width: 768px) {
     .project_list_item {
         margin-inline: 10px;
+    }
+
+    .project_info_content {
+        display: block;
+        padding: 10px;
+        padding-block: 15px;
+    }
+
+    .project_info_content_left {
+        max-width: 100%;
+        padding-right: 0;
+        border: none;
+    }
+
+    .project_info_content_right {
+        max-width: 100%;
+        padding-left: 0;
     }
 }

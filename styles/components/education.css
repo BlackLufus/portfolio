@@ -1,5 +1,7 @@
 .education {
     max-width: 1380px;
+    padding-top: 100px;
+    padding-bottom: 80px;
 }
 
 .projects_with_scrollbar {
@@ -13,7 +15,7 @@
 }
 
 .education_description {
-    max-width: 966px;
+    max-width: 1150px;
     text-align: center;
     margin-inline: auto;
     margin-top: 20px;

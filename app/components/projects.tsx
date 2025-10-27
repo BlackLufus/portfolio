@@ -4,10 +4,24 @@ import Frame from "./frame";
 import Project, { ProjectData } from "./Project";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
+import { Inder } from "next/font/google";
+import ProjectInfo from "./project_info";
+
+interface ProjectInfoData {
+    button_title: string;
+    overview_title: string;
+    features_title: string;
+    project_details_title: string;
+    project_categorie_title: string;
+    project_technologies_title: string;
+    project_links_title: string;
+    project_return_to_overview: string;
+}
 
 export interface ProjectsData {
   title: string;
   description: string;
+  project_info: ProjectInfoData;
   project_list: ProjectData[];
 }
 
@@ -20,6 +34,7 @@ interface ProjectsProps {
 export default function Projects({title, icon_url, raw = false}: ProjectsProps) {
 
     const [data, setData] = useState<ProjectsData | null>(null);
+    const [selectedProject, setSelectedProject] = useState<number>(-1);
 
     useEffect(() => {
         loadData<ProjectsData>(DataType.PROJECTS).then((res) => {
@@ -30,6 +45,11 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
     const terminate = () => {
         console.log("Projects: terminated");
     };
+
+    const openProject = (index: number) => {
+        console.log(`Open Project (id: ${index})`)
+        setSelectedProject(index);
+    }
 
     const build = (): ReactNode => {
         if (!data) return (
@@ -52,18 +72,40 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
                         {data.description}
                     </span>
                 </div>
-                <ul className="project_unsorted_list">
-                    {data.project_list.map((projectData, index) => (
-                        <Project
-                            key={index}
-                            image={projectData.image}
-                            title={projectData.title}
-                            description={projectData.description}
-                            labels={projectData.labels}
-                            links={projectData.links}
-                        />
-                    ))}
-                </ul>
+                {
+                    (selectedProject >= 0 && data.project_list.length)
+                    ? <ProjectInfo
+                        title={data.project_list[selectedProject].title}
+                        image={data.project_list[selectedProject].image}
+                        categorie={data.project_list[selectedProject].categorie}
+                        overview_title={data.project_info.overview_title}
+                        overview_content={data.project_list[selectedProject].description}
+                        features_title={data.project_info.features_title}
+                        features_list={data.project_list[selectedProject].features}
+                        details_title={data.project_info.project_details_title}
+                        categorie_title={data.project_info.project_categorie_title}
+                        technologies_title={data.project_info.project_technologies_title}
+                        links_title={data.project_info.project_links_title}
+                        return_to_overview={data.project_info.project_return_to_overview}
+                        label_list={data.project_list[selectedProject].labels}
+                        link_list={data.project_list[selectedProject].links}
+                        onClose={openProject}
+                    />
+                    : <ul className="project_unsorted_list">
+                        {data.project_list.map((projectData, index) => (
+                            <Project
+                                key={index}
+                                index={index}
+                                image={projectData.image}
+                                title={projectData.title}
+                                description={projectData.description}
+                                labels={projectData.labels}
+                                button_title={data.project_info.button_title}
+                                onClick={openProject}
+                            />
+                        ))}
+                    </ul>
+                }
             </div>
         );
     }

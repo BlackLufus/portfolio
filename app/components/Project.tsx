@@ -11,25 +11,38 @@ export interface ProjectData {
     image: string;
     title: string;
     description: string;
+    categorie: string;
     labels: Array<string>;
+    features: Array<string>;
     links: LinkData[];
 }
 
 interface ProjectProps {
-  image: string;
-  title: string;
-  description: string;
-  labels: string[];
-  links: LinkData[];
+    index: number;
+    image: string;
+    title: string;
+    description: string;
+    labels: string[];
+    button_title: string;
+    onClick: (index: number) => void;
 };
 
-export default function Project({ image, title, description, labels, links }: ProjectProps) {
+export default function Project({ index, image, title, description, labels, button_title, onClick }: ProjectProps) {
+    const delay = `${(index * 0.075)}s`;
     return (
-        <li className="project_list_item">
-            <div className="project_image_container">
+        <li className="project_list_item" style={{"--delay": delay} as React.CSSProperties}>
+            <div 
+                className="project_image_container" 
+                onClick={() => {
+                    onClick(index);
+            }}>
                 <img className="project_image" src={image} alt="" />
             </div>
-            <div className="project_title_container">
+            <div 
+                className="project_title_container"
+                onClick={() => {
+                    onClick(index);
+            }}>
                 <span className="project_title">
                     {title}
                 </span>
@@ -46,10 +59,14 @@ export default function Project({ image, title, description, labels, links }: Pr
                     </span>
                 ))}
             </div>
-            <div className="project_links">
-                {links.map((link, index) => (
-                    <a key={index} href={link.link} target="_blank" rel="noopener noreferrer">{link.title}</a>
-                ))}
+            <div 
+                className="project_link_container" 
+                onClick={() => {
+                    onClick(index);
+                }}>
+                <span className="project_link">
+                    {button_title}
+                </span>
             </div>
         </li>
     );
