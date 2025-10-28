@@ -407,6 +407,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .projects  {
+        padding-inline: 5px;
+    }
+
     .project_list_item {
         margin-inline: 10px;
     }
