@@ -1,4 +1,4 @@
-import NavigatorItem, { NavigatorItemProbs } from "./navigator_item";
+import NavigatorItem, { NavigatorItemProbs } from "./navigation.drawer.item";
 
 interface NavigatorProbs {
     navigator_list: NavigatorItemProbs[]

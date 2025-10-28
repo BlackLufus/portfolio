@@ -3,6 +3,7 @@
     max-width: 1300px;
     padding-top: 100px;
     padding-bottom: 80px;
+    margin-inline: auto;
 }
 
 .overview_information {

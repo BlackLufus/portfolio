@@ -3,6 +3,7 @@
     padding-inline: 10px;
     padding-top: 100px;
     padding-bottom: 80px;
+    margin-inline: auto;
 }
 
 .about_me_with_scrollbar {
@@ -257,7 +258,7 @@
 
 @media screen and (max-width: 1300px) {
     .about_me {
-        padding-inline: 10px;
+        padding-inline: 0;
     }
 
     .about_me_personal_professional {

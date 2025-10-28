@@ -11,13 +11,16 @@ interface OverviewData {
     contact_button: string;
 }
 
-interface OverviewProps {
-    title: string,
-    icon_url: string,
-    raw?: boolean
+export interface OverviewConfig {
+    title: string;
+    icon: string;
 }
 
-export default function Overview({title, icon_url, raw=false}: OverviewProps) {
+interface OverviewProps {
+    config?: OverviewConfig
+}
+
+export default function Overview({config}: OverviewProps) {
 
     const [data, setData] = useState<OverviewData | null>(null);
     
@@ -70,10 +73,10 @@ export default function Overview({title, icon_url, raw=false}: OverviewProps) {
     }
 
     return(
-        raw ? build() : (
+        !config ? build() : (
             <Frame
-                title={title}
-                icon_url={icon_url}
+                title={config?.title}
+                icon_url={config?.icon}
                 onClose={terminate}
             >
                 {build()}

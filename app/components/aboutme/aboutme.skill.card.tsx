@@ -1,6 +1,14 @@
 import IconSvg from "@/widgets/icon_svg";
 
-interface SkillItemProps {
+export interface SkillCardData {
+    title: string;
+    logo: string;
+    description: string;
+    level_text: string;
+    percent: number
+}
+
+interface SkillCardProps {
     title: string;
     logo: string;
     description: string;
@@ -8,7 +16,7 @@ interface SkillItemProps {
     percent: number;
 }
 
-export default function SkillItem({title, logo, description, level_text, percent}:SkillItemProps) {
+export default function SkillCard({title, logo, description, level_text, percent}:SkillCardProps) {
     return (
         <li className="skill_item">
             <div className="skill_item_border_top" />

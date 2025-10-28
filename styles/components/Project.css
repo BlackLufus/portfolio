@@ -3,6 +3,7 @@
     padding-inline: 15px;
     padding-top: 100px;
     padding-bottom: 80px;
+    margin-inline: auto;
 }
 
 .projects_with_scrollbar {
@@ -404,20 +405,24 @@
 }
 
 @media screen and (max-width: 966px) {
-}
-
-@media screen and (max-width: 768px) {
     .projects  {
-        padding-inline: 5px;
+        padding-inline: 0px;
     }
 
     .project_list_item {
         margin-inline: 10px;
     }
+}
+
+@media screen and (max-width: 768px) {
+    
+    .project_info_header_content {
+        padding: 15px;
+    }
 
     .project_info_content {
         display: block;
-        padding: 10px;
+        padding: 15px;
         padding-block: 15px;
     }
 

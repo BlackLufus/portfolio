@@ -1,8 +1,8 @@
 "use client";
 import loadData, { DataType } from "@/services/load_data";
-import Frame from "./frame";
-import { EducationData } from "./education_panel";
-import EducationTimeline from "./education_timeline";
+import Frame from "../frame";
+import { EducationData } from "./education.card";
+import EducationTimeline from "./education.timeline";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Loading from "@/widgets/loader";
 
@@ -12,18 +12,21 @@ interface EducationGeneralData {
     education_data_list: EducationData[];
 }
 
+export interface EducationConfig {
+    title: string;
+    icon: string;
+}
+
 interface EducationProps {
-    title: string,
-    icon_url: string,
     ref?: React.RefObject<HTMLDivElement | null>;
-    raw?: boolean
+    config?: EducationConfig;
 }
 
 class EducationAttributes {
     public static id: number = 0;
 }
 
-export default function Education({title, icon_url, ref, raw = false}: EducationProps) {
+export default function Education({ref, config}: EducationProps) {
 
     const [data, setSkillData] = useState<EducationGeneralData | null>(null);
 
@@ -53,15 +56,15 @@ export default function Education({title, icon_url, ref, raw = false}: Education
         )
         return(
             // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
-            <div ref={education} id="education" className={`education ${raw ? "" : "education_with_scrollbar"}`}>
+            <div ref={education} id="education" className={`education ${!config ? "" : "education_with_scrollbar"}`}>
                 <div className="education_title">
                     <span className="header2">
-                        Bildung und Berufserfahrung
+                        {data.title}
                     </span>
                 </div>
                 <div className="education_description">
                     <span className="description1">
-                        Mein aka­de­mi­scher Wer­de­gang und mein be­ruf­li­che Lauf­bahn.
+                        {data.description}
                     </span>
                 </div>
                 <EducationTimeline id={id} ref={ref ? ref :education} education_data_list={data.education_data_list}/>
@@ -71,10 +74,10 @@ export default function Education({title, icon_url, ref, raw = false}: Education
     }
 
     return(
-        raw ? build() : (
+        !config ? build() : (
             <Frame
-                title={title}
-                icon_url={icon_url}
+                title={config.title}
+                icon_url={config.icon}
                 width={"1380px"}
                 onClose={terminate}
             >

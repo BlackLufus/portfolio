@@ -3,47 +3,54 @@ import "../styles/general.css";
 import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
+import "../styles/components/navi.css";
 import "../styles/components/overview.css";
 import "../styles/components/about_me.css";
 import "../styles/components/Project.css";
 import "../styles/components/education.css";
+import "../styles/components/contact.css";
+import "../styles/components/footer.css";
 import { ReactNode, useEffect, useRef, useState } from "react";
-import DesktopWebsite from "./task_bar/desktop_website";
-import DarkMode from "./task_bar/darkmode";
-import TimeAndDate from "./task_bar/time";
-import Language from "./task_bar/language";
-import StartButton from "./task_bar/start_button";
-import Task, { TaskId } from "./task_bar/tasks/task";
-import Overview from "./components/overview";
-import AboutMe from "./components/about_me";
-import Projects from "./components/projects";
-import Education from "./components/eduction";
 import loadData, { DataType } from "./services/load_data";
-import IconSvg from "./widgets/icon_svg";
+import DesktopWebsite from "./components/taskbar/desktop_website";
+import DarkMode from "./components/taskbar/darkmode";
+import TimeAndDate from "./components/taskbar/time";
+import Language from "./components/taskbar/language";
+import StartButton from "./components/taskbar/start_button";
 import Loading from "./widgets/loader";
+import Navi from "./components/navigation/navigation";
+import Overview, { OverviewConfig } from "./components/overview";
+import AboutMe, { AboutMeConfig } from "./components/aboutme/aboutme";
+import Project, { ProjectConfig } from "./components/project/project";
+import Education, { EducationConfig } from "./components/education/eduction";
+import Contact, { ContactConfig } from "./components/contact/contact";
+import Footer from "./components/footer/footer";
+import Task, { TaskId } from "./components/taskbar/taskbar";
 
 interface GeneralData {
   firstname: string;
   lastname: string;
-  about_me: string;
-  projects: string;
-  education: string;
-  contact: string;
+  overview: OverviewConfig;
+  about_me: AboutMeConfig;
+  project: ProjectConfig;
+  education: EducationConfig;
+  contact: ContactConfig;
   year: string;
   all_rights_reserved: string;
   link_text: string;
   linkedin_link: string;
   github_link: string;
+  version: string;
 }
 
 export default function Home() {
 
   const [data, setGeneralData] = useState<GeneralData | null>(null);
-  const [darkmode, setDarkmodeState] = useState(true);
-  const [websiteState, setWebsiteState] = useState(true);
+  const [darkmodeState, setDarkmodeState] = useState(true);
+  const [pageState, setWebsiteState] = useState(true);
   const [openComponents, setOpenComponents] = useState<React.ReactNode[]>([]);
 
-  const webpage_container = useRef<HTMLDivElement>(null);
+  const webpageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadData<GeneralData>(DataType.GENERAL).then((res) => {
@@ -51,31 +58,34 @@ export default function Home() {
     });
   }, []);
 
-  const handleDarkmode = (state: boolean) => {
-    setDarkmodeState(state);
-  }
-
   async function handleTaskClick(taskId: TaskId) {
     const frame = async (taskId: TaskId): Promise<ReactNode> => {
       switch (taskId) {
         case TaskId.OVERVIEW:
-          return <Overview title="Übersicht" icon_url="images/home.png" />
+          return <Overview config={data?.overview} />
         case TaskId.ABOUTME:
-          return <AboutMe title="Über mich" icon_url="images/person.png" />
+          return <AboutMe config={data?.about_me} />
         case TaskId.PROJECTS:
-          return <Projects title="Projekte" icon_url="images/project.png"/>
+          return <Project config={data?.project} />
         case TaskId.EDUCATION:
-          return <Education title="Bildung und Berufserfahrung" icon_url="images/education.png" />
+          return <Education config={data?.education} />
         case TaskId.CONTACT:
-          return <AboutMe title="Kontakt" icon_url="images/contact.png" />
+          return <AboutMe config={data?.contact} />
       }
     }
     const node = await frame(taskId);
     setOpenComponents((prev) => [...prev, node]);
   }
 
-  const handleWebsiteClick = (state: boolean) => {
-    setWebsiteState(state);
+  const handleDarkmodeClick = () => {
+    setDarkmodeState(!darkmodeState);
+  }
+
+  const handlePageClick = () => {
+    if (!pageState) {
+      setOpenComponents([]);
+    }
+    setWebsiteState(!pageState);
   }
 
   if (!data) return(
@@ -89,80 +99,36 @@ export default function Home() {
   )
 
   return (
-    websiteState
+    pageState
     ? <div className="webpage">
       <img className="webpage_background" src="/images/bubbles.png" alt="" />
-      <div ref={webpage_container} className="webpage_container">
-        <div className="webpage_header">
-          <div className="webpage_header_name_container">
-            <span className="webpage_header_name_firstname">
-              {data.firstname}
-            </span>
-            <span className="webpage_header_name_lastname">
-              {data.lastname}
-            </span>
-            <span className="webpage_header_name_lastname_short">
-              {data.lastname.split("")[0]}.
-            </span>
-          </div>
-          <ul className="webpage_header_menu_ulist">
-            <li className="webpage_header_menu_ulist_item">
-              <a className="webpage_header_menu_ulist_a" href="#about_me">{data.about_me}</a>
-            </li>
-            <li className="webpage_header_menu_ulist_item">
-              <a className="webpage_header_menu_ulist_a" href="#projects">{data.projects}</a>
-            </li>
-            <li className="webpage_header_menu_ulist_item">
-              <a className="webpage_header_menu_ulist_a" href="#education">{data.education}</a>
-            </li>
-            <li className="webpage_header_menu_ulist_item">
-              <a className="webpage_header_menu_ulist_a" href="#contact">{data.contact}</a>
-            </li>
-          </ul>
-          <div className="webpage_header_buttons">
-            <DesktopWebsite state={true} onClick={handleWebsiteClick}></DesktopWebsite>
-            <DarkMode state={darkmode} onclick={handleDarkmode}/>
-          </div>
-        </div>
-        <Overview title="Übersicht" icon_url="images/home.png" raw />
-        <AboutMe title="Über mich" icon_url="images/person.png" raw />
-        <Projects title="Projekte" icon_url="images/project.png" raw />
-        <Education ref={webpage_container} title="Bildung und Berufserfahrung" icon_url="images/education.png" raw={true} />
-        <div className="webpage_footer">
-          <div className="webpage_footer_left">
-            <div>
-              <span className="webpage_footer_name">
-                {data.firstname} {data.lastname}
-              </span>
-            </div>
-            <div>
-              <span className="webpage_footer_copyright">
-                {data.year} &copy; {data.all_rights_reserved}
-              </span>
-            </div>
-          </div>
-          <div className="webpage_footer_right">
-            <div className="webpage_footer_title_container">
-              <span className="webpage_footer_title">
-                {data.link_text}
-              </span>
-            </div>
-            <div className="webpage_footer_links">
-              <a className="webpage_footer_link_href" href={data.github_link}>
-                <IconSvg
-                    src="svg/github.svg"
-                    className="webpage_footer_link_icon"
-                  />
-              </a>
-              <a className="webpage_footer_link_href" href={data.linkedin_link}>
-                <IconSvg 
-                    src="svg/linkedin.svg"
-                    className="webpage_footer_link_icon"
-                  />
-              </a>
-            </div>
-          </div>
-        </div>
+      <div ref={webpageContainerRef} className="webpage_wrapper">
+        <Navi
+          firstname={data.firstname}
+          lastname={data.lastname}
+          aboutMeTitle={data.about_me.title}
+          projectTitle={data.project.title}
+          educationTitle={data.education.title}
+          contactTitle={data.contact.title}
+          pageState={pageState}
+          handlePageClick={handlePageClick}
+          darkmodeState={darkmodeState}
+          handleDarkmodeClick={handleDarkmodeClick} />
+        <Overview />
+        <AboutMe />
+        <Project />
+        <Education
+          ref={webpageContainerRef} />
+        <Contact />
+        <Footer
+          firstname={data.firstname}
+          lastname={data.lastname}
+          year={data.year}
+          allRightsReserved={data.all_rights_reserved}
+          linkTitle={data.link_text}
+          githubLink={data.github_link}
+          linkedInLink={data.linkedin_link}
+          version={data.version} />
       </div>
     </div>
     : <div>
@@ -174,11 +140,31 @@ export default function Home() {
           ))}
         </div>
         <div className="desktop_task">
-          <Task task_id={TaskId.OVERVIEW} open_task={handleTaskClick}/>
-          <Task task_id={TaskId.ABOUTME} open_task={handleTaskClick}/>
-          <Task task_id={TaskId.PROJECTS} open_task={handleTaskClick}/>
-          <Task task_id={TaskId.EDUCATION} open_task={handleTaskClick}/>
-          <Task task_id={TaskId.CONTACT} open_task={handleTaskClick}/>
+          <Task 
+            task_id={TaskId.OVERVIEW}  
+            title={data.overview.title} 
+            icon={data.overview.icon} 
+            open_task={handleTaskClick} />
+          <Task 
+            task_id={TaskId.ABOUTME} 
+            title={data.about_me.title} 
+            icon={data.about_me.icon} 
+            open_task={handleTaskClick} />
+          <Task 
+            task_id={TaskId.PROJECTS}  
+            title={data.project.title} 
+            icon={data.project.icon} 
+            open_task={handleTaskClick} />
+          <Task 
+            task_id={TaskId.EDUCATION} 
+            title={data.education.title} 
+            icon={data.education.icon} 
+            open_task={handleTaskClick} />
+          <Task 
+            task_id={TaskId.CONTACT} 
+            title={data.contact.title} 
+            icon={data.contact.icon} 
+            open_task={handleTaskClick} />
         </div>
       </main>
       <footer>
@@ -186,15 +172,16 @@ export default function Home() {
           <StartButton/>
         </div>
         <div className="task_apps">
-          <p>
-            Footer
-          </p>
         </div>
         <div className="task_right">
           <Language/>
-          <DarkMode state={darkmode} onclick={handleDarkmode} />
-          <DesktopWebsite state={websiteState} onClick={handleWebsiteClick} />
-          <TimeAndDate/>
+          <DarkMode 
+            state={darkmodeState} 
+            onclick={handleDarkmodeClick} />
+          <DesktopWebsite 
+            state={pageState} 
+            onClick={handlePageClick} />
+          <TimeAndDate />
         </div>
       </footer>
     </div>

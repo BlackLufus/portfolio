@@ -1,11 +1,10 @@
 "use client";
 import React, { ReactNode, useEffect, useState } from "react";
-import Frame from "./frame";
-import Project, { ProjectData } from "./Project";
+import Frame from "../frame";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
-import { Inder } from "next/font/google";
-import ProjectInfo from "./project_info";
+import ProjectInfo from "./project.details";
+import ProjectCard, { ProjectData } from "./project.card";
 
 interface ProjectInfoData {
     button_title: string;
@@ -25,13 +24,16 @@ export interface ProjectsData {
   project_list: ProjectData[];
 }
 
-interface ProjectsProps {
+export interface ProjectConfig {
     title: string;
-    icon_url: string;
-    raw?: boolean;
+    icon: string;
 }
 
-export default function Projects({title, icon_url, raw = false}: ProjectsProps) {
+interface ProjectProps {
+    config?: ProjectConfig
+}
+
+export default function Project({config}: ProjectProps) {
 
     const [data, setData] = useState<ProjectsData | null>(null);
     const [selectedProject, setSelectedProject] = useState<number>(-1);
@@ -61,7 +63,7 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
             />
         )
         return(
-            <div id="projects" className={`projects ${raw ? "" : "projects_with_scrollbar"}`}>
+            <div id="projects" className={`projects ${!config ? "" : "projects_with_scrollbar"}`}>
                 <div className="projects_title">
                     <span className="header2">
                         {data.title}
@@ -93,7 +95,7 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
                     />
                     : <ul className="project_unsorted_list">
                         {data.project_list.map((projectData, index) => (
-                            <Project
+                            <ProjectCard
                                 key={index}
                                 index={index}
                                 image={projectData.image}
@@ -111,10 +113,10 @@ export default function Projects({title, icon_url, raw = false}: ProjectsProps) 
     }
 
     return (
-        raw ? build() : (
+        !config ? build() : (
             <Frame
-                title={title}
-                icon_url={icon_url}
+                title={config?.title}
+                icon_url={config?.icon}
                 onClose={terminate}
             >
                 {build()}

@@ -2,6 +2,7 @@
     max-width: 1380px;
     padding-top: 100px;
     padding-bottom: 80px;
+    margin-inline: auto;
 }
 
 .education_with_scrollbar {

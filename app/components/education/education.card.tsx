@@ -9,12 +9,12 @@ export interface EducationData {
     additionalInfo?: string;
 }
 
-interface EducationPanelProps {
+interface EducationCardProps {
     data: EducationData,
     class_name?: string;
 }
 
-export default function EducationPanel({data, class_name}:EducationPanelProps) {
+export default function EducationCard({data, class_name}:EducationCardProps) {
     return (
         <div className={`education_panel ${class_name}`}>
             <div className="education_panel_border_top" />

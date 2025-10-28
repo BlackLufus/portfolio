@@ -3,7 +3,7 @@ interface LinkData {
     link: string;
 }
 
-export interface ProjectInfoProbs {
+export interface ProjectDetailsProbs {
     title: string;
     categorie: string;
     image: string;
@@ -21,7 +21,7 @@ export interface ProjectInfoProbs {
     onClose: (index: number) => void;
 }
 
-export default function ProjectInfo({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, onClose }: ProjectInfoProbs) {
+export default function ProjectDetails({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, onClose }: ProjectDetailsProbs) {
     return(
         <div className="project_info">
             <div className="project_info_close_wrapper">

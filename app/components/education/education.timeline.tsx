@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import EducationPanel, { EducationData } from "./education_panel";
-import EducationTimeLinePoint from "./education_timeline_point";
+import EducationCard, { EducationData } from "./education.card";
+import EducationTimeLinePoint from "./education.timeline.point";
 import EventListener from "@/miscs/EventListener";
 
 
@@ -40,7 +40,7 @@ export default function EducationTimeline({id, ref, education_data_list}:Timelin
             const current_scroll_value = (scrolled_into_view / total_scrollable_height) * 100;
 
             const epsilon = 1;
-            console.log(scrolled_into_view, ">", element_height - epsilon, "||", scroll_top + viewport_height, ">=", scroll_height - epsilon);
+            // console.log(scrolled_into_view, ">", element_height - epsilon, "||", scroll_top + viewport_height, ">=", scroll_height - epsilon);
             if (scrolled_into_view <= 0 || scroll_top == 0) {
                 setScrollPercent(0);
             }
@@ -69,7 +69,7 @@ export default function EducationTimeline({id, ref, education_data_list}:Timelin
                 {education_data_list.map((data, index) => (
                     <React.Fragment key={index}>
                         <EducationTimeLinePoint />
-                        <EducationPanel data={data} class_name={""} />
+                        <EducationCard data={data} class_name={""} />
                     </React.Fragment>
                 ))}
             </div>

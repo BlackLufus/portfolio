@@ -1,0 +1,19 @@
+.contact {
+    max-width: 1380px;
+    padding-inline: 15px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    margin-inline: auto;
+}
+
+.contact_title {
+    text-align: center;
+    margin: 14px 0 10px 0;
+}
+
+.contact_description {
+    max-width: 1150px;
+    text-align: center;
+    margin-inline: auto;
+    margin-top: 20px;
+}

@@ -17,7 +17,7 @@ export interface ProjectData {
     links: LinkData[];
 }
 
-interface ProjectProps {
+interface ProjectCardProps {
     index: number;
     image: string;
     title: string;
@@ -27,7 +27,7 @@ interface ProjectProps {
     onClick: (index: number) => void;
 };
 
-export default function Project({ index, image, title, description, labels, button_title, onClick }: ProjectProps) {
+export default function ProjectCard({ index, image, title, description, labels, button_title, onClick }: ProjectCardProps) {
     const delay = `${(index * 0.075)}s`;
     return (
         <li className="project_list_item" style={{"--delay": delay} as React.CSSProperties}>
@@ -38,12 +38,12 @@ export default function Project({ index, image, title, description, labels, butt
             }}>
                 <img className="project_image" src={image} alt="" />
             </div>
-            <div 
-                className="project_title_container"
-                onClick={() => {
-                    onClick(index);
-            }}>
-                <span className="project_title">
+            <div className="project_title_container">
+                <span 
+                    className="project_title"
+                    onClick={() => {
+                            onClick(index);
+                }}>
                     {title}
                 </span>
             </div>
