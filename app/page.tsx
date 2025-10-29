@@ -6,7 +6,7 @@ import "../styles/frame.css"
 import "../styles/components/navi.css";
 import "../styles/components/overview.css";
 import "../styles/components/about_me.css";
-import "../styles/components/Project.css";
+import "../styles/components/project.css";
 import "../styles/components/education.css";
 import "../styles/components/contact.css";
 import "../styles/components/footer.css";

@@ -406,7 +406,7 @@
 
 @media screen and (max-width: 966px) {
     .projects  {
-        padding-inline: 0px;
+        padding-inline: 5px;
     }
 
     .project_list_item {
