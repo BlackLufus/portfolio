@@ -1,8 +1,6 @@
-import EventListener from "@/miscs/EventListener";
 import Point from "@/miscs/point";
-import { TouchEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NeuralNetwork from "./neuralnetwork";
-import { group } from "console";
 
 
 export default function NumberDetector() {
@@ -131,11 +129,7 @@ export default function NumberDetector() {
     };
 
     const handlePredictClick = () => {
-        if (!nn) {
-            console.log(nn)
-            console.log("Failed")
-            return;
-        }
+        if (!nn) return;
         const canvas = canvasRef.current!;
         const inputVector: number[][] = preporcessCanvas(canvas);
 
@@ -152,7 +146,7 @@ export default function NumberDetector() {
             0
         );
 
-        console.log("Predicted digit:", predictedDigit);
+        // console.log("Predicted digit:", predictedDigit);
         setPredictionDigit(`${predictedDigit}`);
         setPredictionRate(`${parseFloat((prediction[predictedDigit][0]).toFixed(7))}`)
     }

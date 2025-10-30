@@ -36,10 +36,6 @@ export default class NeuralNetwork {
         const colsA = A[0].length;
         const rowsB = B.length;
         const colsB = B[0].length;
-        // console.log(`rowsA ${rowsA}`)
-        // console.log(`colsA ${colsA}`)
-        // console.log(`rowsB ${rowsB}`)
-        // console.log(`colsB ${colsB}`)
         const result = Array.from({
             length: rowsA
         },
@@ -61,7 +57,6 @@ export default class NeuralNetwork {
     }
 
     public forward(input: number[][]): { Z: number[][][]; A: number[][][] } {
-        console.log(input)
         const Z: number[][][] = [];
         const A: number[][][] = [];
 
@@ -71,11 +66,9 @@ export default class NeuralNetwork {
             const prevA = i === 0 ? input : A[i - 1];
 
             const z = this.add(this.dot(W, prevA), b);
-            console.log(z)
             Z.push(z);
 
             const a = i === this.total_layers - 1 ? this.softmax(z) : this.relu(z);
-            console.log(this.softmax(z))
             A.push(a);
         }
 
