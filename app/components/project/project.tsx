@@ -92,6 +92,7 @@ export default function Project({config}: ProjectProps) {
                         label_list={data.project_list[selectedProject].labels}
                         link_list={data.project_list[selectedProject].links}
                         onClose={openProject}
+                        test_programm={data.project_list[selectedProject].test_programm}
                     />
                     : <ul className="project_unsorted_list">
                         {data.project_list.map((projectData, index) => (

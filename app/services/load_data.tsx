@@ -6,7 +6,8 @@ export enum DataType {
     ABOUTME = "aboutme.json",
     PROJECTS = "projects.json",
     EDUCATION = "education.json",
-    CONTACT = "contact.json"
+    CONTACT = "contact.json",
+    NEURALNETWORK = "nn_number_detector_0001.json"
 }
 
 export default async function loadData<T>(dataType: DataType):Promise<T> {

@@ -13,7 +13,7 @@ interface FooterProbs {
 
 export default function Footer({firstname, lastname, year, allRightsReserved, linkTitle, githubLink, linkedInLink}: FooterProbs) {
     return(
-        <div className="footer">
+        <footer className="footer">
             <div className="footer_left">
                 <div>
                     <span className="footer_name">
@@ -47,6 +47,6 @@ export default function Footer({firstname, lastname, year, allRightsReserved, li
                     </a>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }

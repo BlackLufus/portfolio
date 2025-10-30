@@ -16,7 +16,7 @@ interface NaviProbs {
 
 export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, pageState, handlePageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
     return(
-        <div className="navi">
+        <nav className="navi">
             <div className="navi_name_container">
                 <span className="navi_name_firstname">
                     {firstname}
@@ -46,6 +46,6 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                 <DesktopWebsite state={pageState} onClick={handlePageClick}></DesktopWebsite>
                 <DarkMode state={darkmodeState} onclick={handleDarkmodeClick}/>
             </div>
-        </div>
+        </nav>
     )
 }

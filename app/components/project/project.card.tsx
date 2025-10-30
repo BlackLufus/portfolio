@@ -15,6 +15,7 @@ export interface ProjectData {
     labels: Array<string>;
     features: Array<string>;
     links: LinkData[];
+    test_programm?: number;
 }
 
 interface ProjectCardProps {

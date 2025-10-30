@@ -1,3 +1,10 @@
+import { ReactNode } from "react";
+import NumberDetector from "../neuralnetwork/numberdetector";
+
+export enum  TestProgramm {
+    NUMBERDETECTOR = 0
+}
+
 interface LinkData {
     title: string;
     link: string;
@@ -19,9 +26,18 @@ export interface ProjectDetailsProbs {
     label_list: Array<string>;
     link_list: LinkData[];
     onClose: (index: number) => void;
+    test_programm?: TestProgramm;
 }
 
-export default function ProjectDetails({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, onClose }: ProjectDetailsProbs) {
+export default function ProjectDetails({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, onClose, test_programm }: ProjectDetailsProbs) {
+    
+    const getTestProgramm = (testProgramm?: TestProgramm): ReactNode => {
+        switch(testProgramm) {
+            case TestProgramm.NUMBERDETECTOR: return <NumberDetector />
+            default: return null
+        }
+    }
+
     return(
         <div className="project_info">
             <div className="project_info_close_wrapper">
@@ -164,6 +180,7 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                         }
                     </div>
                 </div>
+                {getTestProgramm(test_programm)}
             </div>
         </div>
     )

@@ -4,6 +4,7 @@ import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
 import "../styles/components/navi.css";
+import "../styles/components/numberdetector.css";
 import "../styles/components/overview.css";
 import "../styles/components/about_me.css";
 import "../styles/components/project.css";
@@ -26,6 +27,7 @@ import Education, { EducationConfig } from "./components/education/eduction";
 import Contact, { ContactConfig } from "./components/contact/contact";
 import Footer from "./components/footer/footer";
 import Task, { TaskId } from "./components/taskbar/taskbar";
+import NumberDetector from "./components/neuralnetwork/numberdetector";
 
 interface GeneralData {
   firstname: string;
@@ -102,7 +104,7 @@ export default function Home() {
     pageState
     ? <div className="webpage">
       <img className="webpage_background" src="/images/bubbles.png" alt="" />
-      <div ref={webpageContainerRef} className="webpage_wrapper">
+      <main ref={webpageContainerRef} className="webpage_wrapper">
         <Navi
           firstname={data.firstname}
           lastname={data.lastname}
@@ -129,7 +131,7 @@ export default function Home() {
           githubLink={data.github_link}
           linkedInLink={data.linkedin_link}
           version={data.version} />
-      </div>
+      </main>
     </div>
     : <div>
       <main id="desktop" className="desktop">
