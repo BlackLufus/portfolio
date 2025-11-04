@@ -3,6 +3,7 @@ import { useState, useEffect, ReactNode } from "react";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
 import Frame from "../frame";
+import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface ProjectsData {
     title: string;
@@ -21,12 +22,20 @@ interface ContactProps {
 export default function Contact({config}: ContactProps) {
 
     const [data, setData] = useState<ProjectsData| null>(null);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    
+    const handleLanguageChange = (code: LanguageCode) => {
+        setLanguageCode(code);
+    }
 
     useEffect(() => {
-        loadData<ProjectsData>(DataType.CONTACT).then((res) => {
+        loadData<ProjectsData>(DataType.CONTACT, languageCode).then((res) => {
             setData(res);
         });
-    }, []);
+        LanguageNotifier.subscribe(handleLanguageChange);
+
+        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+    }, [languageCode]);
 
     const terminate = () => {
         console.log("Contact: terminated");

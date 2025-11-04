@@ -5,6 +5,7 @@ import { EducationData } from "./education.card";
 import EducationTimeline from "./education.timeline";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Loading from "@/widgets/loader";
+import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface EducationGeneralData {
     title: string;
@@ -29,6 +30,11 @@ class EducationAttributes {
 export default function Education({ref, config}: EducationProps) {
 
     const [data, setSkillData] = useState<EducationGeneralData | null>(null);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    
+    const handleLanguageChange = (code: LanguageCode) => {
+        setLanguageCode(code);
+    }
 
     const education = useRef<HTMLDivElement>(null);
 
@@ -40,10 +46,13 @@ export default function Education({ref, config}: EducationProps) {
 
     useEffect(() => {
 
-        loadData<EducationGeneralData>(DataType.EDUCATION).then((res) => {
+        loadData<EducationGeneralData>(DataType.EDUCATION, languageCode).then((res) => {
             setSkillData(res);
         });
-    }, []);
+        LanguageNotifier.subscribe(handleLanguageChange);
+        
+        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+    }, [languageCode]);
 
     const build = ():ReactNode => {
         if (!data) return(

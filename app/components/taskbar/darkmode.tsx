@@ -10,11 +10,6 @@ interface DarkmodeProbs {
 export default function DarkMode({state, onclick}:DarkmodeProbs) {
 
     useEffect(() => {
-        document.documentElement.setAttribute(
-            'data-theme', 
-            state ? 'dark' : 'light'
-        );
-        console.log(state ? 'dark' : 'light');
     }, [state]);
     
     const handleClick = () => {
@@ -25,7 +20,7 @@ export default function DarkMode({state, onclick}:DarkmodeProbs) {
         <div id="dark_mode" className="dark_mode" onClick={handleClick}>
             <div>
                 {
-                    state
+                    !state
                     ? <div>
                         <img
                             src="../images/night.png"

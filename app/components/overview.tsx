@@ -3,6 +3,7 @@ import loadData, { DataType } from "@/services/load_data";
 import Frame from "./frame";
 import { ReactNode, useEffect, useState } from "react";
 import Loading from "@/widgets/loader";
+import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface OverviewData {
     title: string;
@@ -23,12 +24,20 @@ interface OverviewProps {
 export default function Overview({config}: OverviewProps) {
 
     const [data, setData] = useState<OverviewData | null>(null);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+
+    const handleLanguageChange = (code: LanguageCode) => {
+        setLanguageCode(code);
+    }
     
     useEffect(() => {
-        loadData<OverviewData>(DataType.OVERVIEW).then((res) => {
+        loadData<OverviewData>(DataType.OVERVIEW, languageCode).then((res) => {
             setData(res);
         });
-    }, []);
+        LanguageNotifier.subscribe(handleLanguageChange);
+
+        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+    }, [languageCode]);
 
     const terminate = () => {
         console.log("General: terminated");

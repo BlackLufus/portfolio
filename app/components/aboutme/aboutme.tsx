@@ -8,6 +8,7 @@ import loadData, { DataType } from "@/services/load_data";
 import Professional from "./aboutme.professional";
 import Loading from "@/widgets/loader";
 import Skill, { SkillData } from "./aboutme.skill";
+import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface CharacteristicsData {
     image: string;
@@ -46,11 +47,20 @@ interface AboutMeProps {
 export default function AboutMe({config}: AboutMeProps) {
 
     const [data, setAboutMeData] = useState<AboutMeData | null>(null);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+
+    const handleLanguageChange = (code: LanguageCode) => {
+        setLanguageCode(code);
+    }
+
     useEffect(() => {
-        loadData<AboutMeData>(DataType.ABOUTME).then((res) => {
+        loadData<AboutMeData>(DataType.ABOUTME, languageCode).then((res) => {
             setAboutMeData(res);
         });
-    }, []);
+        LanguageNotifier.subscribe(handleLanguageChange);
+    
+        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+    }, [languageCode]);
 
     const terminate = () => {
         console.log("AboutMe: terminated");

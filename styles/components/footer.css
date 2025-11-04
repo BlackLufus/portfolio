@@ -33,7 +33,7 @@
 }
 
 .footer_title_container {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .footer_title {
@@ -44,7 +44,7 @@
 .footer_links {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 .footer_link_icon {

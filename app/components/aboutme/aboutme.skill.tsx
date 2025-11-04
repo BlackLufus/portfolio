@@ -3,6 +3,7 @@ import SkillCard, { SkillCardData } from "./aboutme.skill.card";
 import EventListener from "@/miscs/EventListener";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
+import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 export interface SkillData {
     title: string;
@@ -15,6 +16,12 @@ export default function Skill() {
 
     const [data, setSkillData] = useState<SkillData | null>(null);
     const skillsUlRef = useRef<HTMLUListElement>(null);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageCode.DE);
+
+    const handleLanguageChange = (code: LanguageCode) => {
+        setLanguageCode(code);
+        setSkillData(null);
+    }
 
     const itemSize:number = 280 + 20;
     const [numBoxes, setNumBoxes] = useState(1);
@@ -168,7 +175,7 @@ export default function Skill() {
 
     useEffect(() => {
         if (!data) {
-            loadData<SkillData>(DataType.SKILLS).then((res) => {
+            loadData<SkillData>(DataType.SKILLS, languageCode).then((res) => {
                 setSkillData(res);
             });
         }
@@ -178,7 +185,10 @@ export default function Skill() {
             calcNumBoxes();
         }
 
+        LanguageNotifier.subscribe(handleLanguageChange);   
+
         return (() => {
+            LanguageNotifier.unsubscribe(handleLanguageChange)
             EventListener.removeAllListeners('skills_ul_ref_mousemove');
             EventListener.removeAllListeners('skills_ul_ref');
         })

@@ -11,6 +11,7 @@ import "../styles/components/project.css";
 import "../styles/components/education.css";
 import "../styles/components/contact.css";
 import "../styles/components/footer.css";
+import "../styles/components/form.css";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import loadData, { DataType } from "./services/load_data";
 import DesktopWebsite from "./components/taskbar/desktop_website";
@@ -27,7 +28,7 @@ import Education, { EducationConfig } from "./components/education/eduction";
 import Contact, { ContactConfig } from "./components/contact/contact";
 import Footer from "./components/footer/footer";
 import Task, { TaskId } from "./components/taskbar/taskbar";
-import NumberDetector from "./components/neuralnetwork/numberdetector";
+import LanguageNotifier, { LanguageCode } from "./global/languageSubscriber";
 
 interface GeneralData {
   firstname: string;
@@ -48,17 +49,21 @@ interface GeneralData {
 export default function Home() {
 
   const [data, setGeneralData] = useState<GeneralData | null>(null);
-  const [darkmodeState, setDarkmodeState] = useState(true);
   const [pageState, setWebsiteState] = useState(true);
+  const [languageCode, setLanguageCode] = useState(LanguageNotifier.code);
+  const [darkmodeState, setDarkmodeState] = useState(true);
   const [openComponents, setOpenComponents] = useState<React.ReactNode[]>([]);
 
   const webpageContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    loadData<GeneralData>(DataType.GENERAL).then((res) => {
+    loadData<GeneralData>(DataType.GENERAL, languageCode).then((res) => {
         setGeneralData(res);
     });
-  }, []);
+    window.addEventListener("click", e => {
+        console.log("window_click_check!");
+    });
+  }, [languageCode]);
 
   async function handleTaskClick(taskId: TaskId) {
     const frame = async (taskId: TaskId): Promise<ReactNode> => {
@@ -79,15 +84,25 @@ export default function Home() {
     setOpenComponents((prev) => [...prev, node]);
   }
 
-  const handleDarkmodeClick = () => {
-    setDarkmodeState(!darkmodeState);
-  }
-
   const handlePageClick = () => {
     if (!pageState) {
       setOpenComponents([]);
     }
     setWebsiteState(!pageState);
+  }
+
+  const handleLanguageClick = () => {
+    const newLanguageCode = languageCode == LanguageCode.DE ? LanguageCode.EN : LanguageCode.DE;
+    setLanguageCode(newLanguageCode)
+    LanguageNotifier.sendNotification(newLanguageCode);
+  }
+
+  const handleDarkmodeClick = () => {
+    document.documentElement.setAttribute(
+        'data-theme', 
+        darkmodeState ? 'dark' : 'light'
+    );
+    setDarkmodeState(!darkmodeState);
   }
 
   if (!data) return(
@@ -114,6 +129,8 @@ export default function Home() {
           contactTitle={data.contact.title}
           pageState={pageState}
           handlePageClick={handlePageClick}
+          languageState={languageCode}
+          handleLanguageClick={handleLanguageClick}
           darkmodeState={darkmodeState}
           handleDarkmodeClick={handleDarkmodeClick} />
         <Overview />
