@@ -44,7 +44,7 @@ export default function ProjectDetails({ title, categorie, image, overview_title
 
     const [openImageIndex, setOpenImage] = useState<number>(-1);
 
-    let [isDragging, setIsDragging] = useState(false);;
+    const [isDragging, setIsDragging] = useState(false);;
 
     const onOpenImage = (index: number) => {
         if (isDragging) return;
