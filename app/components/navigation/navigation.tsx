@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import languageNotifier, { LanguageCode } from "@/global/languageSubscriber";
-import LanguageNotifier from "@/global/languageSubscriber";
-
+import { LanguageCode } from "@/global/languageSubscriber";
 interface NaviProbs {
     firstname: string;
     lastname: string;

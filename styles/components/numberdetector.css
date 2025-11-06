@@ -82,6 +82,7 @@
     height: 400px;
     margin-inline: auto;
     border-radius: 12px;
+    border: 1px solid var(--boarder-color-1);
     overflow: hidden;
     margin-bottom: 30px;
 }
@@ -128,6 +129,7 @@
     height: 196px;
     margin-bottom: 30px;
     border-radius: 12px;
+    border: 1px solid var(--boarder-color-1);
     overflow: hidden;
 }
 
@@ -141,6 +143,7 @@
     height: 196px;
     margin-bottom: 30px;
     border-radius: 12px;
+    border: 1px solid var(--boarder-color-1);
     overflow: hidden;
 }
 

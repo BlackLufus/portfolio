@@ -165,12 +165,21 @@ export default function NumberDetector() {
 
         const canvas = canvasRef.current;
 
-        const getPos = (e: MouseEvent) => {
+        const getPos = (e: MouseEvent | TouchEvent) => {
             const rect = canvasRef.current!.getBoundingClientRect();
-            return new Point (
-                e.clientX - rect.left,
-                e.clientY - rect.top
-            );
+            if ("touches" in e) {
+                const touch = e.touches[0];
+                return new Point (
+                    touch.clientX - rect.left,
+                    touch.clientY - rect.top
+                );
+            }
+            else {
+                return new Point (
+                    e.clientX - rect.left,
+                    e.clientY - rect.top
+                );
+            }
         };
 
         const onMouseDown = (e: MouseEvent) => {
@@ -187,20 +196,24 @@ export default function NumberDetector() {
             ctx.stroke();
         };
 
-        // const onTouchStart  = (e: Event): void => {
-        //     e.preventDefault();
-        //     drawing = true;
-        //     const point = getPos(e.touches);
-        //     ctx.beginPath();
-        //     ctx.moveTo(point.x, point.y);
-        // };
+        const onTouchStart  = (e: TouchEvent): void => {
+            e.preventDefault();
+            drawing = true;
 
-        // const onTouchMove = (e: Event) => {
-        //     if (!drawing) return;
-        //     const point = getPos(e);
-        //     ctx.lineTo(point.x, point.y);
-        //     ctx.stroke();
-        // };
+            const point = getPos(e);
+
+            ctx.beginPath();
+            ctx.moveTo(point.x, point.y);
+        };
+
+        const onTouchMove = (e: TouchEvent) => {
+            if (!drawing) return;
+            
+            const point = getPos(e);
+
+            ctx.lineTo(point.x, point.y);
+            ctx.stroke();
+        };
 
         const onMouseUp = () => (drawing = false);
         const onLeave = () => (drawing = false);
@@ -208,20 +221,17 @@ export default function NumberDetector() {
         canvas.addEventListener("mousedown", onMouseDown);
         canvas.addEventListener("mousemove", onMouseMove);
         canvas.addEventListener("mouseup", onMouseUp);
-        canvas.addEventListener("mouseleave", onMouseUp);
-        // canvas.addEventListener("touchstart", onTouchStart);
-        // canvas.addEventListener("touchmove", onTouchMove);
-        // canvas.addEventListener("mouseup", onMouseUp);
+        canvas.addEventListener("mouseleave", onLeave);
+        canvas.addEventListener("touchstart", onTouchStart);
+        canvas.addEventListener("touchmove", onTouchMove);
 
         return () => {
             canvas.removeEventListener("mousedown", onMouseDown);
             canvas.removeEventListener("mousemove", onMouseMove);
             canvas.removeEventListener("mouseup", onMouseUp);
-            canvas.removeEventListener("mouseleave", onMouseUp);
-            // canvas.removeEventListener("touchstart", onTouchStart);
-            // canvas.removeEventListener("touchmove", onTouchMove);
-            // canvas.removeEventListener("touchstart", onTouchStart);
-            // canvas.removeEventListener("touchstart", onTouchStart);
+            canvas.removeEventListener("mouseleave", onLeave);
+            canvas.removeEventListener("touchstart", onTouchStart);
+            canvas.removeEventListener("touchmove", onTouchMove);
         };
     });
 
@@ -231,7 +241,7 @@ export default function NumberDetector() {
                 <div className="number_detector_run_container">
                     <div className="number_detector_run_header_container">
                         <span className="number_detector_run_header">
-                            Run Test Programm
+                            Run Demo Programm
                         </span>
                     </div>
                     <div className="number_detector_run_action_container" onClick={handleOnRunClick}>
@@ -245,7 +255,7 @@ export default function NumberDetector() {
                 <div className="number_detector_input_wrapper">
                     <div className="number_detector_header_container">
                         <span className="number_detector_header">
-                            Test Programm
+                            Demo Programm
                         </span>
                     </div>
                     <div className="number_detector_canvas_container">

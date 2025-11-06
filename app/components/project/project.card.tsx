@@ -1,3 +1,5 @@
+import { GalleryData } from "./project.details";
+
 interface LinkData {
     title: string;
     link: string;
@@ -15,6 +17,7 @@ export interface ProjectData {
     labels: Array<string>;
     features: Array<string>;
     links: LinkData[];
+    gallery: Array<GalleryData>;
     test_programm?: number;
 }
 

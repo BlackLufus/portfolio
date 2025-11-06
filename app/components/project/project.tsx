@@ -10,6 +10,7 @@ import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface ProjectInfoData {
     button_title: string;
+    gallery_title: string;
     overview_title: string;
     features_title: string;
     project_details_title: string;
@@ -113,8 +114,10 @@ export default function Project({config}: ProjectProps) {
                             return_to_overview={data.project_info.project_return_to_overview}
                             label_list={data.project_list[selectedProject].labels}
                             link_list={data.project_list[selectedProject].links}
+                            gallery_title={data.project_info.gallery_title}
+                            gallery={data.project_list[selectedProject].gallery}
                             onClose={openProject}
-                            test_programm={data.project_list[selectedProject].test_programm}
+                            demo_programm={data.project_list[selectedProject].test_programm}
                         />
                         : <ul className="project_unsorted_list">
                             {data.project_list.map((projectData, index) => (

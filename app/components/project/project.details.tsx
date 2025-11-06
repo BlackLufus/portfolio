@@ -1,5 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState } from "react";
 import NumberDetector from "../neuralnetwork/numberdetector";
+import CustomScrollBar from "@/widgets/customScrollBar";
+import LightBoxOverlay from "./project.gallery.overlay";
 
 export enum  TestProgramm {
     NUMBERDETECTOR = 0
@@ -8,6 +10,11 @@ export enum  TestProgramm {
 interface LinkData {
     title: string;
     link: string;
+}
+
+export interface GalleryData {
+    url: string;
+    description: string;
 }
 
 export interface ProjectDetailsProbs {
@@ -25,14 +32,31 @@ export interface ProjectDetailsProbs {
     return_to_overview: string;
     label_list: Array<string>;
     link_list: LinkData[];
+    gallery_title: string;
+    gallery: Array<GalleryData>;
     onClose: (index: number) => void;
-    test_programm?: TestProgramm;
+    demo_programm?: TestProgramm;
 }
 
-export default function ProjectDetails({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, onClose, test_programm }: ProjectDetailsProbs) {
-    
-    const getTestProgramm = (testProgramm?: TestProgramm): ReactNode => {
-        switch(testProgramm) {
+export default function ProjectDetails({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, gallery_title, gallery, onClose, demo_programm }: ProjectDetailsProbs) {
+
+    const galleryContentRef = useRef<HTMLUListElement>(null);
+
+    const [openImageIndex, setOpenImage] = useState<number>(-1);
+
+    let [isDragging, setIsDragging] = useState(false);;
+
+    const onOpenImage = (index: number) => {
+        if (isDragging) return;
+        setOpenImage(index);
+    }
+
+    const onCloseImage = () => {
+        setOpenImage(-1);
+    }
+
+    const getDemoProgramm = (dempProgramm?: TestProgramm): ReactNode => {
+        switch(dempProgramm) {
             case TestProgramm.NUMBERDETECTOR: return <NumberDetector />
             default: return null
         }
@@ -76,6 +100,45 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                         </div>
                     </div>
                 </div>
+                {
+                    (gallery && gallery.length > 0)
+                    ? <div className="project_gallery_wrapper">
+                        <div>
+                            <span className="project_gallery_title">
+                                {gallery_title}
+                            </span>
+                        </div>
+                        <ul ref={galleryContentRef} className="project_gallery_content">
+                            {
+                                gallery.map((image, index) => (
+                                    <li 
+                                        className="project_gallery_image_container"
+                                        key={index}>
+                                        <img 
+                                            className="project_gallery_image"
+                                            onClick={() => onOpenImage(index)}
+                                            src={image.url}
+                                            alt=""
+                                        />
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                        <CustomScrollBar 
+                            wrapperRef={galleryContentRef}
+                            setIsDragging={setIsDragging} />
+                        {
+                            (openImageIndex != -1)
+                            ? <LightBoxOverlay 
+                                gallery={gallery} 
+                                start={openImageIndex}
+                                onClose={onCloseImage}
+                            />
+                            : null
+                        }
+                    </div>
+                    : null
+                }
                 <div className="project_info_content">
                     <div className="project_info_content_left">
                         <div>
@@ -180,7 +243,7 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                         }
                     </div>
                 </div>
-                {getTestProgramm(test_programm)}
+                {getDemoProgramm(demo_programm)}
             </div>
         </div>
     )

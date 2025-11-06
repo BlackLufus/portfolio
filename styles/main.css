@@ -338,3 +338,29 @@ footer {
 .time_and_date > div > div > span {
     color: var(--font-color-2);
 }
+
+.custom_scroll_bar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-inline: auto;
+    gap: 6px;
+}
+
+.custom_scroll_box {
+    height: 10px;
+    width: 10px;
+    background-color: var(--background-color-5);
+    transition: width 0.15s linear, background-color 0.35s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.custom_scroll_box.custom_scroll_box_selected {
+    width: 25px;
+    background-color: var(--font-color-p);
+}
+
+.custom_scroll_box:hover {
+    background-color: var(--font-color-p);
+}
