@@ -24,6 +24,8 @@
 }
 
 .number_detector_run_header_container {
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
