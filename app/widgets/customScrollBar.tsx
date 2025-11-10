@@ -25,7 +25,7 @@ export default function CustomScrollBar( {wrapperRef, size, setIsDragging}: Cust
         // Gets visibile with of container element
         const viewWidth = wrapper.clientWidth;
 
-        const itemSize = (size == undefined ? viewWidth : size);
+        const itemSize = (size == undefined || size > viewWidth ? viewWidth : size);
 
         // Calculates how many times SkillItem element fits to container element
         const itemFitInTotalViewWith = Math.floor(viewWidth / itemSize)

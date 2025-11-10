@@ -92,7 +92,7 @@
     }
 
     .navi_name_short {
-        display: contents;
+        display: block;
     }
 }
 
@@ -220,6 +220,7 @@
     backdrop-filter: blur(10px);;
     background-color: var(--background-color-t7);
     overflow: hidden;
+    z-index: 10000;
 }
 
 .navi_menu_wrapper.hide {

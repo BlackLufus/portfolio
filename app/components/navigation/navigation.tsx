@@ -57,7 +57,7 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                     <span className="navi_name gradient_text">
                         {firstname} {lastname}
                     </span>
-                    <span className="navi_name_short gradient_text">
+                    <span className="gradient_text navi_name_short">
                         {firstname} {lastname.split("")[0]}.
                     </span>
                 </div>
