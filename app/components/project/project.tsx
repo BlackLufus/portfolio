@@ -62,7 +62,6 @@ export default function Project({config}: ProjectProps) {
     };
 
     const openProject = (index: number) => {
-        console.log(`Open Project (id: ${index})`)
         setSelectedProject(index);
     }
 

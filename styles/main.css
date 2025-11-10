@@ -15,6 +15,10 @@ html, body {
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
+    background-color: var(--background-color-1);
+}
+
+:root[data-theme="dark"] html, :root[data-theme="dark"] body {
     background-color: var(--background-color-2);
 }
 
@@ -83,6 +87,7 @@ body > div {
     height: 100%;
     object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
     object-position: center;
+    opacity: 0.5;
     filter: blur(75px);
     z-index: 0;
 }

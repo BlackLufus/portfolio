@@ -32,3 +32,11 @@
 .profil_image {
     
 }
+
+.gradient_text {
+    background: linear-gradient(to right, var(--font-color-p), var(--font-color-1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}

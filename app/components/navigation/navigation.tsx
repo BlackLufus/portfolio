@@ -54,14 +54,11 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
         <nav ref={naviRef} className="navi" onClick={handleNaviClick}>
             <div className={`navi_bar_wrapper ${menuState ? "show": ""}`}>
                 <div className="nav_bar_left">
-                    <span className="navi_name_firstname">
-                        {firstname}
+                    <span className="navi_name gradient_text">
+                        {firstname} {lastname}
                     </span>
-                    <span className="navi_name_lastname">
-                        {lastname}
-                    </span>
-                    <span className="navi_name_lastname_short">
-                        {lastname.split("")[0]}.
+                    <span className="navi_name_short gradient_text">
+                        {firstname} {lastname.split("")[0]}.
                     </span>
                 </div>
                 <ul className="navi_menu_bar_list">

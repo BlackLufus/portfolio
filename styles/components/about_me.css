@@ -162,7 +162,7 @@
     display: block;
     height: 220px;
     min-width: 280px;
-    background-color: var(--background-color-2);
+    background-color: var(--background-color-1);
     border: 1px solid var(--boarder-color-2);
     border-radius: 12px;
     box-shadow: 0 0 12px #0004;
@@ -170,8 +170,8 @@
     transition: transform 0.35s ease-out;
 }
 
-:root[data-theme="light"] .skill_item {
-    background-color: var(--background-color-1);
+:root[data-theme="dark"] .skill_item {
+    background-color: var(--background-color-2);
 }
 
 .skill_item:hover {

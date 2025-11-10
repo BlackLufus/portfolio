@@ -1,35 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { LanguageCode } from "@/global/languageSubscriber";
 
-export default function Language() {
-    const [language, setLanguage] = useState("de");
-    
-    useEffect(() => {
-        console.log(language);
-        document.documentElement.setAttribute(
-            'lang', 
-            language
-        );
-    }, [language]);
+interface LanguageProbs {
+    state: LanguageCode;
+    onClick: () => void;
+}
 
-    const toggleMode = () => {
-        setLanguage(document.documentElement.getAttribute('lang') === 'en' ? 'de' : 'en');
-        console.log("Mode toggled");
-    };
-
-    console.log(language)
+export default function Language( {state, onClick}: LanguageProbs ) {
 
     return (
-        <div id="language" className="language" onClick={toggleMode}>
+        <div id="language" className="language" onClick={onClick}>
             <div>
                 <div>
-                    <span className={language === 'en' ? "hidden_language" : ""}>
+                    <span className={state == LanguageCode.EN ? "hidden_language" : ""}>
                         DE
                     </span>
                 </div>
                 <div>
-                    <span className={language === 'de' ? "hidden_language" : ""}>
+                    <span className={state == LanguageCode.DE ? "hidden_language" : ""}>
                         EN
                     </span>
                 </div>

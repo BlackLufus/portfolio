@@ -62,15 +62,6 @@ export default function Contact({config}: ContactProps) {
                         {data.description}
                     </span>
                 </div>
-                <br />
-                <br />
-                <br />
-                <Loading
-                    width="50px"
-                    height="50px"
-                    justify_content="center"
-                    text="Data is not available yet."
-                />
             </div>
         );
     }

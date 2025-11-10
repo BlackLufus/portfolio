@@ -37,19 +37,13 @@
     gap: 10px;
 }
 
-.navi_name_firstname {
+.navi_name, .navi_name_short {
     font-weight: bold;
     font-size: var(--font-size-5);
     color: var(--font-color-p);
 }
 
-.navi_name_lastname, .navi_name_lastname_short {
-    font-weight: bold;
-    font-size: var(--font-size-5);
-    color: var(--font-color-1);
-}
-
-.navi_name_lastname_short {
+.navi_name_short {
     display: none;
 }
 
@@ -93,11 +87,11 @@
 }
 
 @media screen and (max-width: 768px) {
-    .navi_name_lastname {
+    .navi_name {
         display: none;;
     }
 
-    .navi_name_lastname_short {
+    .navi_name_short {
         display: contents;
     }
 }

@@ -100,147 +100,149 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                         </div>
                     </div>
                 </div>
-                {
-                    (gallery && gallery.length > 0)
-                    ? <div className="project_gallery_wrapper">
-                        <div>
-                            <span className="project_gallery_title">
-                                {gallery_title}
-                            </span>
-                        </div>
-                        <ul ref={galleryContentRef} className="project_gallery_content">
-                            {
-                                gallery.map((image, index) => (
-                                    <li 
-                                        className="project_gallery_image_container"
-                                        key={index}>
-                                        <img 
-                                            className="project_gallery_image"
-                                            onClick={() => onOpenImage(index)}
-                                            src={image.url}
-                                            alt=""
-                                        />
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                        <CustomScrollBar 
-                            wrapperRef={galleryContentRef}
-                            setIsDragging={setIsDragging} />
-                        {
-                            (openImageIndex != -1)
-                            ? <LightBoxOverlay 
-                                gallery={gallery} 
-                                start={openImageIndex}
-                                onClose={onCloseImage}
-                            />
-                            : null
-                        }
-                    </div>
-                    : null
-                }
-                <div className="project_info_content">
-                    <div className="project_info_content_left">
-                        <div>
+                <div className="project_content_wrapper">
+                    {
+                        (gallery && gallery.length > 0)
+                        ? <div className="project_gallery_wrapper">
                             <div>
-                                <span className="project_info_overview_title">
-                                    {overview_title}
+                                <span className="project_gallery_title">
+                                    {gallery_title}
                                 </span>
                             </div>
-                            <div className="project_info_overview_content">
-                                <span className="project_info_overview">
-                                    {overview_content}
-                                </span>
-                            </div>
+                            <ul ref={galleryContentRef} className="project_gallery_content">
+                                {
+                                    gallery.map((image, index) => (
+                                        <li 
+                                            className="project_gallery_image_container"
+                                            key={index}>
+                                            <img 
+                                                className="project_gallery_image"
+                                                onClick={() => onOpenImage(index)}
+                                                src={image.url}
+                                                alt=""
+                                            />
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                            <CustomScrollBar 
+                                wrapperRef={galleryContentRef}
+                                setIsDragging={setIsDragging} />
+                            {
+                                (openImageIndex != -1)
+                                ? <LightBoxOverlay 
+                                    gallery={gallery} 
+                                    start={openImageIndex}
+                                    onClose={onCloseImage}
+                                />
+                                : null
+                            }
                         </div>
-                        {
-                            features_title && features_list && features_list.length > 0
-                            ? <div>
-                                <div className="project_info_features_title_container">
-                                    <span className="project_info_features_title">
-                                        {features_title}
+                        : null
+                    }
+                    <div className="project_info_content">
+                        <div className="project_info_content_left">
+                            <div>
+                                <div>
+                                    <span className="project_info_overview_title">
+                                        {overview_title}
                                     </span>
                                 </div>
-                                <div className="project_info_features_content">
-                                    {features_list.map((feature, index) => (
-                                        <span 
-                                            key={index}
-                                            className="project_info_features"
-                                        >
-                                            {feature}
+                                <div className="project_info_overview_content">
+                                    <span className="project_info_overview">
+                                        {overview_content}
+                                    </span>
+                                </div>
+                            </div>
+                            {
+                                features_title && features_list && features_list.length > 0
+                                ? <div>
+                                    <div className="project_info_features_title_container">
+                                        <span className="project_info_features_title">
+                                            {features_title}
                                         </span>
-                                    ))}
+                                    </div>
+                                    <div className="project_info_features_content">
+                                        {features_list.map((feature, index) => (
+                                            <span 
+                                                key={index}
+                                                className="project_info_features"
+                                            >
+                                                {feature}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                            : null
-                        }
-                    </div>
-                    <div className="project_info_content_right">
-                        <div className="project_info_details_title_container">
-                            <span className="project_info_details_title">
-                                {details_title}
-                            </span>
+                                : null
+                            }
                         </div>
-                        <div className="project_info_categorie_title_container">
-                            <span className="project_info_categorie_title">
-                                {categorie_title.toUpperCase()}
-                            </span>
-                        </div>
-                        <div>
-                            <span className="project_info_categorie">
-                                {categorie}
-                            </span>
-                        </div>
-                        <div className="project_info_technologies_container">
-                            <span className="project_info_technologies">
-                                {technologies_title.toUpperCase()}
-                            </span>
-                        </div>
-                        <div className="project_info_label_list_container">
-                            {label_list.map((label, index) => (
-                                <div 
-                                    key={index}
-                                    className="project_info_label_container">
-                                    <span 
-                                        className="project_info_label"
-                                    >
-                                        {label}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                        {
-                            links_title && link_list && link_list.length > 0
-                            ? <div className="project_info_projekt_links_title_container">
-                                <span className="project_info_project_title_links">
-                                    {links_title.toUpperCase()}
+                        <div className="project_info_content_right">
+                            <div className="project_info_details_title_container">
+                                <span className="project_info_details_title">
+                                    {details_title}
                                 </span>
                             </div>
-                            : null
-                        }
-                        {
-                            links_title && link_list && link_list.length > 0
-                            ? <div className="project_info_project_link_button_container">
-                                {link_list.map(((link, index) => (
-                                    <div
-                                        key={index}
-                                        className="project_info_project_link_button"
-                                    >
-                                        <a 
-                                            className="project_info_project_link_href"
-                                            href={link.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <span className="project_info_project_link_href_text">
-                                                &#128279; {link.title}
-                                            </span>
-                                        </a> 
-                                    </div>
-                                )))}
+                            <div className="project_info_categorie_title_container">
+                                <span className="project_info_categorie_title">
+                                    {categorie_title.toUpperCase()}
+                                </span>
                             </div>
-                            : null
-                        }
+                            <div>
+                                <span className="project_info_categorie">
+                                    {categorie}
+                                </span>
+                            </div>
+                            <div className="project_info_technologies_container">
+                                <span className="project_info_technologies">
+                                    {technologies_title.toUpperCase()}
+                                </span>
+                            </div>
+                            <div className="project_info_label_list_container">
+                                {label_list.map((label, index) => (
+                                    <div 
+                                        key={index}
+                                        className="project_info_label_container">
+                                        <span 
+                                            className="project_info_label"
+                                        >
+                                            {label}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                            {
+                                links_title && link_list && link_list.length > 0
+                                ? <div className="project_info_projekt_links_title_container">
+                                    <span className="project_info_project_title_links">
+                                        {links_title.toUpperCase()}
+                                    </span>
+                                </div>
+                                : null
+                            }
+                            {
+                                links_title && link_list && link_list.length > 0
+                                ? <div className="project_info_project_link_button_container">
+                                    {link_list.map(((link, index) => (
+                                        <div
+                                            key={index}
+                                            className="project_info_project_link_button"
+                                        >
+                                            <a 
+                                                className="project_info_project_link_href"
+                                                href={link.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <span className="project_info_project_link_href_text">
+                                                    &#128279; {link.title}
+                                                </span>
+                                            </a> 
+                                        </div>
+                                    )))}
+                                </div>
+                                : null
+                            }
+                        </div>
                     </div>
                 </div>
                 {getDemoProgramm(demo_programm)}

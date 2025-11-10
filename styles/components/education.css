@@ -86,7 +86,7 @@
     margin-top: 80px;
     height: 50px;
     width: 50px;
-    background-color: var(--background-color-3);
+    background-color: var(--background-color-1);
     border: 2px solid var(--font-color-p);
     border-radius: 100%;
     margin-right: auto; /* For Firefox */
@@ -94,8 +94,8 @@
 }
 
 
-:root[data-theme="light"] .education_timeline_point {
-    background-color: var(--background-color-1);
+:root[data-theme="dark"] .education_timeline_point {
+    background-color: var(--background-color-3);
 }
 
 .education_timeline_point:first-child {
@@ -116,13 +116,17 @@
     width: 100%;
     max-width: 600px;
     margin-top: 20px;
-    background-color: var(--background-color-t7);
     border-radius: 10px;
     transition: transform 0.35s ease;
     box-shadow: 2px 2px 8px #0008;
     backdrop-filter: blur(3px);
+    background-color: var(--background-color-1);
     overflow: hidden;
     z-index: 4;
+}
+
+:root[data-theme="dark"] .education_panel {
+    background-color: var(--background-color-2);
 }
 
 .education_panel_border_top {
@@ -131,11 +135,6 @@
 
 .education_panel_wraper {
     padding: 15px;
-}
-
-
-:root[data-theme="light"] .education_panel {
-    background-color: var(--background-color-t7);
 }
 
 /* .education_panel:nth-child(4n) {
@@ -167,13 +166,13 @@
     margin-block: auto;
     line-height: 99%;
     text-align: center;
-    background-color: var(--background-color-4);
+    background-color: var(--background-color-2);
     border-radius: 20px;
 }
 
 
-:root[data-theme="light"] .education_period_container {
-    background-color: var(--background-color-2);
+:root[data-theme="dark"] .education_period_container {
+    background-color: var(--background-color-4);
 }
 
 .education_period {

@@ -23,10 +23,6 @@
     margin-top: 20px;
 }
 
-:root[data-theme="light"] .project {
-    background-color: var(--background-color-1);
-}
-
 .project_unsorted_list {
     position: relative;
     display: grid;
@@ -42,29 +38,35 @@
     overflow: hidden;
     padding-bottom: 5px;
     border-radius: 12px;
+    background-color: var(--background-color-1);
     box-shadow: 2px 2px 8px #0008;
-    background-color: var(--background-color-2);
     flex-direction: column;
     transition: transform 0.35s ease;
     opacity: 0;
-    transform: scale(0.7);
-    animation: project_list_item_popup 0.6s ease both;
+    animation: project_list_item_popup 0.5s ease forwards, project_list_item_popup_2 0.5s ease;
     animation-delay: var(--delay, 0s);
 }
 
 @keyframes project_list_item_popup {
     0% {
         opacity: 0;
-        transform: scale(0.7);
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes project_list_item_popup_2 {
+    0% {
+        transform: scale(0.7);
+    }
+    100% {
         transform: scale(1);
     }
 }
 
-:root[data-theme="light"] .project_list_item {
-    background-color: var(--background-color-1);
+:root[data-theme="dark"] .project_list_item {
+    background-color: var(--background-color-2);
 }
 
 .project_list_item:hover {
@@ -265,6 +267,7 @@
     display: block;
     border-radius: 20px;
     border: 1px solid var(--boarder-color-1);
+    background-color: var(--background-color-t7);
     overflow: hidden;
 }
 
@@ -322,11 +325,16 @@
     color: var(--font-color-1);
 }
 
+.project_content_wrapper {
+    position: relative;
+    display: block;
+    padding: 30px;
+}
+
 .project_gallery_wrapper {
     position: relative;
     display: block;
-    padding: 30px 30px 0 30px;
-    background-color: var(--background-color-t7);
+    padding-bottom: 20px;
 }
 
 .project_gallery_content {
@@ -383,6 +391,7 @@
     height: 100vh;
     height: 100dvh;
     background-color: #000e;
+    overflow: hidden;
     z-index: 9999;
 }
 
@@ -396,42 +405,51 @@
     position: absolute;
     content: "";
     top: 0;
-    height: 40px;
+    height: 100%;
     width: 100%;
 }
 
 .light_box_overlay_close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
     margin-left: auto;
     margin-top: 10px;
     margin-right: 10px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #6668;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 .light_box_overlay_close::before {
     position: absolute;
     content: "";
-    top: 28px;
-    right: 15px;
+    top: 23px;
+    right: 10px;
     width: 30px;
     height: 4px;
     background-color: #eee;
     border-radius: 20px;
     transform: rotate(45deg);
     transition: background-color 0.35s ease;
+    z-index: 1001;
 }
 
 .light_box_overlay_close::after {
     position: absolute;
     content: "";
-    top: 28px;
-    right: 15px;
+    top: 23px;
+    right: 10px;
     width: 30px;
     height: 4px;
     background-color: #eee;
     border-radius: 20px;
     transform: rotate(-45deg);
     transition: background-color 0.35s ease;
+    z-index: 1001;
 }
 
 .light_box_overlay_close:hover.light_box_overlay_close::before, .light_box_overlay_close:hover.light_box_overlay_close::after {
@@ -447,15 +465,25 @@
     align-items: center;
     justify-items: center;
     align-content: center;
+    z-index: 1001;
 }
 
 .light_box_overlay_image {
     position: relative;
-    height: 900px;
+    max-height: 900px;
     object-fit: contain;
     max-height: 100%;
     max-width: 100%;
     border-radius: 12px;
+}
+
+.light_box_zoom_plus {
+    cursor: zoom-in;
+}
+
+.light_box_zoom_minus {
+    transform: scale(1.5);
+    cursor: zoom-out;
 }
 
 .light_box_overlay_left {
@@ -466,12 +494,14 @@
     width: 40px;
     border-radius: 50px;
     background-color: #6668;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 .light_box_overlay_left::before {
     position: absolute;
     content: "";
-    left: 10px;
+    left: 11px;
     top: 14px;
     width: 16px;
     height: 3px;
@@ -484,7 +514,7 @@
 .light_box_overlay_left::after {
     position: absolute;
     content: "";
-    left: 10px;
+    left: 11px;
     top: 22px;
     width: 16px;
     height: 3px;
@@ -502,12 +532,14 @@
     width: 40px;
     border-radius: 50px;
     background-color: #6668;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 .light_box_overlay_right::before {
     position: absolute;
     content: "";
-    right: 10px;
+    right: 11px;
     top: 14px;
     width: 16px;
     height: 3px;
@@ -520,7 +552,7 @@
 .light_box_overlay_right::after {
     position: absolute;
     content: "";
-    right: 10px;
+    right: 11px;
     top: 22px;
     width: 16px;
     height: 3px;
@@ -554,8 +586,6 @@
     display: flex;
     margin-inline: auto;
     max-width: 1000px;
-    padding: 30px;
-    background-color: var(--background-color-t7);
 }
 
 .project_info_content_left {
@@ -688,9 +718,13 @@
         padding: 15px;
     }
 
+
+    .project_content_wrapper {
+        padding: 15px;
+    }
+
     .project_info_content {
         display: block;
-        padding: 15px;
         padding-block: 15px;
     }
 

@@ -98,12 +98,12 @@
     position: absolute;
     height: calc(100% - 34px);
     width: 100%;
-    background-color: var(--background-color-3);
+    background-color: var(--background-color-1);
 }
 
 
-:root[data-theme="light"] .frame_background {
-    background-color: var(--background-color-1);
+:root[data-theme="dark"] .frame_background {
+    background-color: var(--background-color-3);
 }
 
 :root[data-theme="dark"] .frame_background > img {
@@ -115,6 +115,6 @@
     object-position: center;
 }
 
-:root[data-theme="light"] .frame_background > img {
+.frame_background > img {
     display: none;
 }

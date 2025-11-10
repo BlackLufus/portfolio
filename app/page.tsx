@@ -60,9 +60,6 @@ export default function Home() {
     loadData<GeneralData>(DataType.GENERAL, languageCode).then((res) => {
         setGeneralData(res);
     });
-    window.addEventListener("click", e => {
-        console.log("window_click_check!");
-    });
   }, [languageCode]);
 
   async function handleTaskClick(taskId: TaskId) {
@@ -193,7 +190,9 @@ export default function Home() {
         <div className="task_apps">
         </div>
         <div className="task_right">
-          <Language/>
+          <Language
+            state={languageCode}
+            onClick={handleLanguageClick}/>
           <DarkMode 
             state={darkmodeState} 
             onclick={handleDarkmodeClick} />
