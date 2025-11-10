@@ -75,7 +75,7 @@ export default function Overview({config}: OverviewProps) {
                     </div>
                 </div>
                 <div className="overview_image_container">
-                    <img className="overview_image" src="images/squirrel.png" alt="" />
+                    <img className="overview_image" src="images/data/portrait.png" alt="" />
                 </div>
             </div>
         );

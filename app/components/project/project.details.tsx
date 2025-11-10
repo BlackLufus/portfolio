@@ -162,14 +162,17 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                                             {features_title}
                                         </span>
                                     </div>
-                                    <div className="project_info_features_content">
+                                    <div className="project_info_features_wrapper">
                                         {features_list.map((feature, index) => (
-                                            <span 
+                                            <div 
                                                 key={index}
-                                                className="project_info_features"
-                                            >
-                                                {feature}
-                                            </span>
+                                                className="project_info_features_content">
+                                                <span 
+                                                    className="project_info_features"
+                                                >
+                                                    {feature}
+                                                </span>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
