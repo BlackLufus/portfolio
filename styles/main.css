@@ -169,7 +169,7 @@ main {
     color: var(--font-color-2);
 }
 
-footer {
+.task_bar {
     z-index: 10000;
     position: absolute;
     display: flex;

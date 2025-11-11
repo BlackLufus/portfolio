@@ -143,7 +143,7 @@
     flex-wrap: wrap;
     justify-content: left;
     gap: 6px;
-    padding: 0 6px;
+    padding: 0 10px;
     height: 70px;
     overflow: hidden;
 }
@@ -574,6 +574,7 @@
     padding-block: 10px;
     text-align: center;
     background-color: #000c;
+    z-index: 1001;
 }
 
 .light_box_overlay_description {

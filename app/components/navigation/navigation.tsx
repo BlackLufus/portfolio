@@ -7,6 +7,8 @@ interface NaviProbs {
     projectTitle: string;
     educationTitle: string;
     contactTitle: string;
+    desktopViewTitle: string;
+    languageTitle: string;
     pageState: boolean;
     handlePageClick: () => void;
     languageState: LanguageCode;
@@ -15,7 +17,7 @@ interface NaviProbs {
     handleDarkmodeClick: () => void;
 }
 
-export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, pageState, handlePageClick, languageState, handleLanguageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
+export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, desktopViewTitle, languageTitle, pageState, handlePageClick, languageState, handleLanguageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
 
     const naviRef = useRef<HTMLDivElement>(null);
     const naviMenuWrapper = useRef<HTMLDivElement>(null);
@@ -186,7 +188,7 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                                         <path d="M16 20a1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1zM2.5 17h25c.277 0 .5.223.5.5s-.223.5-.5.5h-25c-.277 0-.5-.223-.5-.5s.223-.5.5-.5zm-1-14C.678 3 0 3.678 0 4.5v17c0 .822.678 1.5 1.5 1.5H12v3H9.5c-.277 0-.5.223-.5.5s.223.5.5.5h11c.277 0 .5-.223.5-.5s-.223-.5-.5-.5H18v-3h10.5c.822 0 1.5-.678 1.5-1.5v-17c0-.822-.678-1.5-1.5-1.5zm0 1h27c.286 0 .5.214.5.5v17c0 .286-.214.5-.5.5h-27c-.286 0-.5-.214-.5-.5v-17c0-.286.214-.5.5-.5zM13 23h4v3h-4z"/>
                                     </svg>
                                     <span className="navi_menu_span">
-                                        Desktop View
+                                        {desktopViewTitle}
                                     </span>
                                 </li>
                             </a>
@@ -209,7 +211,7 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                                         </div>
                                     </div>
                                     <span className="navi_menu_span">
-                                        Sprache
+                                        {languageTitle}
                                     </span>
                                 </li>
                             </a>

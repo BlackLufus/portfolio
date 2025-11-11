@@ -38,6 +38,8 @@ interface GeneralData {
   project: ProjectConfig;
   education: EducationConfig;
   contact: ContactConfig;
+  desktop_view: string;
+  language: string;
   year: string;
   all_rights_reserved: string;
   link_text: string;
@@ -124,6 +126,8 @@ export default function Home() {
           projectTitle={data.project.title}
           educationTitle={data.education.title}
           contactTitle={data.contact.title}
+          desktopViewTitle={data.desktop_view}
+          languageTitle={data.language}
           pageState={pageState}
           handlePageClick={handlePageClick}
           languageState={languageCode}
@@ -183,7 +187,7 @@ export default function Home() {
             open_task={handleTaskClick} />
         </div>
       </main>
-      <footer>
+      <footer className="task_bar">
         <div className="task_button">
           <StartButton/>
         </div>
