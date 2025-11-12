@@ -1,0 +1,24 @@
+# Git
+.git
+.gitignore
+
+# Docker & Compose
+Dockerfile
+docker-compose.yml
+
+# Logs & Build Artefakte
+*.log
+.next
+build
+
+# Node
+node_modules
+
+# Development / Tools
+*.md
+makefile
+!eslint.config.*
+!postcss.config.*
+
+# Environment / Secrets
+.env
