@@ -1,0 +1,14 @@
+services:
+  app:
+    image: frontend:${APP_VERSION:-v1}
+    ports:
+      - "3000:3000"
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+      restart_policy:
+        condition: on-failure
+        delay: 5s
