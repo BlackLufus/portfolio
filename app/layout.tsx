@@ -23,7 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="de">
+      <meta name="description" content="Softwareentwickler mit Fokus auf Fullstack-Lösungen." />
+      <meta property="og:title" content="Michael Reischl - Portfolio" />
+      <meta property="og:description" content="Erfahre mehr über meine Projekte und Skills." />
+      <meta property="og:image" content="/favicon.ico" />
+      <link rel="icon" href="/favicon.ico"></link>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
