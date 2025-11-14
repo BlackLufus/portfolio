@@ -6,13 +6,13 @@ This website was developed to showcase my projects, skills, and experience in th
 
 ### Getting Started
 
-**Install dependencies**
+#### Install dependencies
 Install all required packages for the project to run.
 ```bash
 npm install
 ```
 
-**Start developer mode**
+#### Start developer mode
 Launches the app with hot-reload for active development.
 ```bash
 npm run dev
@@ -25,13 +25,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-**Create production mode**
+#### Create production mode
 Builds an optimized production version of the application.
 ```bash
 npm build
 ```
 
-**Start production mode**
+#### Start production mode
 Runs the already built production bundle.
 ```bash
 npm start
@@ -50,7 +50,7 @@ In the Makefile you can define the `IMAGE_NAME`, `CONTAINER_NAME`, and `STACK_NA
 
 ### Single Container
 
-**Build and Run**
+#### Build and Run
 Automatically builds the image and starts the container.
 ```bash
 make
@@ -58,49 +58,49 @@ make
 make setup
 ```
 
-**Build Docker Image**
+#### Build Docker Image
 Creates a versioned Docker image using the specified APP_VERSION tag.
 ```bash
 make build APP_VERSION=v1
 ```
 
-**Launch Docker Container**
+#### Launch Docker Container
 Starts the container using the previously built image.
 ```bash
 make run
 ```
 
-**Stop Container**
+#### Stop Container
 Gracefully stops the running container.
 ```bash
 make stop
 ```
 
-**Remove Container**
+#### Remove Container
 Deletes the stopped container from the system.
 ```bash
 make rm
 ```
 
-**Remove Image**
+#### Remove Image
 Removes the versioned image from your local Docker registry.
 ```bash
 make rmi APP_VERSION=v1
 ```
 
-**Stop and Remove a Docker Container**
+#### Stop and Remove a Docker Container
 Stops and removes the docker container from the list
 ```bash
 make clean
 ```
 
-**Stop and Removes a Docker Container/Image**
+#### Stop and Removes a Docker Container/Image
 Stops and removes the docker container from the list and removes the image from the images
 ```bash
 make fullclean
 ```
 
-**Rebuild and run a Docker Image/Container**
+#### Rebuild and run a Docker Image/Container
 Stops and removes the docker container from the list and removes the image from the images. The image is then also recreated and started
 ```bash
 make reset
@@ -108,19 +108,19 @@ make reset
 
 ### Docker Compose
 
-**Build services**
+#### Build services
 Builds all defined Docker images for the Compose stack.
 ```bash
 docker compose build
 ```
 
-**Start services**
+#### Start services
 Runs the stack in detached mode.
 ```bash
 docker compose up -d
 ```
 
-**Stop / remove services**
+#### Stop / remove services
 Stops and removes the running Compose stack.
 ```bash
 docker compose down
@@ -128,19 +128,19 @@ docker compose down
 
 ### Docker Swarm
 
-**Deploy Stack**
+#### Deploy Stack
 Deploys the service stack to the Swarm using the specified APP_VERSION tag.
 ```bash
 make deploy APP_VERSION=v1
 ```
 
-**Undeploy Stack**
+#### Undeploy Stack
 Removes the deployed Swarm services.
 ```bash
 make undeploy
 ```
 
-**Update Service Version**
+#### Update Service Version
 Rolls out an update to a new APP_VERSION image.
 ```bash
 make update APP_VERSION=v2
