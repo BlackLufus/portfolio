@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export enum TaskId {
     OVERVIEW = 0,
     ABOUTME = 1,
@@ -22,7 +24,7 @@ export default function Task({task_id, title, icon, open_task}: TaskProps) {
     return(
         <div className="task" onClick={click}>
             <div>
-                <img src={icon} alt="" />
+                <Image src={icon} alt="" />
             </div>
             <div>
                 <span>

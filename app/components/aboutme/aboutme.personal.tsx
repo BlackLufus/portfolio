@@ -3,7 +3,7 @@ interface PersonalProps {
     text: string
 }
 
-export default function Personal({icon, text}:PersonalProps) {
+export default function Personal({text}:PersonalProps) {
 
 
     return(

@@ -397,8 +397,9 @@
 
 .light_box_overlay_content {
     position: relative;
-    height: 100%;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .light_box_overlay_close_container {
@@ -407,6 +408,53 @@
     top: 0;
     height: 100%;
     width: 100%;
+}
+
+.light_box_overlay_counter {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    width: 60px;
+    text-align: right;
+    z-index: 1001;
+}
+
+.light_box_overlay_counter_text {
+    font-size: var(--font-size-4);
+    color: white;
+}
+
+.light_box_overlay_zoom_bar {
+    position: absolute;
+    display: flex;
+    left: calc(50% - 75px);
+    top: 20px;
+    border: 1px solid black;
+    border-radius: 12px;
+    background-color: white;
+    cursor: pointer;
+    z-index: 1001;
+    overflow: hidden;
+}
+
+.light_box_overlay_zoom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.35s ease, fill 0.35s ease;
+}
+
+.light_box_overlay_zoom:hover {
+    background-color: var(--font-color-p);
+    fill: white;
+}
+
+.light_box_overlay_zoom.middle {
+    width: 52px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .light_box_overlay_close {
@@ -457,43 +505,67 @@
 }
 
 .light_box_overlay_image_container {
-    position: relative;
-    height: 100%;
-    max-width: 100%;
-    width: fit-content;
-    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
     align-items: center;
-    justify-items: center;
-    align-content: center;
-    z-index: 1001;
+    justify-content: center;
+    transition: transform 0.35s ease;
+    z-index: 800;
+}
+
+.light_box_overlay_image_container.slide {
+    animation: prev 0.35s ease
+}
+
+@keyframes prev {
+    0% {
+        transform: translateX(var(--start));
+    }
+    100% {
+        transform: translateX(var(--stop));
+    }
+}
+
+@keyframes next {
+    0% {
+        transform: translateX(var(--start));
+    }
+    100% {
+        transform: translateX(var(--stop));
+    }
 }
 
 .light_box_overlay_image {
     position: relative;
     max-height: 900px;
-    object-fit: contain;
-    max-height: 100%;
     max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     border-radius: 12px;
+    transform: translateX(var(--translateX, 0px)) translateY(var(--translateY, 0px)) translateZ(0px) scale(var(--scale, 1));
+    -webkit-user-drag: none;
+    user-select: none;
+    cursor: grab;
 }
 
-.light_box_zoom_plus {
-    cursor: zoom-in;
+.light_box_overlay_image.scaling {
+    transition: transform 0.35s ease;
 }
 
-.light_box_zoom_minus {
-    transform: scale(1.5);
-    cursor: zoom-out;
+.light_box_overlay_image.dragging {
+    cursor: grabbing;
 }
 
 .light_box_overlay_left {
     position: absolute;
-    left: 10px;
-    top: calc(50% - 20px);
-    height: 40px;
+    left: 0px;
+    top: calc(50% - 40px);
+    height: 80px;
     width: 40px;
-    border-radius: 50px;
-    background-color: #6668;
+    background-color: transparent;
     cursor: pointer;
     z-index: 1001;
 }
@@ -501,9 +573,9 @@
 .light_box_overlay_left::before {
     position: absolute;
     content: "";
-    left: 11px;
-    top: 14px;
-    width: 16px;
+    left: 8px;
+    top: 35px;
+    width: 20px;
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
@@ -514,9 +586,9 @@
 .light_box_overlay_left::after {
     position: absolute;
     content: "";
-    left: 11px;
-    top: 22px;
-    width: 16px;
+    left: 8px;
+    top: 45px;
+    width: 20px;
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
@@ -526,12 +598,11 @@
 
 .light_box_overlay_right {
     position: absolute;
-    right: 10px;
-    top: calc(50% - 20px);
-    height: 40px;
+    right: 0px;
+    top: calc(50% - 40px);
+    height: 80px;
     width: 40px;
-    border-radius: 50px;
-    background-color: #6668;
+    background-color: transparent;
     cursor: pointer;
     z-index: 1001;
 }
@@ -539,9 +610,9 @@
 .light_box_overlay_right::before {
     position: absolute;
     content: "";
-    right: 11px;
-    top: 14px;
-    width: 16px;
+    right: 8px;
+    top: 35px;
+    width: 20px;
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
@@ -552,9 +623,9 @@
 .light_box_overlay_right::after {
     position: absolute;
     content: "";
-    right: 11px;
-    top: 22px;
-    width: 16px;
+    right: 8px;
+    top: 45px;
+    width: 20px;
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
@@ -715,6 +786,10 @@
 
     .project_list_item {
         margin-inline: 10px;
+    }
+    
+    .light_box_overlay_zoom_bar {
+        display: none;
     }
 }
 

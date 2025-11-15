@@ -1,13 +1,11 @@
 "use client";
 import Frame from "../frame";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Personal from "./aboutme.personal";
-import SkillCard from "./aboutme.skill.card";
-import EventListener from "@/miscs/EventListener";
 import loadData, { DataType } from "@/services/load_data";
 import Professional from "./aboutme.professional";
 import Loading from "@/widgets/loader";
-import Skill, { SkillData } from "./aboutme.skill";
+import Skill from "./aboutme.skill";
 import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface CharacteristicsData {
@@ -64,7 +62,7 @@ export default function AboutMe({config}: AboutMeProps) {
 
     const terminate = () => {
         console.log("AboutMe: terminated");
-    };7
+    };
 
     const build = (): ReactNode => {
         if (!data) {

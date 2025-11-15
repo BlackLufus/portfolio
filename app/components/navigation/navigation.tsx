@@ -17,7 +17,7 @@ interface NaviProbs {
     handleDarkmodeClick: () => void;
 }
 
-export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, desktopViewTitle, languageTitle, pageState, handlePageClick, languageState, handleLanguageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
+export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, desktopViewTitle, languageTitle, handlePageClick, languageState, handleLanguageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
 
     const naviRef = useRef<HTMLDivElement>(null);
     const naviMenuWrapper = useRef<HTMLDivElement>(null);

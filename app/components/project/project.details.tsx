@@ -2,6 +2,7 @@ import { ReactNode, useRef, useState } from "react";
 import NumberDetector from "../neuralnetwork/numberdetector";
 import CustomScrollBar from "@/widgets/customScrollBar";
 import LightBoxOverlay from "./project.gallery.overlay";
+import Image from "next/image";
 
 export enum  TestProgramm {
     NUMBERDETECTOR = 0
@@ -78,7 +79,7 @@ export default function ProjectDetails({ title, categorie, image, overview_title
             </div>
             <div className="project_info_wrapper">
                 <div className="project_info_header">
-                    <img className="project_info_image" src={image} alt="" />
+                    <Image className="project_info_image" src={image} alt="" />
                     <div className="project_info_header_content">
                         <div className="project_info_title_container">
                             <span className="project_info_title">
@@ -115,7 +116,7 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                                         <li 
                                             className="project_gallery_image_container"
                                             key={index}>
-                                            <img 
+                                            <Image 
                                                 className="project_gallery_image"
                                                 onClick={() => onOpenImage(index)}
                                                 src={image.url}

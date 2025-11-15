@@ -51,7 +51,7 @@
     position: absolute;
     content: "";
     background-color: var(--font-color-p);
-    height: var(--fill-height, 0%);;
+    height: var(--fill-height, 0%);
     width: 4px;
     top: 0;
     left: calc((100%/2) - 2px);

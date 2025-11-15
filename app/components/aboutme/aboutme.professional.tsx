@@ -1,5 +1,3 @@
-import IconSvg from "@/widgets/icon_svg";
-
 interface professionalProps {
     data: string;
     text: string;

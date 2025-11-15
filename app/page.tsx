@@ -29,6 +29,7 @@ import Contact, { ContactConfig } from "./components/contact/contact";
 import Footer from "./components/footer/footer";
 import Task, { TaskId } from "./components/taskbar/taskbar";
 import LanguageNotifier, { LanguageCode } from "./global/languageSubscriber";
+import Image from "next/image";
 
 interface GeneralData {
   firstname: string;
@@ -117,7 +118,7 @@ export default function Home() {
   return (
     pageState
     ? <div className="webpage">
-      <img className="webpage_background" src="/images/bubbles.png" alt="" />
+      <Image className="webpage_background" src="/images/bubbles.png" alt="" />
       <main ref={webpageContainerRef} className="webpage_wrapper">
         <Navi
           firstname={data.firstname}
@@ -153,7 +154,7 @@ export default function Home() {
     </div>
     : <div>
       <main id="desktop" className="desktop">
-        <img className="background_image" src="images/bubbles.png" alt="bubbles" loading="lazy" />
+        <Image className="background_image" src="images/bubbles.png" alt="bubbles" loading="lazy" />
         <div id="desktop_application" className="desktop_application">
           {openComponents.map((comp, index) => (
             <div key={index}>{comp}</div>

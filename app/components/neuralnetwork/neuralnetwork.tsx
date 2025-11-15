@@ -34,7 +34,7 @@ export default class NeuralNetwork {
     private dot(A: number[][], B: number[][]): number[][] {
         const rowsA = A.length;
         const colsA = A[0].length;
-        const rowsB = B.length;
+        // const rowsB = B.length;
         const colsB = B[0].length;
         const result = Array.from({
             length: rowsA

@@ -122,7 +122,7 @@ export default function CustomScrollBar( {wrapperRef, size, setIsDragging}: Cust
         wrapperRef.current.scrollLeft = scrollLeft - walk;
     }
 
-    const mouseUp = (e: MouseEvent) => {
+    const mouseUp = () => {
         if (!wrapperRef.current) return;
         wrapperRef.current.removeEventListener('mousemove', mouseMove)
     }
