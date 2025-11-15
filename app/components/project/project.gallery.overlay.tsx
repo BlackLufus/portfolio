@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { GalleryData } from "./project.details";
 import { setTimeout } from "timers";
 import Point from "@/miscs/point";
-import Image from "next/image";
 
 interface LightBoxOverlayProbs {
     gallery: Array<GalleryData>;
@@ -277,7 +276,7 @@ export default function LightBoxOverlay( {start, gallery, onClose}: LightBoxOver
                                 "--stop": slideState == 1 ? "-100vw" : "100vw"
                             } as React.CSSProperties
                         }>
-                    <Image 
+                    <img 
                         ref={zoomImgRef}
                         style={
                             {
@@ -298,7 +297,7 @@ export default function LightBoxOverlay( {start, gallery, onClose}: LightBoxOver
                                 "--stop": "0"
                             } as React.CSSProperties
                         }>
-                    <Image 
+                    <img 
                         className={`light_box_overlay_image ${isDragging ? "dragging" : ""}`}
                         src={gallery[(slideState == 1 ? index+1 : index-1)].url} 
                         alt="" />

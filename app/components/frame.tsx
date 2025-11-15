@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import EventListener from "../miscs/EventListener";
 import Point from "../miscs/point";
-import Image from "next/image";
 
 interface FrameProps {
   title: string;
@@ -161,12 +160,12 @@ export default function Frame({ title, icon_url, heigth = "auto", width = "auto"
     return (
         <div ref={frameRef} className="frame" style={{ zIndex: zCounter }}>
             <div className="frame_background">
-                <Image src="images/colors.jpg" alt="bubbles" className="frame_background" />
+                <img src="images/colors.jpg" alt="bubbles" className="frame_background" />
             </div>
             <header className="frame_header">
                 <div ref={frameHeaderRef}>
                     <div>
-                        <Image src={icon_url} alt="" />
+                        <img src={icon_url} alt="" />
                     </div>
                     <span className="frame_title">
                         {title}

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export interface EducationData {
     image: string;
     degree: string;
@@ -33,7 +31,7 @@ export default function EducationCard({data, class_name}:EducationCardProps) {
             </div>
             <div className="education_panel_institution">
                 <div className="education_institution_image">
-                    <Image src={data.image} alt="" />
+                    <img src={data.image} alt="" />
                 </div>
                 <div>
                     <span className="education_institution">

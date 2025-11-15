@@ -4,7 +4,6 @@ import Frame from "./frame";
 import { ReactNode, useEffect, useState } from "react";
 import Loading from "@/widgets/loader";
 import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
-import Image from "next/image";
 
 interface OverviewData {
     title: string;
@@ -76,7 +75,7 @@ export default function Overview({config}: OverviewProps) {
                     </div>
                 </div>
                 <div className="overview_image_container">
-                    <Image className="overview_image" src="images/data/portrait.png" alt="" />
+                    <img className="overview_image" src="images/data/portrait.png" alt="" />
                 </div>
             </div>
         );

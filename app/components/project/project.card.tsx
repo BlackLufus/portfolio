@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { GalleryData } from "./project.details";
 
 interface LinkData {
@@ -41,7 +40,7 @@ export default function ProjectCard({ index, image, title, description, labels, 
                 onClick={() => {
                     onClick(index);
             }}>
-                <Image className="project_image" src={image} alt="" />
+                <img className="project_image" src={image} alt="" />
             </div>
             <div className="project_title_container">
                 <span 

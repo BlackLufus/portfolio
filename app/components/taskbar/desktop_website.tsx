@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 interface DesktopWebsiteProbs {
     state: boolean
     onClick: (newState: boolean) => void
@@ -17,13 +15,13 @@ export default function DesktopWebsite({state, onClick}:DesktopWebsiteProbs) {
         <div id="desktop_website" className="desktop_website" onClick={handleClick}>
             {state
                 ? <div>
-                    <Image
+                    <img
                         src="../images/desktop.png"
                         alt=""
                     />
                 </div>
                 : <div>
-                    <Image
+                    <img
                         src="../images/website.png"
                         alt=""
                     />

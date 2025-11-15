@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import { useEffect } from "react";
 
 interface DarkmodeProbs {
@@ -23,14 +21,14 @@ export default function DarkMode({state, onclick}:DarkmodeProbs) {
                 {
                     !state
                     ? <div>
-                        <Image
+                        <img
                             src="../images/night.png"
                             alt="moon"
                             // className={isDarkMode ? "" : "hidden_image"}
                         />
                     </div>
                     : <div>
-                        <Image
+                        <img
                             src="../images/day.png"
                             alt="sun"
                             // className={isDarkMode ? "hidden_image" : ""}
