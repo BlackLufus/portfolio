@@ -102,9 +102,9 @@ export default function Contact({config}: ContactProps) {
                 }>(formData);
                 if (result.succeed) {
                     setResultText(data!.form_response_success);
-                    // setTimeout(() => {
-                    //     setResultText(null)
-                    // }, 3000);
+                    setTimeout(() => {
+                        setResultText(null)
+                    }, 3000);
                 }
                 else {
                     setErrorText(data!.form_response_error);
