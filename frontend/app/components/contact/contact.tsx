@@ -266,7 +266,7 @@ export default function Contact({config}: ContactProps) {
                                                 </g>
                                             </g>
                                         </svg>
-                                        <span>
+                                        <span className="contact_form_success_message">
                                             {resultText}
                                         </span>
                                     </div>
