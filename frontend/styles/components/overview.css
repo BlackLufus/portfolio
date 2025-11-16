@@ -102,11 +102,17 @@
     object-position: center;
 }
 
+@media screen and (max-width: 1150px) {
+    .overview {
+        padding-inline: 10px;
+    }
+}
+
 @media screen and (max-width: 966px) {
     .overview {
         flex-direction: column;
         max-width: 100%;
-        padding-inline: 15px;
+        padding-inline: 10px;
     }
 
     .overview_information {

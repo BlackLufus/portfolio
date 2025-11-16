@@ -778,7 +778,6 @@
     color: var(--font-color-1);
 }
 
-
 @media screen and (max-width: 966px) {
     .projects  {
         padding-inline: 5px;

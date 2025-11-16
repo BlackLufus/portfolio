@@ -126,17 +126,23 @@
 
 .contact_form_output_wrapper {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    gap: 10px;
+
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--background-color-t7);
     backdrop-filter: blur(6px);
+}
+
+.contact_form_output_wrapper > svg {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+
 }
 
 .contact_form_output_wrapper.animation {
@@ -152,12 +158,26 @@
     }
 }
 
+.contact_form_output_content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
 .contact_form_success_message {
     font-size: var(--font-size-5);
     color: var(--font-color-2);
 }
 
 @media screen and (max-width: 966px) {
+    .contact {
+        padding-inline: 10px;
+    }
+
     .contact_content_wrapper {
         display: block;
     }

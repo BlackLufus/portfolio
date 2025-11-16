@@ -118,24 +118,26 @@ export default function Project({config}: ProjectProps) {
                             onClose={openProject}
                             demo_programm={data.project_list[selectedProject].test_programm}
                         />
-                        : <ul className="project_unsorted_list">
-                            {data.project_list.map((projectData, index) => (
-                                <ProjectCard
-                                    key={index}
-                                    index={index}
-                                    image={projectData.image}
-                                    title={projectData.title}
-                                    description={projectData.description}
-                                    labels={projectData.labels}
-                                    button_title={data.project_info.button_title}
-                                    onClick={openProject}
-                                />
-                            ))}
-                            {/* <ProjectAddCard
-                                index={projectDataList.length}
-                                onClick={toggleForm}
-                            /> */}
-                        </ul>
+                        : <div className="projects_wrapper">
+                            <ul className="project_unsorted_list">
+                                {data.project_list.map((projectData, index) => (
+                                    <ProjectCard
+                                        key={index}
+                                        index={index}
+                                        image={projectData.image}
+                                        title={projectData.title}
+                                        description={projectData.description}
+                                        labels={projectData.labels}
+                                        button_title={data.project_info.button_title}
+                                        onClick={openProject}
+                                    />
+                                ))}
+                                {/* <ProjectAddCard
+                                    index={projectDataList.length}
+                                    onClick={toggleForm}
+                                /> */}
+                            </ul>
+                        </div>
                     }
                 </div>
             </div>
