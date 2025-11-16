@@ -1,7 +1,7 @@
 .frame {
     position: absolute;
     overflow: hidden;
-    border: 1px solid var(--boarder-color-2);
+    border: 1px solid var(--border-color-2);
     border-radius: 10px;
     min-height: 56px;
     animation-name: popup_frame;
@@ -29,7 +29,7 @@
     user-select: none;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-bottom: 1px solid var(--boarder-color-1);
+    border-bottom: 1px solid var(--border-color-1);
     backdrop-filter: blur(10px);
 }
 

@@ -5,7 +5,7 @@
     display: block;
     margin: auto;
     justify-content: center;
-    border-top: 1px solid var(--boarder-color-1);
+    border-top: 1px solid var(--border-color-1);
 }
 
 .number_detector_run_wrapper {
@@ -40,7 +40,7 @@
     text-align: center;
     background-color: var(--background-color-2);
     border-radius: 8px;
-    border: 1px solid var(--boarder-color-1);
+    border: 1px solid var(--border-color-1);
     cursor: pointer;
 }
 
@@ -84,7 +84,7 @@
     height: 400px;
     margin-inline: auto;
     border-radius: 12px;
-    border: 1px solid var(--boarder-color-1);
+    border: 1px solid var(--border-color-1);
     overflow: hidden;
     margin-bottom: 30px;
 }
@@ -107,7 +107,7 @@
     margin-block: 5px;
     padding: 2px 15px;
     background-color: var(--background-color-t6);
-    border: 1px solid var(--boarder-color-1);
+    border: 1px solid var(--border-color-1);
     border-radius: 8px;
     cursor: pointer;
 }
@@ -131,7 +131,7 @@
     height: 196px;
     margin-bottom: 30px;
     border-radius: 12px;
-    border: 1px solid var(--boarder-color-1);
+    border: 1px solid var(--border-color-1);
     overflow: hidden;
 }
 
@@ -145,7 +145,7 @@
     height: 196px;
     margin-bottom: 30px;
     border-radius: 12px;
-    border: 1px solid var(--boarder-color-1);
+    border: 1px solid var(--border-color-1);
     overflow: hidden;
 }
 

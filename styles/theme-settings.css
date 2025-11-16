@@ -40,10 +40,10 @@
     --background-color-t6: #dadadaaa;
     --background-color-t7: #fffa;
 
-    --boarder-color-1: #ccc;
-    --boarder-color-2: #999;
-    --boarder-color-3: #666;
-    --boarder-color-4: #333;
+    --border-color-1: #ccc;
+    --border-color-2: #999;
+    --border-color-3: #666;
+    --border-color-4: #333;
 }
 
 [data-theme="dark"] {
@@ -74,8 +74,8 @@
     --background-color-t6: #252525aa;
     --background-color-t7: #111a;
 
-    --boarder-color-1: #333;
-    --boarder-color-2: #666;
-    --boarder-color-3: #999;
-    --boarder-color-4: #ccc;
+    --border-color-1: #333;
+    --border-color-2: #666;
+    --border-color-3: #999;
+    --border-color-4: #ccc;
 }

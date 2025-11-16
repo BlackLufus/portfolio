@@ -1,5 +1,3 @@
-import { ProjectData } from "@/components/project/project.card";
-
 export async function createProject<T>(formData: FormData, id?: number | null):Promise<T> {
 
      const image = formData.get('image');

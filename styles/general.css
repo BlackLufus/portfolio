@@ -29,6 +29,11 @@
     color: var(--font-color-3);
 }
 
+.description3 {
+    font-size: var(--font-size-9);
+    color: var(--font-color-4);
+}
+
 .profil_image {
     
 }
