@@ -1,9 +1,12 @@
 import json
+import requests
 from dotenv import load_dotenv
 load_dotenv()
 from datetime import datetime
 from flask import Flask, request
 from flask_cors import CORS
+
+import push_notification as pn
 
 import database
 
@@ -49,14 +52,25 @@ def get_tree():
         "/contact": "POST"
     }})
 
-
 @api.route('/contact', methods=['POST'])
 def contact():
     try:
         first_name = request.form.get('first_name')
+        if len(first_name) > 64:
+            return build_response(False, 400,
+                                error_message="first_name exceed length")
         last_name = request.form.get('last_name')
+        if len(last_name) > 64:
+            return build_response(False, 400,
+                                error_message="last_name exceed length")
         email = request.form.get('email')
+        if len(first_name) > 100:
+            return build_response(False, 400,
+                                error_message="email exceed length")
         message = request.form.get('message')
+        if len(message) > 1000:
+            return build_response(False, 400,
+                                error_message="message exceed length")
 
         if first_name is None or last_name is None or message is None:
             return build_response(False, 400,
@@ -68,11 +82,69 @@ def contact():
 
         db_result = database.statement(query, values)
         if db_result is not None:
+            PROJECT_ID = pn.getProjectId()
+            ACCESS_TOKEN = pn.getAccessToken()
+            FCM_TOKEN = pn.getFcmToken()
+            r = requests.post(
+                f"https://fcm.googleapis.com/v1/projects/{PROJECT_ID}/messages:send",
+                headers={
+                    "Authorization": f"Bearer {ACCESS_TOKEN}",
+                    "Content-Type": "application/json"
+                },
+                data=json.dumps({
+                    "message": {
+                        "token": FCM_TOKEN,
+                        "notification": {
+                            "title": "Portfolio Nachricht",
+                            "body": f"Neue Nachricht von {first_name} {last_name}"
+                        },
+                        "data": {
+                            "first_name": first_name,
+                            "last_name": last_name,
+                            "email": email,
+                            "message": message
+                        }
+                    }
+                })
+            )
+            print("Push Notification", r.status_code, r.reason)
             return build_response(True, 201, message="The contact request was successfully sent.")
         else:
             return build_response(False, 403,
                                   error_message=f"The contact request failed.")
             
+    except Exception as e:
+        logger.info(f"{type(e).__name__} - {e}")
+        return build_response(False, 501, error_message="An internal error occur.")
+
+@api.route('/notifications', methods=['GET'])
+def notifications():
+    try:
+        query = f"""
+                SELECT 
+                    created_at, 
+                    first_name, 
+                    last_name, 
+                    email, 
+                    message
+                FROM contact c 
+                """
+        values = ()
+        db_result = database.statement(query, values)
+
+        results = []
+
+        if db_result is not None and len(db_result) >= 1:
+            for created_at, first_name, last_name, email, message in db_result:
+                results.append({
+                    "created_at": (created_at).strftime('%Y.%m.%d - %H:%M'),
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "email": None if email == "" else email,
+                    "message": message
+                })
+
+        return build_response(True, 200, response=results)
     except Exception as e:
         logger.info(f"{type(e).__name__} - {e}")
         return build_response(False, 501, error_message="An internal error occur.")
