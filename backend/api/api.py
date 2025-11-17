@@ -99,6 +99,7 @@ def contact():
                             "body": f"Neue Nachricht von {first_name} {last_name}"
                         },
                         "data": {
+                            "created_at": str(datetime.now()),
                             "first_name": first_name,
                             "last_name": last_name,
                             "email": email,
@@ -128,6 +129,8 @@ def notifications():
                     email, 
                     message
                 FROM contact c 
+                GROUP BY c.id 
+                ORDER BY c.id desc
                 """
         values = ()
         db_result = database.statement(query, values)
@@ -137,7 +140,7 @@ def notifications():
         if db_result is not None and len(db_result) >= 1:
             for created_at, first_name, last_name, email, message in db_result:
                 results.append({
-                    "created_at": (created_at).strftime('%Y.%m.%d - %H:%M'),
+                    "created_at": str(created_at),
                     "first_name": first_name,
                     "last_name": last_name,
                     "email": None if email == "" else email,
