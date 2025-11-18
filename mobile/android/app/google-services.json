@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "241247222172",
+    "project_id": "notification-cef13",
+    "storage_bucket": "notification-cef13.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241247222172:android:caf9ac316e77e37f50f059",
+        "android_client_info": {
+          "package_name": "com.example.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa0s_keUJuRWLlCpwNaw1IS62GgZP9dSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
