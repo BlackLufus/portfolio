@@ -1,4 +1,6 @@
 import json
+import os
+import re
 import requests
 from dotenv import load_dotenv
 load_dotenv()
@@ -64,9 +66,12 @@ def contact():
             return build_response(False, 400,
                                 error_message="last_name exceed length")
         email = request.form.get('email')
-        if len(first_name) > 100:
+        if len(email) > 100:
             return build_response(False, 400,
                                 error_message="email exceed length")
+        elif email is not None and len(email) != 0 and checkEmail:
+            return build_response(False, 400,
+                                error_message="email address is not valid")
         message = request.form.get('message')
         if len(message) > 1000:
             return build_response(False, 400,
@@ -102,7 +107,7 @@ def contact():
                             "created_at": str(datetime.now()),
                             "first_name": first_name,
                             "last_name": last_name,
-                            "email": email,
+                            "email": email is None,
                             "message": message
                         }
                     }
@@ -121,6 +126,12 @@ def contact():
 @api.route('/notifications', methods=['GET'])
 def notifications():
     try:
+        auth_header = request.headers.get("Authorization")
+        auth_token = auth_header.split(" ")[1] if auth_header and auth_header.startswith("Bearer ") else None
+
+        if auth_token is None or auth_token != os.getenv("AUTH_TOKEN"):
+            return build_response(False, 401, error_message="Request had invalid authentication credentials.")
+        
         query = f"""
                 SELECT 
                     created_at, 
@@ -152,6 +163,10 @@ def notifications():
         logger.info(f"{type(e).__name__} - {e}")
         return build_response(False, 501, error_message="An internal error occur.")
 
+
+def checkEmail(email):
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+    return re.fullmatch(regex, email)
 
 # @api.route('/project_list', methods=['GET'])
 # def project_list():
