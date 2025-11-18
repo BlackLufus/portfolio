@@ -58,22 +58,33 @@ def get_tree():
 def contact():
     try:
         first_name = request.form.get('first_name')
-        if len(first_name) > 64:
+        if first_name is None:
+            return build_response(False, 400,
+                                error_message="first_name is required but not provided!")
+        elif len(first_name) > 64:
             return build_response(False, 400,
                                 error_message="first_name exceed length")
         last_name = request.form.get('last_name')
-        if len(last_name) > 64:
+        if last_name is None:
+            return build_response(False, 400,
+                                error_message="last_name is required but not provided!")
+        elif len(last_name) > 64:
             return build_response(False, 400,
                                 error_message="last_name exceed length")
         email = request.form.get('email')
-        if len(email) > 100:
+        if email is not None and len(email) > 100:
             return build_response(False, 400,
                                 error_message="email exceed length")
-        elif email is not None and len(email) != 0 and checkEmail:
+        elif email is not None and len(email) != 0 and not checkEmail(email):
             return build_response(False, 400,
                                 error_message="email address is not valid")
+        elif email is None or len(email) == 0:
+            email = None
         message = request.form.get('message')
-        if len(message) > 1000:
+        if message is None:
+            return build_response(False, 400,
+                                error_message="message is required but not provided!")
+        elif len(message) > 1000:
             return build_response(False, 400,
                                 error_message="message exceed length")
 
@@ -107,7 +118,7 @@ def contact():
                             "created_at": str(datetime.now()),
                             "first_name": first_name,
                             "last_name": last_name,
-                            "email": email is None,
+                            "email": None if email is None or email == "" else email,
                             "message": message
                         }
                     }
@@ -154,7 +165,7 @@ def notifications():
                     "created_at": str(created_at),
                     "first_name": first_name,
                     "last_name": last_name,
-                    "email": None if email == "" else email,
+                    "email": None if email is None or email == "" else email,
                     "message": message
                 })
 
