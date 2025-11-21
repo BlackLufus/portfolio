@@ -21,32 +21,37 @@ export default function LightBoxOverlay( {start, gallery, onClose}: LightBoxOver
     const [slideState, setSlideState] = useState(0);
     const [touchStartX, setTouchStartX] = useState<number>(-1);
     const [touchDeltaX, setTouchDeltaX] = useState(0);
+    const [isSliding, setSlidingState] = useState(false);
 
     const SCALE_STEP = 0.13625;
     const MAX_SCALE = SCALE_STEP * 40;
     const MIN_SCALE = 1;
 
     const onLeftClick = () => {
-        if (index == 0) return;
+        if (isSliding || index == 0) return;
         if (scale != 1) {
             setScale(1);
         }
         setSlideState(-1);
+        setSlidingState(true);
         setTimeout(() => {
             setSlideState(0);
             setIndex(index-1);
+            setSlidingState(false);
         }, 345);
     }
 
     const onRightClick = () => {
-        if (index == gallery.length - 1) return;
+        if (isSliding || index == gallery.length - 1) return;
         if (scale != 1) {
             setScale(1);
         }
         setSlideState(1);
+        setSlidingState(true);
         setTimeout(() => {
             setSlideState(0);
             setIndex(index+1);
+            setSlidingState(false);
         }, 345);
     }
 
