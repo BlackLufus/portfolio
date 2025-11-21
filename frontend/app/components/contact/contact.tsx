@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect, ReactNode, useRef } from "react";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
 import Frame from "../frame";
@@ -49,9 +49,15 @@ export default function Contact({config}: ContactProps) {
     const [isLoading, setLoadingState] = useState(false);
     const [resultText, setResultText] = useState<string | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
+    const messageInputRef = useRef<HTMLTextAreaElement>(null);
+    const [messageLength, setMessageLength] = useState(0);
     
     const handleLanguageChange = (code: LanguageCode) => {
         setLanguageCode(code);
+    }
+
+    const handleMessageInputChange = () => {
+        setMessageLength(messageInputRef.current!.value.length);
     }
 
     const validateEmail = (email: string) => {
@@ -144,21 +150,21 @@ export default function Contact({config}: ContactProps) {
         )
         try {
             return(
-                <div id="contact" className="contact">
-                    <div className="contact_title">
-                        <span className="header2">
+                <section id="contact" className="section">
+                    <div className="first_heading_container">
+                        <span className="first_heading">
                             {data.title}
                         </span>
                     </div>
-                    <div className="contact_description">
-                        <span className="description1">
+                    <div className="section_description_container">
+                        <span className="section_description">
                             {data.description}
                         </span>
                     </div>
                     <div className="contact_content_wrapper">
                         <div className="contact_content_left_wrapper">
                             <div className="contact_content_header">
-                                <span className="header3">
+                                <span className="second_heading">
                                     {data.contact_title}
                                 </span>
                             </div>
@@ -213,7 +219,7 @@ export default function Contact({config}: ContactProps) {
                                 onSubmit={handleSubmit}
                                 className="contact_form">
                                 <div className="form_title_container">
-                                    <span className="form_title gradient_text">
+                                    <span className="form_title">
                                         {data.form_title}
                                     </span>
                                 </div>
@@ -222,31 +228,36 @@ export default function Contact({config}: ContactProps) {
                                         {errorText}
                                     </span>
                                 </div>
-                                <div className="contact_form_flex_container">
+                                <div className="form_section contact_form_flex_container">
                                     <div>
                                         <label className="form_label">
                                             {data.form_first_name}
                                         </label>
-                                        <input className="form_input" type="text" name="first_name" id="first_name" />
+                                        <input className="form_input" type="text" name="first_name" id="first_name" maxLength={64} />
                                     </div>
                                     <div>
                                         <label className="form_label">
                                             {data.form_last_name}
                                         </label>
-                                        <input className="form_input" type="text" name="last_name" id="last_name" />
+                                        <input className="form_input" type="text" name="last_name" id="last_name" maxLength={64} />
                                     </div>
                                 </div>
-                                <div className="contact_form_container">
+                                <div className="form_section">
                                     <label className="form_label" htmlFor="email">
                                         {data.form_email}
                                     </label>
                                     <input className="form_input" type="text" name="email" id="email" />
                                 </div>
-                                <div className="contact_form_container">
-                                    <label  className="form_label" htmlFor="message">
+                                <div className="form_section">
+                                    <label className="form_label" htmlFor="message">
                                         {data.form_message}
                                     </label>
-                                    <textarea className="form_textarea" name="message" id="message"></textarea>
+                                    <textarea ref={messageInputRef} className="form_textarea" onChange={handleMessageInputChange} name="message" id="message" maxLength={1000}></textarea>
+                                    <div className="form_text_length_container">
+                                        <span className="form_text_length">
+                                            {messageLength} / 1000
+                                        </span>
+                                    </div>
                                 </div>
                                 <div className="contact_form_button_container">
                                     <button className="form_button">
@@ -285,7 +296,7 @@ export default function Contact({config}: ContactProps) {
                             }
                         </div>
                     </div>
-                </div>
+                </section>
             );
         }
         catch {

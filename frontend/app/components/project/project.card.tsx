@@ -44,7 +44,7 @@ export default function ProjectCard({ index, image, title, description, labels, 
             </div>
             <div className="project_title_container">
                 <span 
-                    className="project_title"
+                    className="third_heading project_title"
                     onClick={() => {
                             onClick(index);
                 }}>
@@ -52,7 +52,7 @@ export default function ProjectCard({ index, image, title, description, labels, 
                 </span>
             </div>
             <div className="project_description_container">
-                <span className="project_description">
+                <span className="description3 project_description">
                     {description}
                 </span>
             </div>

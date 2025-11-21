@@ -80,16 +80,23 @@
     color: #d00;
 }
 
+.form_section {
+    margin-bottom: 10px;
+}
+
 .form_label {
     text-transform: uppercase;
     font-size: var(--font-size-6);
     color: var(--font-color-1);
 }
 
+.form_title_container:hover .form_label {
+    color: var(--font-color-p);
+}
+
 .form_input {
     width: 100%;
     padding-inline: 5px;
-    margin-bottom: 10px;
     font-size: var(--font-size-6);
     color: var(--font-color-3);
     /* background-color: var(--background-color-1); */
@@ -102,12 +109,20 @@
     min-height: 100px;
     max-height: 300px;
     padding-inline: 5px;
-    margin-bottom: 10px;
     font-size: var(--font-size-6);
     color: var(--font-color-1);
     /* background-color: var(--background-color-2); */
     border-radius: 8px;
     border: 1px solid var(--border-color-2);
+}
+
+.form_text_length_container {
+    margin-right: 5px;
+    text-align: right;
+}
+
+.form_text_length {
+    color: var(--font-color-2);
 }
 
 .form_ulist {

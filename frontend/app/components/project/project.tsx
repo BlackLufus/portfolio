@@ -79,20 +79,20 @@ export default function Project({config}: ProjectProps) {
             />
         )
         return(
-            <div>
+            <section>
                 {
                     (formState)
                     ? <AddProjectForm pop={toggleForm} />
                     : null
                 }
-                <div id="projects" className={`projects ${!config ? "" : "projects_with_scrollbar"}`}>
-                    <div className="projects_title">
-                        <span className="header2">
+                <div id="projects" className={`section ${!config ? "" : "section_with_scrollbar"}`}>
+                    <div className="first_heading_container">
+                        <span className="first_heading">
                             {data.title}
                         </span>
                     </div>
-                    <div className="projects_description">
-                        <span className="description1">
+                    <div className="section_description_container">
+                        <span className="section_description">
                             {data.description}
                         </span>
                     </div>
@@ -140,7 +140,7 @@ export default function Project({config}: ProjectProps) {
                         </div>
                     }
                 </div>
-            </div>
+            </section>
         );
     }
 

@@ -1,27 +1,3 @@
-.education {
-    max-width: 1380px;
-    padding-top: 100px;
-    padding-bottom: 80px;
-    margin-inline: auto;
-}
-
-.education_with_scrollbar {
-    height: 850px;
-    overflow-y: scroll;
-}
-
-.education_title {
-    text-align: center;
-    margin: 14px 0 10px 0;
-}
-
-.education_description {
-    max-width: 1150px;
-    text-align: center;
-    margin-inline: auto;
-    margin-top: 20px;
-}
-
 .education_content {
     display: block;
     max-width: 1380px;
@@ -120,13 +96,12 @@
     transition: transform 0.35s ease;
     box-shadow: 2px 2px 8px #0008;
     backdrop-filter: blur(3px);
-    background-color: var(--background-color-1);
     overflow: hidden;
     z-index: 4;
 }
 
 :root[data-theme="dark"] .education_panel {
-    background-color: var(--background-color-2);
+    background-color: var(--background-color-t7);
 }
 
 .education_panel_border_top {

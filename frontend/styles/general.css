@@ -1,3 +1,66 @@
+.section {
+    max-width: 1380px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    margin-inline: auto;
+}
+
+.section_with_scrollbar {
+    height: 850px;
+    overflow-y: scroll;
+}
+
+.title {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-2);
+    color: var(--font-color-p);
+}
+
+.first_heading_container {
+    text-align: center;
+    margin: 14px 0 10px 0;
+}
+
+.first_heading {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-3);
+    color: var(--font-color-p);
+}
+
+.second_heading {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-4);
+    color: var(--font-color-p);
+}
+
+.third_heading {
+    line-height: 99%;
+    font-weight: bold;
+    font-size: var(--font-size-6);
+    color: var(--font-color-1);
+}
+
+.section_description_container {
+    max-width: 1150px;
+    text-align: center;
+    margin-inline: auto;
+    margin-top: 20px;
+}
+
+.section_description {
+    font-size: var(--font-size-7);
+    color: var(--font-color-2);
+}
+
+.first_text {
+    font-size: var(--font-size-8);
+    color: var(--font-color-3);
+}
+
+
 .header1 {
     line-height: 99%;
     font-weight: bold;
@@ -30,7 +93,7 @@
 }
 
 .description3 {
-    font-size: var(--font-size-9);
+    font-size: var(--font-size-8);
     color: var(--font-color-4);
 }
 

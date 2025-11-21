@@ -45,9 +45,9 @@ export default function Skill() {
         )
     }
     return(
-        <div className="about_me_skills">
+        <section className="about_me_skills">
             <div className="about_me_skills_title">
-                <span className="header3">
+                <span className="second_heading">
                     {data?.title}
                 </span>
             </div>
@@ -79,6 +79,6 @@ export default function Skill() {
                     size={itemSize} />
                 : null
             }
-        </div>
+        </section>
     )
 }

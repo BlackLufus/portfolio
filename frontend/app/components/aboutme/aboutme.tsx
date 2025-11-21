@@ -76,24 +76,24 @@ export default function AboutMe({config}: AboutMeProps) {
             )
         }
         return(
-            <div id="about_me" className={`about_me ${!config ? "" : "about_me_with_scrollbar"}`}>
-                <div className="about_me_title">
-                    <span className="header2">
+            <section id="about_me" className={`section ${!config ? "" : "section_with_scrollbar"}`}>
+                <div className="first_heading_container">
+                    <h1 className="first_heading">
                         {data?.title}
-                    </span>
+                    </h1>
                 </div>
-                <div className="about_me_description">
-                    <span className="description1">
+                <div className="section_description_container">
+                    <p className="section_description">
                         {data?.description}
-                    </span>
+                    </p>
                 </div>
                 <div className="about_me_content">
                     <div className="about_me_personal_professional">
                        <div className="about_me_personal_container">
                             <div className="about_me_additional_title">
-                                <span className="header3">
+                                <h2 className="second_heading">
                                     {data?.personal.title}
-                                </span>
+                                </h2>
                             </div>
                             <div className="about_me_personal_professional_description">
                                 <span className="description2">
@@ -112,9 +112,9 @@ export default function AboutMe({config}: AboutMeProps) {
                         </div>
                         <div className="about_me_personal_container">
                             <div className="about_me_additional_title">
-                                <span className="header3">
+                                <h2 className="second_heading">
                                     {data?.professional.title}
-                                </span>
+                                </h2>
                             </div>
                             <div className="about_me_personal_professional_description">
                                 <span className="description2">
@@ -138,7 +138,7 @@ export default function AboutMe({config}: AboutMeProps) {
                         : null
                     }
                 </div>
-            </div>
+            </section>
         );
     }
 

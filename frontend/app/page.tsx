@@ -76,7 +76,7 @@ export default function Home() {
         case TaskId.EDUCATION:
           return <Education config={data?.education} />
         case TaskId.CONTACT:
-          return <AboutMe config={data?.contact} />
+          return <Contact config={data?.contact} />
       }
     }
     const node = await frame(taskId);

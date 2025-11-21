@@ -53,7 +53,7 @@ export default function Overview({config}: OverviewProps) {
             />
         )
         return(
-            <div id="overview" className="overview">
+            <section id="overview" className="overview">
                 <div className="overview_information">
                     <div className="overview_header">
                         <span className="header1">
@@ -77,7 +77,7 @@ export default function Overview({config}: OverviewProps) {
                 <div className="overview_image_container">
                     <img className="overview_image" src="images/data/portrait.png" alt="" />
                 </div>
-            </div>
+            </section>
         );
     }
 

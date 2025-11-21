@@ -66,34 +66,24 @@
 
 .overview_image_container {
     position: relative;
-    border-radius: 100%;
+    border-radius: 20px;
     overflow: hidden;
     display: inline-block;
+    /* border: 2px solid var(--border-color-3); */
 }
 
-.overview_image_container::before {
+/* .overview_image_container::before {
     content: "";
     position: absolute;
     inset: 0;
     padding: 3px;
-    border-radius: 100%;
-    background: linear-gradient(var(--rotate-deg, 0deg), var(--font-color-p), var(--font-color-1));
+    border-radius: 50px;
+    background: linear-gradient(0deg, var(--font-color-p), var(--font-color-1));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-
-    animation: overview_image_container_spin 4s linear infinite;
-}
-
-@keyframes overview_image_container_spin  {
-    0% {
-        --rotate-deg: 0deg;
-    }
-    100% {
-        --rotate-deg: 360deg;
-    }
-}
+} */
 
 .overview_image {
     height: 500px;
