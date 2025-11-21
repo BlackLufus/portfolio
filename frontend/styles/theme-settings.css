@@ -1,6 +1,6 @@
 /* Themesettings */
 :root {
-    --primary-font-family: "Gill Sans", sans-serif;
+    --primary-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
     --font-size-1: 72px;
     --font-size-2: 56px;

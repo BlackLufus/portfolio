@@ -16,6 +16,7 @@ html, body {
     height: 100dvh;
     overflow: hidden;
     background-color: var(--background-color-1);
+    overflow-y: auto;
 }
 
 :root[data-theme="dark"] html, :root[data-theme="dark"] body {
@@ -76,7 +77,6 @@ body > div {
     display: block;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     scroll-behavior: smooth;
     z-index: 1;
 }

@@ -3,7 +3,7 @@ import "../styles/general.css";
 import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
-import "../styles/components/navi.css";
+import "../styles/nav.css";
 import "../styles/components/numberdetector.css";
 import "../styles/components/overview.css";
 import "../styles/components/about_me.css";
@@ -116,24 +116,23 @@ export default function Home() {
 
   return (
     pageState
-    ? <div className="webpage">
-      <img className="webpage_background" src="/images/bubbles.png" alt="" />
+    ? <>
+      <Navi
+        firstname={data.firstname}
+        lastname={data.lastname}
+        aboutMeTitle={data.about_me.title}
+        projectTitle={data.project.title}
+        educationTitle={data.education.title}
+        contactTitle={data.contact.title}
+        desktopViewTitle={data.desktop_view}
+        languageTitle={data.language}
+        pageState={pageState}
+        handlePageClick={handlePageClick}
+        languageState={languageCode}
+        handleLanguageClick={handleLanguageClick}
+        darkmodeState={darkmodeState}
+        handleDarkmodeClick={handleDarkmodeClick} />
       <main ref={webpageContainerRef} className="webpage_wrapper">
-        <Navi
-          firstname={data.firstname}
-          lastname={data.lastname}
-          aboutMeTitle={data.about_me.title}
-          projectTitle={data.project.title}
-          educationTitle={data.education.title}
-          contactTitle={data.contact.title}
-          desktopViewTitle={data.desktop_view}
-          languageTitle={data.language}
-          pageState={pageState}
-          handlePageClick={handlePageClick}
-          languageState={languageCode}
-          handleLanguageClick={handleLanguageClick}
-          darkmodeState={darkmodeState}
-          handleDarkmodeClick={handleDarkmodeClick} />
         <Overview />
         <AboutMe />
         <Project />
@@ -150,7 +149,7 @@ export default function Home() {
           linkedInLink={data.linkedin_link}
           version={data.version} />
       </main>
-    </div>
+    </>
     : <div>
       <main id="desktop" className="desktop">
         <img className="background_image" src="images/bubbles.png" alt="bubbles" loading="lazy" />
