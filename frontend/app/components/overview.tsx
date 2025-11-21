@@ -18,10 +18,12 @@ export interface OverviewConfig {
 }
 
 interface OverviewProps {
+    firstname: string;
+    lastname: string;
     config?: OverviewConfig
 }
 
-export default function Overview({config}: OverviewProps) {
+export default function Overview({firstname, lastname, config}: OverviewProps) {
 
     const [data, setData] = useState<OverviewData | null>(null);
     const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
@@ -53,29 +55,21 @@ export default function Overview({config}: OverviewProps) {
             />
         )
         return(
-            <section id="overview" className="overview">
-                <div className="overview_information">
-                    <div className="overview_header">
-                        <span className="header1">
-                            {data.title}
-                        </span>
+            <section id="overview">
+                <div className="container">
+                    <h1>
+                        {firstname} {lastname}
+                    </h1>
+                    <p className="tagline">
+                        &bull;{data.title}&bull;
+                    </p>
+                    <p className="description">
+                        {data.description}
+                    </p>
+                    <div className="btn_wrapper">
+                        <a href="#projects" className="btw primary_button">{data.project_button}</a>
+                        <a href="#contact" className="btw secondary_button">{data.contact_button}</a>
                     </div>
-                    <div className="overview_description">
-                        <span className="description1">
-                            {data.description}
-                        </span>
-                    </div>
-                    <div className="overview_buttons">
-                        <div className="overview_button overview_button_my_project">
-                            <a href="#projects">{data.project_button}</a>
-                        </div>
-                        <div className="overview_button overview_button_contact">
-                            <a href="#contact">{data.contact_button}</a>
-                        </div>
-                    </div>
-                </div>
-                <div className="overview_image_container">
-                    <img className="overview_image" src="images/data/portrait.png" alt="" />
                 </div>
             </section>
         );

@@ -68,7 +68,7 @@ export default function Home() {
     const frame = async (taskId: TaskId): Promise<ReactNode> => {
       switch (taskId) {
         case TaskId.OVERVIEW:
-          return <Overview config={data?.overview} />
+          return <Overview firstname={data!.firstname} lastname={data!.lastname} config={data?.overview} />
         case TaskId.ABOUTME:
           return <AboutMe config={data?.about_me} />
         case TaskId.PROJECTS:
@@ -133,7 +133,9 @@ export default function Home() {
         darkmodeState={darkmodeState}
         handleDarkmodeClick={handleDarkmodeClick} />
       <main ref={webpageContainerRef} className="webpage_wrapper">
-        <Overview />
+        <Overview 
+          firstname={data.firstname}
+          lastname={data.lastname}/>
         <AboutMe />
         <Project />
         <Education

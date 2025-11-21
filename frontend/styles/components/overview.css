@@ -1,140 +1,80 @@
-.overview {
-    display: flex;
-    max-width: 1300px;
-    padding-top: 100px;
-    padding-bottom: 80px;
-    margin-inline: auto;
+#overview h1 {
+    font-size: clamp(1.9rem, 8cqi, 4rem);
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin-bottom: 1rem;
+    letter-spacing: clamp(0.1rem, 0.3cqi, 0.3rem);
+    text-transform: uppercase;
+    color: var(--font-color-p);
 }
 
-.overview_information {
+.tagline {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--font-color-3);
+}
+
+#overview .description {
+    text-align: center;
+    font-size: 1.125rem;
     max-width: 700px;
-    margin: auto 50px;
+    margin: 0 auto 2rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    color: var(--font-color-2);
 }
 
-.overview_information > div {
-    text-align: left;
-}
-
-.overview_description {
-    margin: 20px 0 50px;
-    max-width: 1150px;
-}
-
-.overview_buttons {
+#overview .btn_wrapper {
     display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
-.overview_button_my_project > a {
+#overview .btw {
+    text-align: center;
+    align-content: center;
+    font-size: var(--font-size-5);
+    color: var(--font-color-2);
+}
+
+#overview .primary_button {
+    color: white;
     padding: 10px 20px;
     border-radius: 40px;
     background-color: var(--font-color-p);
+    transition: box-shadow 0.35s ease;
 }
 
-.overview_button_contact {
+#overview .primary_button:hover {
+    box-shadow: 0px 0px 20px var(--font-color-p);
+}
+
+#overview .secondary_button {
     position: relative;
-    background: none;
+    margin: 10px 20px;
     border: none;
     cursor: pointer;
     padding-bottom: 4px;
 }
 
-.overview_button_contact::after {
+
+#overview .secondary_button::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 4px; /* Höhe des Strichs */
+    height: 4px;
     width: 100%;
-    background-color: var(--background-color-6);
+    background-color: var(--font-color-p);
     border-radius: 40px;
 
-    transform: scaleX(0);       /* Start unsichtbar */
-    transform-origin: left;      /* Animation von links nach rechts */
+    transform: scaleX(0);
+    transform-origin: left;
     transition: transform 0.3s ease-out;
 }
 
-.overview_button_contact:hover::after {
-    transform: scaleX(1);       /* Voll sichtbar beim Hover */
-}
-
-.overview_button > a {
-    font-size: var(--font-size-5);
-    color: var(--font-color-2);
-}
-
-.overview_image_container {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    display: inline-block;
-    /* border: 2px solid var(--border-color-3); */
-}
-
-/* .overview_image_container::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 3px;
-    border-radius: 50px;
-    background: linear-gradient(0deg, var(--font-color-p), var(--font-color-1));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-} */
-
-.overview_image {
-    height: 500px;
-    width: 400px;
-    object-fit: cover;
-    object-position: center;
-}
-
-@media screen and (max-width: 1150px) {
-    .overview {
-        padding-inline: 10px;
-    }
-}
-
-@media screen and (max-width: 966px) {
-    .overview {
-        flex-direction: column;
-        max-width: 100%;
-        padding-inline: 10px;
-    }
-
-    .overview_information {
-        max-width: 100%;
-        margin-inline: auto;
-    }
-
-    .overview_buttons {
-        position: relative;
-        display: block;
-        width: 100%;
-        justify-content: center;
-        justify-items: center;
-    }
-
-    .overview_button_my_project > a, .overview_button_contact > a {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .overview_button:first-child {
-        margin-bottom: 20px;
-    }
-
-    .overview_image_container {
-        margin-top: 80px;
-        margin-inline: auto;
-    }
-
-    .overview_image {
-        margin-inline: auto;
-    }
-
+#overview .secondary_button:hover::after {
+    transform: scaleX(1);
 }
