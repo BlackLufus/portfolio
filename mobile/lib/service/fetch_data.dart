@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 class NotificationData {
+  final int id;
   final DateTime createdAt;
   final String firstName;
   final String lastName;
@@ -11,6 +12,7 @@ class NotificationData {
   final String message;
 
   const NotificationData({
+    required this.id,
     required this.createdAt,
     required this.firstName,
     required this.lastName,
@@ -19,12 +21,14 @@ class NotificationData {
   });
 
   factory NotificationData.fromJson(Map<String, dynamic> json) {
+    print(DateTime.parse("${DateTime.parse(json['created_at'] as String)}z").toLocal());
     return NotificationData(
+      id: json['id'],
       firstName: json['first_name'] as String,
       lastName: json['last_name'] as String,
       email: json['email'] != null ? json['email'] as String : null,
       message: json['message'] as String,
-      createdAt: DateTime.parse("${json['created_at'] as String}Z").toLocal(),
+      createdAt: DateTime.parse("${DateTime.parse(json['created_at'] as String)}z").toLocal(),
     );
   }
 }
@@ -63,6 +67,23 @@ class FetchNotification {
     }
     else {
       return [];
+    }
+  }
+
+  static Future<bool> delete(int index) async {
+    final authToken = await _getAuthToken();
+    final response = await http.delete(
+      Uri.parse('https://michaelreischl.de/api/notifications/${index.toString()}'),
+      headers: {
+        'Authorization': 'Bearer $authToken'
+      }
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    }
+    else {
+      return false;
     }
   }
 }

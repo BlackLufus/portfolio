@@ -53,7 +53,7 @@ class FirebasePushNotification {
           notification.body,
           const NotificationDetails(
             android: AndroidNotificationDetails(
-              "channelId",
+              "High Importance Channel",
               'High Importance Notifications',
               importance: Importance.max,
               priority: Priority.high,

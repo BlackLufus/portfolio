@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/helper/helper_function.dart';
 import 'package:portfolio/service/fetch_data.dart';
 import 'package:portfolio/service/firebase_push_notification.dart';
 import 'package:portfolio/widgets/MessageTile.dart';
+import 'package:portfolio/widgets/app_theme_color.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,26 +23,38 @@ class _HomePage extends State<HomePage> {
   }
 
   onMessage(Map<String, dynamic> data) {
-    if (!mounted) return;
-    try {
-      final notification = NotificationData.fromJson(data);
-      print(notification.email);
-      setState(() {
-        notificationData.insert(0, notification);
-      });
-    } catch (e, st) {
-      print("Fehler beim Parsen der Notification: $e");
-      print(st);
-    }
+    getNotificationData();
+    // if (!mounted) return;
+    // try {
+    //   print("adawd");
+    //   final notification = NotificationData.fromJson(data);
+    //   print(notification.email);
+    //   setState(() {
+    //     notificationData.insert(0, notification);
+    //   });
+    //   print("adawd");
+    // } catch (e, st) {
+    //   print("Fehler beim Parsen der Notification: $e");
+    //   print(st);
+    // }
   }
 
   List<NotificationData> notificationData = [];
 
   getNotificationData() async {
+    try {
     final data = await FetchNotification.get(); // Daten asynchron holen
     setState(() {
       notificationData = data; // State synchron aktualisieren
     });
+    }
+    catch (e) {
+      print(e.toString());
+    }
+  }
+
+  onDelete(int index) {
+    getNotificationData();
   }
 
   String formatRelativeDate(DateTime date) {
@@ -62,22 +76,64 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColorTheme.primaryBackground,
       key: _scaffoldKey,
       body: Column(
         children: [
           SizedBox(height: 30,),
-          Padding(
+          Container(
             padding: const EdgeInsets.all(16.0),
-            child: Center(
-              child: Text(
-                "Nachricht",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey,
+                  width: 1,
+                )
+              )
             ),
+            child: Stack(
+              children: [
+                Center(
+                  child: Text(
+                    "Portfolio Nachricht",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: AppColorTheme.preferredColorTheme
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 6),
+                  alignment: Alignment.bottomLeft,
+                  child: GestureDetector(
+                    onTap: ()  {
+                      AppColorTheme.setColorTheme(newIndex: (AppColorTheme.colorThemeIndex + 1) % AppColorTheme.preferredColorThemes.length);
+                      HelperFunctions.savedColorTheme(AppColorTheme.colorThemeIndex);
+                    },
+                    child: Icon(
+                      Icons.color_lens_outlined, 
+                      color: AppColorTheme.appIcon,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 6),
+                  alignment: Alignment.bottomRight,
+                  child: GestureDetector(
+                    onTap: ()  {
+                      AppColorTheme.setDarkmodeState(!AppColorTheme.darkmodeState);
+                      HelperFunctions.savedDarkmode(AppColorTheme.darkmodeState);
+
+                    },
+                    child: Icon(
+                      AppColorTheme.darkmodeState ? Icons.sunny : Icons.dark_mode, 
+                      color: AppColorTheme.appIcon,
+                    ),
+                  ),
+                )
+              ],
+            )
           ),
           if (notificationData.isEmpty)
             Text(
@@ -88,54 +144,74 @@ class _HomePage extends State<HomePage> {
             )
           else
           Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: notificationData.length,
-              itemBuilder: (context, index) {
-                final item = notificationData[index];
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 4),
-                    dateLabel(item.createdAt, index == 0),
-                    const SizedBox(height: 4),
-                    MessageTile(
-                      createdAt: item.createdAt,
-                      firstName: item.firstName,
-                      lastName: item.lastName,
-                      email: item.email,
-                      message: item.message,
-                    ),
-                  ],
-                );
-              },
-            ),
+            child: getDate(notificationData)
           ),
         ],
       )
     );
   }
 
-  DateTime? currentDate;
-  Widget dateLabel(DateTime createdAt, bool reset) {
-    if (reset) currentDate = null;
-    if (currentDate == null || currentDate!.day != createdAt.day || currentDate!.month != createdAt.month || currentDate!.year != createdAt.year) {
-      currentDate = createdAt;
-      final relativeDate = formatRelativeDate(createdAt);
-      return Container(
-          alignment: Alignment.center,
-          child: Text(
-          relativeDate,
-          style: const TextStyle(
-            color: Color.fromARGB(255, 33, 149, 243),
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-        ),
-      );
-    }
-    else {
-      return const SizedBox.shrink();
-    }
+  Widget getDate(List<NotificationData> notificationData) {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: notificationData.length,
+      itemBuilder: (context, index) {
+        final item = notificationData[index];
+        DateTime? currentDate = index == 0 ? null : notificationData[index-1].createdAt;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            (currentDate == null || currentDate.day != item.createdAt.day || currentDate.month != item.createdAt.month || currentDate.year != item.createdAt.year)
+            ? Container(
+                alignment: Alignment.center,
+                child: Text(
+                formatRelativeDate(item.createdAt),
+                style: TextStyle(
+                  // color: Color.fromARGB(255, 33, 149, 243),
+                  color: AppColorTheme.preferredColorTheme,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            )
+            : const SizedBox.shrink(),
+            const SizedBox(height: 4),
+            MessageTile(
+              id: item.id,
+              createdAt: item.createdAt,
+              firstName: item.firstName,
+              lastName: item.lastName,
+              email: item.email,
+              message: item.message,
+              onDelete: onDelete,
+            ),
+          ],
+        );
+      },
+    );
   }
+
+  // DateTime? currentDate;
+  // Widget dateLabel(DateTime createdAt, bool reset) {
+  //   if (reset) currentDate = null;
+  //   if (currentDate == null || currentDate!.day != createdAt.day || currentDate!.month != createdAt.month || currentDate!.year != createdAt.year) {
+  //     currentDate = createdAt;
+  //     final relativeDate = formatRelativeDate(createdAt);
+  //     return Container(
+  //         alignment: Alignment.center,
+  //         child: Text(
+  //         relativeDate,
+  //         style: const TextStyle(
+  //           color: Color.fromARGB(255, 33, 149, 243),
+  //           fontWeight: FontWeight.bold,
+  //           fontSize: 16,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  //   else {
+  //     return const SizedBox.shrink();
+  //   }
+  // }
 }
