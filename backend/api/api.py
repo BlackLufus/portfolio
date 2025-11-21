@@ -58,14 +58,14 @@ def get_tree():
 def contact():
     try:
         first_name = request.form.get('first_name')
-        if first_name is None:
+        if first_name is None or len(first_name) == 0:
             return build_response(False, 400,
                                 error_message="first_name is required but not provided!")
         elif len(first_name) > 64:
             return build_response(False, 400,
                                 error_message="first_name exceed length")
         last_name = request.form.get('last_name')
-        if last_name is None:
+        if last_name is None or len(last_name) == 0:
             return build_response(False, 400,
                                 error_message="last_name is required but not provided!")
         elif len(last_name) > 64:
@@ -81,7 +81,7 @@ def contact():
         elif email is None or len(email) == 0:
             email = None
         message = request.form.get('message')
-        if message is None:
+        if message is None or len(message) == 0:
             return build_response(False, 400,
                                 error_message="message is required but not provided!")
         elif len(message) > 1000:
@@ -145,6 +145,7 @@ def notifications():
         
         query = f"""
                 SELECT 
+                    id,
                     created_at, 
                     first_name, 
                     last_name, 
@@ -160,8 +161,9 @@ def notifications():
         results = []
 
         if db_result is not None and len(db_result) >= 1:
-            for created_at, first_name, last_name, email, message in db_result:
+            for id, created_at, first_name, last_name, email, message in db_result:
                 results.append({
+                    "id": id,
                     "created_at": str(created_at),
                     "first_name": first_name,
                     "last_name": last_name,
@@ -170,6 +172,33 @@ def notifications():
                 })
 
         return build_response(True, 200, response=results)
+    except Exception as e:
+        logger.info(f"{type(e).__name__} - {e}")
+        return build_response(False, 501, error_message="An internal error occur.")
+
+@api.route('/notifications/<id>', methods=['DELETE'])
+def delete_notifications(id):
+    try:
+        try:
+            message_id = int(id)
+        except:
+            return build_response(False, 422, error_message="id is not a valid number")
+        
+        auth_header = request.headers.get("Authorization")
+        auth_token = auth_header.split(" ")[1] if auth_header and auth_header.startswith("Bearer ") else None
+
+        if auth_token is None or auth_token != os.getenv("AUTH_TOKEN"):
+            return build_response(False, 401, error_message="Request had invalid authentication credentials.")
+        
+        query = "DELETE FROM contact WHERE id = %s"
+        values = (message_id, )
+        db_result = database.statement(query, values)
+
+        if db_result is not None:
+            return build_response(True, 200,
+                                    message=f"Message with ID '{id}' was successfully deleted.")
+
+        return build_response(False, 403, message=f"The Message with ID '{id}' does not exist")
     except Exception as e:
         logger.info(f"{type(e).__name__} - {e}")
         return build_response(False, 501, error_message="An internal error occur.")
