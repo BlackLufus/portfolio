@@ -20,7 +20,7 @@ interface NaviProbs {
 export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, desktopViewTitle, languageTitle, handlePageClick, languageState, handleLanguageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
 
     const naviRef = useRef<HTMLDivElement>(null);
-    const navBarRef = useRef<HTMLUListElement>(null);
+    const navBarRef = useRef<HTMLDivElement>(null);
     const [menuState, setMenuState] = useState<boolean>(false);
     const [viewWidth, setViewWidth] = useState<number>(window.innerWidth)
 
@@ -54,8 +54,8 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
 
     return(
     <header>
-        <nav className="container" ref={naviRef} onClick={handleNaviClick}>
-            <div className={`navi_bar_wrapper ${menuState ? "show": ""}`}>
+        <nav ref={naviRef} onClick={handleNaviClick}>
+            <div className={`container navi_bar_wrapper ${menuState ? "show": ""}`}>
                 <span className="navi_name gradient_text">
                     {firstname} {lastname}
                 </span>
@@ -96,7 +96,7 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                         </svg>
                     </div>
                     {
-                        (viewWidth <= 1100)
+                        (viewWidth <= 966)
                         ? <div className="nav_action nav_bar_menu_item" onClick={handleMenuToggleClick}>
                             <div className={`nav_bar_menu_line ${menuState ? "first": "normal"}`}></div>
                             <div className={`nav_bar_menu_line ${menuState ? "hide": "normal"}`}></div>
@@ -106,9 +106,10 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                     }
                 </div>
             </div>
-            {
+        </nav>
+        {
                 (viewWidth < 966)
-                ? <ul inert={!menuState} ref={navBarRef} className="nav_bar">
+                ? <div inert={!menuState} ref={navBarRef} className="nav_bar">
                     <a className="nav_bar_link" href="#about_me">
                         <svg fill="#000000" width="30px" height="30px" viewBox="-3 0 19 19" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.517 12.834v1.9a1.27 1.27 0 0 1-1.267 1.267h-9.5a1.27 1.27 0 0 1-1.267-1.267v-1.9A3.176 3.176 0 0 1 3.65 9.667h5.7a3.176 3.176 0 0 1 3.167 3.167zM3.264 5.48A3.236 3.236 0 1 1 6.5 8.717a3.236 3.236 0 0 1-3.236-3.236z"/>
@@ -151,10 +152,9 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                             {contactTitle}
                         </span>
                     </a>
-                </ul>
+                </div>
                 : null
             }
-        </nav>
     </header>
     )
 }

@@ -1,11 +1,8 @@
 "use client";
 import Frame from "../frame";
 import { ReactNode, useEffect, useState } from "react";
-import Personal from "./aboutme.personal";
 import loadData, { DataType } from "@/services/load_data";
-import Professional from "./aboutme.professional";
 import Loading from "@/widgets/loader";
-import Skill from "./aboutme.skill";
 import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 
 interface CharacteristicsData {
@@ -76,67 +73,21 @@ export default function AboutMe({config}: AboutMeProps) {
             )
         }
         return(
-            <section id="about_me" className={`section ${!config ? "" : "section_with_scrollbar"}`}>
-                <div className="first_heading_container">
-                    <h1 className="first_heading">
-                        {data?.title}
-                    </h1>
-                </div>
-                <div className="section_description_container">
-                    <p className="section_description">
-                        {data?.description}
-                    </p>
-                </div>
-                <div className="about_me_content">
-                    <div className="about_me_personal_professional">
-                       <div className="about_me_personal_container">
-                            <div className="about_me_additional_title">
-                                <h2 className="second_heading">
-                                    {data?.personal.title}
-                                </h2>
-                            </div>
-                            <div className="about_me_personal_professional_description">
-                                <span className="description2">
-                                    {data?.personal.description}
-                                </span>
-                            </div>
-                            <div className="about_me_personal_professional_panels">
-                                {data?.personal.characteristics_list.map((personalData, index) => (
-                                    <Personal 
-                                        key={index}
-                                        icon={personalData.image}
-                                        text={personalData.text}
-                                    />
-                                ))}
-                            </div>
+            <section id="about_me">
+                <div className="container">
+                    <div className="wrapper">
+                        <div className="about_me_photo">
+                            <img className="profile_photo" src="images/data/portrait.png" alt="" />
                         </div>
-                        <div className="about_me_personal_container">
-                            <div className="about_me_additional_title">
-                                <h2 className="second_heading">
-                                    {data?.professional.title}
-                                </h2>
-                            </div>
-                            <div className="about_me_personal_professional_description">
-                                <span className="description2">
-                                    {data?.professional.description}
-                                </span>
-                            </div>
-                            <div className="about_me_personal_professional_panels">
-                                {data?.professional.characteristics_list.map((professionalData, index) => (
-                                    <Professional 
-                                        key={index}
-                                        data={professionalData.data!}
-                                        text={professionalData.text}
-                                    />
-                                ))}
-                            </div>
+                        <div>
+                            <h3>
+                                {data?.title}
+                            </h3>
+                            <p>
+                                {data?.description}
+                            </p>
                         </div>
                     </div>
-                    {
-                        data
-                        ? <Skill />
-                        : null
-                    }
                 </div>
             </section>
         );

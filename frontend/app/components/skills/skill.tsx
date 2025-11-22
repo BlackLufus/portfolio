@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import SkillCard, { SkillCardData } from "./aboutme.skill.card";
+import SkillCard, { SkillCardData } from "./skill.card";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
 import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
@@ -46,39 +46,37 @@ export default function Skill() {
     }
     return(
         <section className="about_me_skills">
-            <div className="about_me_skills_title">
-                <span className="second_heading">
+            <div className="container">
+                <h2>
                     {data?.title}
-                </span>
-            </div>
-            <div className="about_me_skills_description">
-                <span className="description2">
+                </h2>
+                <p className="section_intro">
                     {data?.description}
-                </span>
+                </p>
+                {
+                    data
+                    ? <ul ref={skillsUlRef} className="about_me_skills_container">
+                        {data.skill_card_list.map((cardData, index) => (
+                            <SkillCard
+                                key={index}
+                                title={cardData.title}
+                                logo={cardData.logo}
+                                description={cardData.description}
+                                level_text={data.level_description}
+                                percent={cardData.percent}
+                            />
+                        ))}
+                    </ul>
+                    : null
+                }
+                {
+                    data
+                    ? <CustomScrollBar
+                        wrapperRef={skillsUlRef}
+                        size={itemSize} />
+                    : null
+                }
             </div>
-            {
-                data
-                ? <ul ref={skillsUlRef} className="about_me_skills_container">
-                    {data.skill_card_list.map((cardData, index) => (
-                        <SkillCard
-                            key={index}
-                            title={cardData.title}
-                            logo={cardData.logo}
-                            description={cardData.description}
-                            level_text={data.level_description}
-                            percent={cardData.percent}
-                        />
-                    ))}
-                </ul>
-                : null
-            }
-            {
-                data
-                ? <CustomScrollBar
-                    wrapperRef={skillsUlRef}
-                    size={itemSize} />
-                : null
-            }
         </section>
     )
 }

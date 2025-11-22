@@ -61,7 +61,7 @@ export default function Overview({firstname, lastname, config}: OverviewProps) {
                         {firstname} {lastname}
                     </h1>
                     <p className="tagline">
-                        &bull;{data.title}&bull;
+                        {data.title}
                     </p>
                     <p className="description">
                         {data.description}

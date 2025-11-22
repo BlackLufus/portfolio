@@ -7,6 +7,7 @@ import "../styles/nav.css";
 import "../styles/components/numberdetector.css";
 import "../styles/components/overview.css";
 import "../styles/components/about_me.css";
+import "../styles/components/skills.css";
 import "../styles/components/project.css";
 import "../styles/components/education.css";
 import "../styles/components/contact.css";
@@ -29,6 +30,7 @@ import Contact, { ContactConfig } from "./components/contact/contact";
 import Footer from "./components/footer/footer";
 import Task, { TaskId } from "./components/taskbar/taskbar";
 import LanguageNotifier, { LanguageCode } from "./global/languageSubscriber";
+import Skill from "./components/skills/skill";
 
 interface GeneralData {
   firstname: string;
@@ -117,26 +119,27 @@ export default function Home() {
   return (
     pageState
     ? <>
-      <Navi
-        firstname={data.firstname}
-        lastname={data.lastname}
-        aboutMeTitle={data.about_me.title}
-        projectTitle={data.project.title}
-        educationTitle={data.education.title}
-        contactTitle={data.contact.title}
-        desktopViewTitle={data.desktop_view}
-        languageTitle={data.language}
-        pageState={pageState}
-        handlePageClick={handlePageClick}
-        languageState={languageCode}
-        handleLanguageClick={handleLanguageClick}
-        darkmodeState={darkmodeState}
-        handleDarkmodeClick={handleDarkmodeClick} />
       <main ref={webpageContainerRef} className="webpage_wrapper">
+        <Navi
+          firstname={data.firstname}
+          lastname={data.lastname}
+          aboutMeTitle={data.about_me.title}
+          projectTitle={data.project.title}
+          educationTitle={data.education.title}
+          contactTitle={data.contact.title}
+          desktopViewTitle={data.desktop_view}
+          languageTitle={data.language}
+          pageState={pageState}
+          handlePageClick={handlePageClick}
+          languageState={languageCode}
+          handleLanguageClick={handleLanguageClick}
+          darkmodeState={darkmodeState}
+          handleDarkmodeClick={handleDarkmodeClick} />
         <Overview 
           firstname={data.firstname}
           lastname={data.lastname}/>
         <AboutMe />
+        <Skill />
         <Project />
         <Education
           ref={webpageContainerRef} />
@@ -150,8 +153,8 @@ export default function Home() {
           githubLink={data.github_link}
           linkedInLink={data.linkedin_link}
           version={data.version} />
-      </main>
-    </>
+        </main>
+      </>
     : <div>
       <main id="desktop" className="desktop">
         <img className="background_image" src="images/bubbles.png" alt="bubbles" loading="lazy" />

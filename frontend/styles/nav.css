@@ -3,18 +3,19 @@ header {
     display: flex;
     top: 0;
     height: 2.5em;
-    background-color: var(--background-color-t7);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color-2);
-    z-index: 10;
+    z-index: 1;
 }
 
 nav {
+    position: relative;
     width: calc(100%);
     top: 0;
     display: block;
     border-top: 0;
     margin-inline: auto;
+    border-bottom: 1px solid var(--border-color-2);
+    background-color: var(--background-color-t7);
+    backdrop-filter: blur(10px);
 }
 
 .navi_bar_wrapper {
@@ -23,7 +24,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 50;
 }
 
 .navi_bar_wrapper.show {
@@ -161,11 +161,14 @@ nav {
 
 .nav_bar {
     position: absolute;
+    top: 40px;
+    right: 0;
     display: none;
     flex-direction: column;
     justify-self: right;
     border-inline: 1px solid var(--border-color-2);
     background-color: var(--background-color-t7);
+    backdrop-filter: blur(10px);
     overflow: hidden;
 }
 
