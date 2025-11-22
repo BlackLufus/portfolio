@@ -126,7 +126,7 @@
     border-radius: 8px;
     font-size: var(--font-size-9);
     color: var(--font-color-2);
-    background-color: var(--background-color-2);
+    background-color: var(--background-color-1);
     border: 1px solid var(--border-color-2);
 }
 
@@ -357,7 +357,7 @@
 .light_box_overlay_content {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -467,7 +467,7 @@
     position: absolute;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

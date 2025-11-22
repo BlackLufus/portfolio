@@ -68,6 +68,7 @@
 }
 
 .education_timeline_point svg {
+    margin: auto;
     fill: var(--font-color-1);
 }
 
@@ -143,6 +144,7 @@
 
 .education_period {
     min-width: fit-content;
+    height: fit-content;
     padding: 3px 10px;
     align-content: center;
     text-align: center;

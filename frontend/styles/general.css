@@ -46,6 +46,8 @@ p {
     line-height: 1.8;
     color: var(--font-color-2);
     margin-bottom: 1rem;
+    white-space: pre-line;
+    line-height: 1.5;
 }
 
 .section_with_scrollbar {
@@ -100,10 +102,6 @@ p {
 .description3 {
     font-size: var(--font-size-8);
     color: var(--font-color-4);
-}
-
-.profil_image {
-    
 }
 
 .gradient_text {
