@@ -85,17 +85,13 @@ export default function Project({config}: ProjectProps) {
                     ? <AddProjectForm pop={toggleForm} />
                     : null
                 }
-                <div id="projects" className={`section ${!config ? "" : "section_with_scrollbar"}`}>
-                    <div className="first_heading_container">
-                        <span className="first_heading">
-                            {data.title}
-                        </span>
-                    </div>
-                    <div className="section_description_container">
-                        <span className="section_description">
-                            {data.description}
-                        </span>
-                    </div>
+                <div id="projects" className={`container ${!config ? "" : "section_with_scrollbar"}`}>
+                    <h2>
+                        {data.title}
+                    </h2>
+                    <p className="section_intro">
+                        {data?.description}
+                    </p>
                     {   
                         (selectedProject >= 0)
                         ? <ProjectInfo
@@ -118,8 +114,7 @@ export default function Project({config}: ProjectProps) {
                             onClose={openProject}
                             demo_programm={data.project_list[selectedProject].test_programm}
                         />
-                        : <div className="projects_wrapper">
-                            <ul className="project_unsorted_list">
+                        : <div className="projects_grid">
                                 {data.project_list.map((projectData, index) => (
                                     <ProjectCard
                                         key={index}
@@ -132,11 +127,6 @@ export default function Project({config}: ProjectProps) {
                                         onClick={openProject}
                                     />
                                 ))}
-                                {/* <ProjectAddCard
-                                    index={projectDataList.length}
-                                    onClick={toggleForm}
-                                /> */}
-                            </ul>
                         </div>
                     }
                 </div>

@@ -45,7 +45,7 @@ export default function Skill() {
         )
     }
     return(
-        <section className="about_me_skills">
+        <section>
             <div className="container">
                 <h2>
                     {data?.title}

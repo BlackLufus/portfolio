@@ -34,7 +34,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ index, image, title, description, labels, button_title, onClick }: ProjectCardProps) {
     const delay = `${(index * 0.075)}s`;
     return (
-        <li className="project_list_item" style={{"--delay": delay} as React.CSSProperties}>
+        <div className="project_card" style={{"--delay": delay} as React.CSSProperties}>
             <div 
                 className="project_image_container" 
                 onClick={() => {
@@ -64,14 +64,14 @@ export default function ProjectCard({ index, image, title, description, labels, 
                 ))}
             </div>
             <div 
-                className="project_link_container" 
+                className="project_action_container" 
                 onClick={() => {
                     onClick(index);
                 }}>
-                <span className="project_link">
+                <span className="project_action">
                     {button_title}
                 </span>
             </div>
-        </li>
+        </div>
     );
 }

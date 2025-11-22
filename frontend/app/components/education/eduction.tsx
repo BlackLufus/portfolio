@@ -66,18 +66,15 @@ export default function Education({ref, config}: EducationProps) {
         return(
             // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
             <section ref={education} id="section" className={`education ${!config ? "" : "section_with_scrollbar"}`}>
-                <div className="first_heading_container">
-                    <span className="first_heading">
+                <div className="container">
+                    <h2>
                         {data.title}
-                    </span>
-                </div>
-                <div className="section_description_container">
-                    <span className="section_description">
+                    </h2>
+                    <p className="section_intro">
                         {data.description}
-                    </span>
+                    </p>
+                    <EducationTimeline id={id} ref={ref ? ref :education} education_data_list={data.education_data_list}/>
                 </div>
-                <EducationTimeline id={id} ref={ref ? ref :education} education_data_list={data.education_data_list}/>
-
             </section>
         );
     }

@@ -63,39 +63,29 @@ export default function ProjectDetails({ title, categorie, image, overview_title
     }
 
     return(
-        <div className="project_info">
-            <div className="project_info_close_wrapper">
-                <div 
-                    className="project_info_close_container"
-                    onClick={() => {
-                        onClose(-1);
-                    }}
-                >
-                    <span className="project_info_close">
-                        &#10229;	 {return_to_overview}
-                    </span>
-                </div>
-            </div>
+        <div className="project_details">
+            <span 
+                className="project_details_close_action"
+                onClick={() => {
+                    onClose(-1);
+                }}>
+                &#10229; {return_to_overview}
+            </span>
             <div className="project_info_wrapper">
                 <div className="project_info_header">
                     <img className="project_info_image" src={image} alt="" />
                     <div className="project_info_header_content">
-                        <div className="project_info_title_container">
-                            <span className="project_info_title">
-                                {title}
-                            </span>
-                        </div>
-                        <div className="project_info_label_list_container">
+                        <span className="project_info_title">
+                            {title}
+                        </span>
+                        <div className="project_details_labels">
                             {label_list.map((label, index) => (
-                                <div 
-                                key={index}
-                                    className="project_info_label_container">
-                                    <span 
-                                        className="project_info_label"
+                                <span 
+                                    key={index}
+                                    className="project_label"
                                     >
-                                        {label}
-                                    </span>
-                                </div>
+                                    {label}
+                                </span>
                             ))}
                         </div>
                     </div>
@@ -104,11 +94,9 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                     {
                         (gallery && gallery.length > 0)
                         ? <div className="project_gallery_wrapper">
-                            <div>
-                                <span className="project_gallery_title">
-                                    {gallery_title}
-                                </span>
-                            </div>
+                            <h4 className="project_details_heading">
+                                {gallery_title}
+                            </h4>
                             <ul ref={galleryContentRef} className="project_gallery_content">
                                 {
                                     gallery.map((image, index) => (
@@ -143,25 +131,19 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                     <div className="project_info_content">
                         <div className="project_info_content_left">
                             <div>
-                                <div>
-                                    <span className="project_info_overview_title">
-                                        {overview_title}
-                                    </span>
-                                </div>
-                                <div className="project_info_overview_content">
-                                    <span className="project_info_overview">
-                                        {overview_content}
-                                    </span>
-                                </div>
+                                <h4 className="project_details_heading">
+                                    {overview_title}
+                                </h4>
+                                <p className="project_details_description">
+                                    {overview_content}
+                                </p>
                             </div>
                             {
                                 features_title && features_list && features_list.length > 0
                                 ? <div>
-                                    <div className="project_info_features_title_container">
-                                        <span className="project_info_features_title">
-                                            {features_title}
-                                        </span>
-                                    </div>
+                                    <h4 className="project_details_heading">
+                                        {features_title}
+                                    </h4>
                                     <div className="project_info_features_wrapper">
                                         {features_list.map((feature, index) => (
                                             <div 
@@ -180,68 +162,47 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                             }
                         </div>
                         <div className="project_info_content_right">
-                            <div className="project_info_details_title_container">
-                                <span className="project_info_details_title">
-                                    {details_title}
-                                </span>
-                            </div>
-                            <div className="project_info_categorie_title_container">
-                                <span className="project_info_categorie_title">
-                                    {categorie_title.toUpperCase()}
-                                </span>
-                            </div>
-                            <div>
-                                <span className="project_info_categorie">
-                                    {categorie}
-                                </span>
-                            </div>
-                            <div className="project_info_technologies_container">
-                                <span className="project_info_technologies">
-                                    {technologies_title.toUpperCase()}
-                                </span>
-                            </div>
-                            <div className="project_info_label_list_container">
+                            <h4 className="project_details_heading">
+                                {details_title}
+                            </h4>
+                            <h5 className="project_details_sub_heading">
+                                {categorie_title.toUpperCase()}
+                            </h5>
+                            <span className="project_details_categorie">
+                                {categorie}
+                            </span>
+                            <h5 className="project_details_sub_heading">
+                                {technologies_title.toUpperCase()}
+                            </h5>
+                            <div className="project_details_labels">
                                 {label_list.map((label, index) => (
-                                    <div 
+                                    <span 
                                         key={index}
-                                        className="project_info_label_container">
-                                        <span 
-                                            className="project_info_label"
-                                        >
-                                            {label}
-                                        </span>
-                                    </div>
+                                        className="project_label"
+                                    >
+                                        {label}
+                                    </span>
                                 ))}
                             </div>
                             {
                                 links_title && link_list && link_list.length > 0
-                                ? <div className="project_info_projekt_links_title_container">
-                                    <span className="project_info_project_title_links">
-                                        {links_title.toUpperCase()}
-                                    </span>
-                                </div>
+                                ? <h5 className="project_details_sub_heading">
+                                    {links_title.toUpperCase()}
+                                </h5>
                                 : null
                             }
                             {
                                 links_title && link_list && link_list.length > 0
-                                ? <div className="project_info_project_link_button_container">
-                                    {link_list.map(((link, index) => (
-                                        <div
-                                            key={index}
-                                            className="project_info_project_link_button"
-                                        >
-                                            <a 
-                                                className="project_info_project_link_href"
-                                                href={link.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span className="project_info_project_link_href_text">
-                                                    &#128279; {link.title}
-                                                </span>
-                                            </a> 
-                                        </div>
-                                    )))}
+                                ? <div className="project_links">
+                                    {link_list.map((link, index) => (
+                                        <a key={index}
+                                           className="project_link"
+                                           href={link.link}
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                            &#128279; {link.title}
+                                        </a> 
+                                    ))}
                                 </div>
                                 : null
                             }

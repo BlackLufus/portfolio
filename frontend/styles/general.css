@@ -32,9 +32,8 @@ h2 {
 }
 
 h3 {
-    font-size: 1.17em;
     margin-block: 1em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: bold;
     font-size: 2rem;
     color: var(--font-color-p);
@@ -42,14 +41,10 @@ h3 {
 
 p {
     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-    font-size: 1.25rem;
+    margin-block: 1em;
+    font-size: 1.125rem;
     line-height: 1.8;
-    color: var(--font-color-1);
+    color: var(--font-color-2);
     margin-bottom: 1rem;
 }
 
@@ -63,44 +58,6 @@ p {
     font-weight: bold;
     font-size: var(--font-size-2);
     color: var(--font-color-p);
-}
-
-.first_heading_container {
-    text-align: center;
-    margin: 14px 0 10px 0;
-}
-
-.first_heading {
-    line-height: 99%;
-    font-weight: bold;
-    font-size: var(--font-size-3);
-    color: var(--font-color-p);
-}
-
-.second_heading {
-    line-height: 99%;
-    font-weight: bold;
-    font-size: var(--font-size-4);
-    color: var(--font-color-p);
-}
-
-.third_heading {
-    line-height: 99%;
-    font-weight: bold;
-    font-size: var(--font-size-6);
-    color: var(--font-color-1);
-}
-
-.section_description_container {
-    max-width: 1150px;
-    text-align: center;
-    margin-inline: auto;
-    margin-top: 20px;
-}
-
-.section_description {
-    font-size: var(--font-size-7);
-    color: var(--font-color-2);
 }
 
 .first_text {

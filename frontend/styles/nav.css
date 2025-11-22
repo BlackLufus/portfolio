@@ -3,7 +3,7 @@ header {
     display: flex;
     top: 0;
     height: 2.5em;
-    z-index: 1;
+    z-index: 5;
 }
 
 nav {
@@ -170,6 +170,7 @@ nav {
     background-color: var(--background-color-t7);
     backdrop-filter: blur(10px);
     overflow: hidden;
+    z-index: 4;
 }
 
 .nav_bar.hide {

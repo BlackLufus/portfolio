@@ -12,17 +12,15 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: 300;
-    color: var(--font-color-3);
+    color: var(--font-color-1);
 }
 
 #overview .description {
     text-align: center;
-    font-size: 1.125rem;
     max-width: 700px;
     margin: 0 auto 2rem;
     opacity: 0.85;
     line-height: 1.7;
-    color: var(--font-color-2);
 }
 
 #overview .btn_wrapper {
@@ -71,7 +69,7 @@
     border-radius: 40px;
 
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: center;
     transition: transform 0.3s ease-out;
 }
 

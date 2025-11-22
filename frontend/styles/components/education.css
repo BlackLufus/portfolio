@@ -1,7 +1,6 @@
 .education_content {
     display: block;
     max-width: 1380px;
-    padding-inline: 10px;
     margin: 60px auto 15px auto;
 }
 
@@ -65,8 +64,11 @@
     background-color: var(--background-color-1);
     border: 2px solid var(--font-color-p);
     border-radius: 100%;
-    margin-right: auto; /* For Firefox */
-    margin-left: auto;  /* For Firefox */
+    margin-inline: auto; /* For Firefox */
+}
+
+.education_timeline_point svg {
+    fill: var(--font-color-1);
 }
 
 
@@ -134,25 +136,20 @@
     color: var(--font-color-1);
 }
 
-.education_period_container {
-    min-width: fit-content;
-    align-content: center;
-    padding: 3px 10px;
-    margin-block: auto;
-    line-height: 99%;
-    text-align: center;
-    background-color: var(--background-color-2);
-    border-radius: 20px;
-}
 
-
-:root[data-theme="dark"] .education_period_container {
+:root[data-theme="dark"] .education_period {
     background-color: var(--background-color-4);
 }
 
 .education_period {
+    min-width: fit-content;
+    padding: 3px 10px;
+    align-content: center;
+    text-align: center;
     font-size: var(--font-size-10);
-    color: var(--font-color-3);
+    color: var(--font-color-2);
+    background-color: var(--background-color-2);
+    border-radius: 20px;
 }
 
 .education_panel_institution {
@@ -161,15 +158,13 @@
     margin-block: 20px 10px;
 }
 
-.education_institution_image {
-    align-content: center;
-}
-
-.education_institution_image > img{
+.education_institution_icon {
+    margin-block: auto;
     height: 20px;
     width: 20px;
     object-fit: cover;
     object-position: center;
+    fill: var(--font-color-p);
 }
 
 .education_institution {
@@ -195,6 +190,10 @@
 }
 
 .education_additional_info {
+    margin-block: 0;
+    margin-top: 10px;
+    line-height: 24px;
+    white-space: pre-line;
     font-size: var(--font-size-8);
     color: var(--font-color-4);
 }
