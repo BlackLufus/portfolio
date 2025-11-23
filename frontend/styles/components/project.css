@@ -74,10 +74,12 @@
 .project_title_container {
     padding: 0 10px;
     justify-items: left;
+    height: 50px;
     text-align: left;
     align-content: center;
-    height: 50px;
-    transition: color 0.35s ease;
+    font-weight: bold;
+    font-size: var(--font-size-7);
+    color: var(--font-color-1);
 }
 
 .project_title {
@@ -174,7 +176,6 @@
     height: 4px;
     background-color: var(--font-color-1);
     border-radius: 50px;
-    transition: background-color 0.35s ease;
 }
 
 .project_add_card::before {
@@ -333,7 +334,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .project_gallery_image:hover {
@@ -402,7 +403,6 @@
     align-items: center;
     width: 50px;
     height: 50px;
-    transition: background-color 0.35s ease, fill 0.35s ease;
 }
 
 .light_box_overlay_zoom:hover {
@@ -441,7 +441,6 @@
     background-color: #eee;
     border-radius: 20px;
     transform: rotate(45deg);
-    transition: background-color 0.35s ease;
     z-index: 1001;
 }
 
@@ -455,7 +454,6 @@
     background-color: #eee;
     border-radius: 20px;
     transform: rotate(-45deg);
-    transition: background-color 0.35s ease;
     z-index: 1001;
 }
 
@@ -538,7 +536,6 @@
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
-    transition: background-color 0.35s ease;
     transform: rotate(-35deg);
 }
 
@@ -551,7 +548,6 @@
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
-    transition: background-color 0.35s ease;
     transform: rotate(35deg);
 }
 
@@ -575,7 +571,6 @@
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
-    transition: background-color 0.35s ease;
     transform: rotate(35deg);
 }
 
@@ -588,7 +583,6 @@
     height: 3px;
     background-color: #eee;
     border-radius: 20px;
-    transition: background-color 0.35s ease;
     transform: rotate(-35deg);
 }
 

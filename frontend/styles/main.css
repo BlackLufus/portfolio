@@ -4,67 +4,22 @@
     box-sizing: border-box;
     font-size: var(--fourth-font-size);
     font-family: var(--primary-font-family);
-    transition: background-color 0.35s ease, color 0.35s ease;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease, color 0.35s ease, fill 0.35s ease;
     transition: filter 0.35s ease, opacity 0.35 ease;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
     display: block;
     height: 100vh;
     height: 100dvh;
     overflow-y: auto;
+    scrollbar-color: var(--background-color-5) var(--background-color-2);
     background-color: var(--background-color-1);
 }
 
 :root[data-theme="dark"] html, :root[data-theme="dark"] body {
+    scrollbar-color: var(--background-color-5) var(--background-color-3);
     background-color: var(--background-color-2);
-}
-
-body > div {
-    height: 100%;
-}
-
-.loader_wraper {
-    display: flex;
-    align-items:normal;
-}
-
-.loader_wraper_center {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items:normal;
-}
-
-.loader_container {
-    position: relative;
-    display: block;
-    text-align: center;
-}
-
-.loader {
-    border: 5px solid #fff;
-    border-bottom-color: var(--font-color-p);
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.loader_text {
-    color: var(--font-color-1);
 }
 
 .webpage {
@@ -85,7 +40,7 @@ body > div {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-fit: cover;
     object-position: center;
     opacity: 0.5;
     filter: blur(75px);
@@ -104,8 +59,8 @@ main {
     height: calc(100% - 60px);
     width: 100%;
     opacity: 0.5;
-    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
-    object-position: center; /* zentriert den sichtbaren Teil */
+    object-fit: cover;
+    object-position: center;
     transition: opacity 0.5s ease;
     filter: blur(75px);
     z-index: 0;
@@ -123,7 +78,6 @@ main {
     height: calc(100vh - 60px);
     width: 100%;
     padding: 5px;
-    /* backdrop-filter: blur(10px); */
 }
 
 .desktop_task {

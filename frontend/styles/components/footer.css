@@ -56,7 +56,6 @@
     justify-items: center;
     border: 1px solid var(--background-color-5);
     border-radius: 50px;
-    transition: border-color 0.35s ease;
 }
 
 .footer_link_icon:hover {
@@ -70,7 +69,7 @@
     width: 25px;
     margin: auto;
     align-self: center;
-    transition: transform 0.35s ease, fill 0.35s ease;
+    transition: transform 0.35s ease;
 }
 
 .footer_link_icon:hover > svg {

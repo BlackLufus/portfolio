@@ -195,7 +195,7 @@
     height: 10px;
     width: 10px;
     background-color: var(--background-color-5);
-    transition: width 0.15s linear, background-color 0.35s ease;
+    transition: width 0.15s linear;
     border-radius: 20px;
     cursor: pointer;
 }

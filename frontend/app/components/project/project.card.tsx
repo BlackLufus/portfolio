@@ -43,13 +43,13 @@ export default function ProjectCard({ index, image, title, description, labels, 
                 <img className="project_image" src={image} alt="" />
             </div>
             <div className="project_title_container">
-                <span 
+                <h4 
                     className="third_heading project_title"
                     onClick={() => {
                             onClick(index);
                 }}>
                     {title}
-                </span>
+                </h4>
             </div>
             <div className="project_description_container">
                 <span className="description3 project_description">

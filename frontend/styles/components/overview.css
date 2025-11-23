@@ -42,7 +42,6 @@
     padding: 10px 20px;
     border-radius: 40px;
     background-color: var(--font-color-p);
-    transition: box-shadow 0.35s ease;
 }
 
 #overview .primary_button:hover {

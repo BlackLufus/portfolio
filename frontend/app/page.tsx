@@ -1,5 +1,6 @@
 "use client";
 import "../styles/general.css";
+import "../styles/loader.css";
 import "../styles/main.css"
 import "../styles/theme-settings.css"
 import "../styles/frame.css"
@@ -54,8 +55,8 @@ export default function Home() {
 
   const [data, setGeneralData] = useState<GeneralData | null>(null);
   const [pageState, setWebsiteState] = useState(true);
-  const [languageCode, setLanguageCode] = useState(LanguageNotifier.code);
   const [darkmodeState, setDarkmodeState] = useState(true);
+  const [languageCode, setLanguageCode] = useState(LanguageCode.DE);
   const [openComponents, setOpenComponents] = useState<React.ReactNode[]>([]);
 
   const webpageContainerRef = useRef<HTMLDivElement>(null);

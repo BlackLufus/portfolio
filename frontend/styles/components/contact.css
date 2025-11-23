@@ -15,7 +15,6 @@
     display: flex;
     padding-bottom: 20px;
     gap:  10px;
-    transition: color 0.35s ease;
 }
 
 .contact_link_icon {
@@ -25,7 +24,6 @@
     align-content: center;
     border-radius: 1rem;
     border: 1px solid var(--background-color-5);
-    transition: border-color 0.35s ease;
 }
 
 .contact_link:hover .contact_link_icon {
@@ -35,7 +33,6 @@
 .contact_link_icon svg {
     margin: auto;
     fill: var(--font-color-4);
-    transition: fill 0.35s ease;
 }
 
 .contact_link:hover .contact_link_icon svg {

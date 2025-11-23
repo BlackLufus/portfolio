@@ -306,7 +306,6 @@ input[type="checkbox"] {
     font-size: var(--font-size-7);
     color: var(--font-color-1);
     cursor: pointer;
-    transition: box-shadow 0.35s ease;
 }
 
 .form_button:hover {
