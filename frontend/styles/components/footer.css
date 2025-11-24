@@ -61,7 +61,7 @@
 .footer_link_icon:hover {
     padding:9px;
     border: 1px solid;
-    border-color: var(--font-color-p);
+    border-color: var(--preferred-color-theme);
 }
 
 .footer_link_icon > svg {

@@ -45,7 +45,7 @@
 }
 
 .number_detector_run_action_container:hover {
-    background-color: var(--font-color-p);
+    background-color: var(--preferred-color-theme);
 }
 
 .number_detector_run_action {
@@ -113,7 +113,7 @@
 }
 
 .number_detector_action_predict:hover {
-    background-color: var(--font-color-p);
+    background-color: var(--preferred-color-theme);
 }
 
 .number_detector_action_predict_text {

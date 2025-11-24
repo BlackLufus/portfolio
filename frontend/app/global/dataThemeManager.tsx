@@ -78,7 +78,7 @@ export class ColorThemeManager {
         this.index = index % colors.length;
         console.log(index);
         localStorage.setItem('data-color-theme', index.toString());
-        document.documentElement.style.setProperty('--font-color-p', Object.values(ColorScheme)[this.index].toString());
+        document.documentElement.style.setProperty('--preferred-color-theme', Object.values(ColorScheme)[this.index].toString());
         this.subscribers.forEach(subscriber => {
             subscriber(index);
         });

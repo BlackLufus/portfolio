@@ -17,9 +17,9 @@
 
 .custom_scroll_box.custom_scroll_box_selected {
     width: 25px;
-    background-color: var(--font-color-p);
+    background-color: var(--preferred-color-theme);
 }
 
 .custom_scroll_box:hover {
-    background-color: var(--font-color-p);
+    background-color: var(--preferred-color-theme);
 }

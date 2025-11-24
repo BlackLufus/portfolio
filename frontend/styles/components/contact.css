@@ -27,7 +27,7 @@
 }
 
 .contact_link:hover .contact_link_icon {
-    border: 1px solid var(--font-color-p);
+    border: 1px solid var(--preferred-color-theme);
 }
 
 .contact_link_icon svg {

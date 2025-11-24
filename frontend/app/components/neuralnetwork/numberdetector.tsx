@@ -158,7 +158,7 @@ export default function NumberDetector() {
         ctx.lineWidth = 38;
         ctx.lineCap = "round";
         const rootStyles = getComputedStyle(document.documentElement);
-        const color = rootStyles.getPropertyValue('--font-color-p').trim();
+        const color = rootStyles.getPropertyValue('--preferred-color-theme').trim();
         ctx.strokeStyle = color;
         // ctx.strokeStyle = "black";
         ctxRef.current = ctx;
