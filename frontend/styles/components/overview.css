@@ -33,7 +33,7 @@
 #overview .btw {
     text-align: center;
     align-content: center;
-    font-size: var(--font-size-5);
+    font-size: 26px;
     color: var(--font-color-2);
 }
 

@@ -37,14 +37,15 @@ nav {
     gap: 10px;
 }
 
-.navi_name, .navi_name_short {
+.navi_name {
     font-weight: bold;
-    font-size: var(--font-size-6);
+    font-size: 22px;
+    cursor: pointer;
     color: var(--font-color-p);
 }
 
-.navi_name_short {
-    display: none;
+.navi_name:hover {
+    user-select: none;
 }
 
 .nav_link_wrapper {

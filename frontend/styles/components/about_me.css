@@ -32,12 +32,6 @@
     }
 }
 
-
-/*  ################
-    # Additional
-    ################
-*/
-
 .about_me_content {
     position: relative;
     display: block;
@@ -53,67 +47,30 @@
     padding-inline: 15px;
 }
 
-/*  ################
-    # Personal
-    ################
-*/
+#about_me h5 {
+    margin-top: 16px;
+}
 
-.about_me_personal_container, .about_me_professional_container {
+.about_me_characteristics_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0 1rem;
+}
+
+.about_me_characteristic {
     position: relative;
-    display: grid;
-    max-width: 650px;
-    margin-top: 40px;
+    padding-left: 16px;
+    font-size: 16px;
+    color: var(--font-color-3);
 }
 
-.about_me_additional_title {
-    margin: 10px 0;
-}
-
-.about_me_personal_professional_description {
-    padding-bottom: 20px;
-    max-width: 1150px;
-}
-
-.about_me_personal_professional_panels {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.personal, .professional {
-    display: flex;
-    height: 50px;
-    padding: 5px 10px;
-    border: 1px solid var(--border-color-2);
-    border-radius: 10px;
-}
-
-.personal_image_container {
-    display: block;
-    height: 40px;
-    width: 40px;
-    align-content: center;
-    justify-items: center;
-}
-
-.personal_image {
-    height: 30px;
-    width: 30px;
-    object-fit: cover;
-    object-position: center;
-}
-
-.personal_text_container, .professional_data_container, .professional_text_container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.professional_data {
-    font-weight: bold;
-}
-
-.personal_text, .professional_data, .professional_text {
-    font-size: var(--font-size-7);
-    color: var(--font-color-2);
+.about_me_characteristic::before {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 6px;
+    left: 0;
+    top: calc(50% - 3px);
+    background-color: var(--font-color-p);
+    border-radius: 20px;
 }

@@ -157,7 +157,7 @@ export default function CustomScrollBar( {wrapperRef, size, setIsDragging}: Cust
     return(
         <div className="custom_scroll_bar">
             {Array.from({ length: numBoxes }).map((_, i) => (
-                <div
+                <span
                     key={i}
                     id={`custom_scroll_bar_${id}_box_${i}`}
                     onClick={() => onClickBox?.(i)}

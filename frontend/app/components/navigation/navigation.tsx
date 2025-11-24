@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { LanguageCode } from "@/global/languageSubscriber";
+import LanguageTask from "../tasks/languageTask";
+import DarkmodeTask from "../tasks/darkmodeTask";
+import DeviceTask from "../tasks/deviceTask";
+import { ColorThemeManager } from "@/global/dataThemeManager";
+
 interface NaviProbs {
     firstname: string;
     lastname: string;
@@ -9,15 +13,9 @@ interface NaviProbs {
     contactTitle: string;
     desktopViewTitle: string;
     languageTitle: string;
-    pageState: boolean;
-    handlePageClick: () => void;
-    languageState: LanguageCode;
-    handleLanguageClick: () => void;
-    darkmodeState: boolean;
-    handleDarkmodeClick: () => void;
 }
 
-export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, desktopViewTitle, languageTitle, handlePageClick, languageState, handleLanguageClick, darkmodeState, handleDarkmodeClick}: NaviProbs) {
+export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, educationTitle, contactTitle, desktopViewTitle}: NaviProbs) {
 
     const naviRef = useRef<HTMLDivElement>(null);
     const navBarRef = useRef<HTMLDivElement>(null);
@@ -104,7 +102,9 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
         }
         <nav ref={naviRef} onClick={handleNaviClick}>
             <div className={`container navi_bar_wrapper ${menuState ? "show": ""}`}>
-                <span className="navi_name gradient_text">
+                <span className="navi_name gradient_text" onClick={() => {
+                    ColorThemeManager.sendNotification(ColorThemeManager.index + 1);
+                }}>
                     {firstname} {lastname}
                 </span>
                 <ul className="nav_link_wrapper">
@@ -122,27 +122,9 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                     </li>
                 </ul>
                 <div className="navi_bar_right">
-                    {/* <div className="navi_bar_item nav_bar_desktop_wrapper" onClick={handlePageClick}>
-                        <svg className="nav_bar_darkmode_svg" fill={darkmodeState ? "#000" : "#fff"} width="40px" height="40px" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 20a1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1zM2.5 17h25c.277 0 .5.223.5.5s-.223.5-.5.5h-25c-.277 0-.5-.223-.5-.5s.223-.5.5-.5zm-1-14C.678 3 0 3.678 0 4.5v17c0 .822.678 1.5 1.5 1.5H12v3H9.5c-.277 0-.5.223-.5.5s.223.5.5.5h11c.277 0 .5-.223.5-.5s-.223-.5-.5-.5H18v-3h10.5c.822 0 1.5-.678 1.5-1.5v-17c0-.822-.678-1.5-1.5-1.5zm0 1h27c.286 0 .5.214.5.5v17c0 .286-.214.5-.5.5h-27c-.286 0-.5-.214-.5-.5v-17c0-.286.214-.5.5-.5zM13 23h4v3h-4z"/>
-                        </svg>
-                    </div> */}
-                    <div className="nav_action" onClick={handleLanguageClick}>
-                        <span className={`nav_action_item ${languageState == LanguageCode.DE ? "show" : ""}`}>
-                            DE
-                        </span>
-                        <span className={`nav_action_item ${languageState == LanguageCode.EN ? "show" : ""}`}>
-                            EN
-                        </span>
-                    </div>
-                    <div onClick={handleDarkmodeClick} className="nav_action">
-                        <svg className={`nav_action_item ${darkmodeState ? "" : "show"}`} fill="#fff" width="32px" height="32px" viewBox="0 -4.5 33 33" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m6.57 10.402h.012c1.121 0 2.15.392 2.957 1.047l-.009-.007c.154.124.353.2.569.2.287 0 .543-.132.71-.339l.001-.002c.124-.154.2-.353.2-.569 0-.287-.133-.543-.34-.71l-.002-.001c-.539-.433-1.164-.788-1.842-1.035l-.046-.015c1.285-1.881 3.417-3.101 5.834-3.108h.001c3.867.003 7.005 3.124 7.034 6.984v.003c-.82.145-1.54.495-2.129.995l.006-.005c-.196.168-.32.416-.32.694 0 .224.081.429.215.588l-.001-.001c.168.196.416.32.694.32.224 0 .429-.081.588-.215l-.001.001c.457-.389 1.055-.625 1.707-.625 1.46.002 2.644 1.185 2.646 2.645-.001 1.461-1.185 2.645-2.645 2.646h-15.84c-2.62-.003-4.743-2.127-4.746-4.747.004-2.619 2.126-4.741 4.745-4.744zm17.892-8.503c-.087.281-.162.622-.212.971l-.004.037c-.042.287-.066.619-.066.956 0 3.493 2.579 6.384 5.937 6.874l.038.004c.291.043.626.068.967.068h.062-.003c-.985 2.036-2.974 3.447-5.306 3.593l-.018.001c-.602-.723-1.418-1.249-2.349-1.483l-.031-.007v-.017c-.001-2.989-1.483-5.631-3.752-7.233l-.028-.019c.847-1.959 2.608-3.381 4.729-3.739l.037-.005zm-17.892 19.815h15.84c2.466-.003 4.464-2.001 4.466-4.467-.002-.396-.055-.779-.153-1.144l.007.031c3.284-.533 5.88-2.967 6.646-6.117l.011-.056c.015-.062.024-.133.024-.206 0-.239-.092-.457-.243-.62l.001.001c-.167-.18-.404-.292-.668-.292-.049 0-.096.004-.143.011l.005-.001-.362.056c-.266.049-.573.077-.886.077-.252 0-.499-.018-.741-.053l.028.003c-2.505-.362-4.408-2.494-4.408-5.07 0-.25.018-.495.052-.736l-.003.027c.094-.658.299-1.251.597-1.786l-.013.026c.082-.129.132-.286.136-.454v-.001c0-.007 0-.016 0-.025 0-.486-.381-.883-.86-.908h-.002c-.125-.007-.272-.011-.419-.011-3.263 0-6.077 1.928-7.363 4.706l-.021.05c-1.024-.452-2.219-.715-3.475-.715-.003 0-.006 0-.009 0-3.311.008-6.195 1.823-7.721 4.511l-.023.044c-.102-.005-.203-.013-.305-.013-3.625.004-6.562 2.942-6.566 6.566.004 3.625 2.941 6.563 6.566 6.568z"/>
-                        </svg>
-                        <svg className={`nav_action_item ${darkmodeState ? "show" : ""}`} fill="#000" width="26px" height="26px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V4C12.75 4.41421 12.4142 4.75 12 4.75C11.5858 4.75 11.25 4.41421 11.25 4V2C11.25 1.58579 11.5858 1.25 12 1.25ZM3.66865 3.71609C3.94815 3.41039 4.42255 3.38915 4.72825 3.66865L6.95026 5.70024C7.25596 5.97974 7.2772 6.45413 6.9977 6.75983C6.7182 7.06553 6.2438 7.08677 5.9381 6.80727L3.71609 4.77569C3.41039 4.49619 3.38915 4.02179 3.66865 3.71609ZM20.3314 3.71609C20.6109 4.02179 20.5896 4.49619 20.2839 4.77569L18.0619 6.80727C17.7562 7.08677 17.2818 7.06553 17.0023 6.75983C16.7228 6.45413 16.744 5.97974 17.0497 5.70024L19.2718 3.66865C19.5775 3.38915 20.0518 3.41039 20.3314 3.71609ZM12 7.75C9.65279 7.75 7.75 9.65279 7.75 12C7.75 14.3472 9.65279 16.25 12 16.25C14.3472 16.25 16.25 14.3472 16.25 12C16.25 9.65279 14.3472 7.75 12 7.75ZM6.25 12C6.25 8.82436 8.82436 6.25 12 6.25C15.1756 6.25 17.75 8.82436 17.75 12C17.75 15.1756 15.1756 17.75 12 17.75C8.82436 17.75 6.25 15.1756 6.25 12ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H4C4.41421 11.25 4.75 11.5858 4.75 12C4.75 12.4142 4.41421 12.75 4 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM19.25 12C19.25 11.5858 19.5858 11.25 20 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H20C19.5858 12.75 19.25 12.4142 19.25 12ZM17.0255 17.0252C17.3184 16.7323 17.7933 16.7323 18.0862 17.0252L20.3082 19.2475C20.6011 19.5404 20.601 20.0153 20.3081 20.3082C20.0152 20.6011 19.5403 20.601 19.2475 20.3081L17.0255 18.0858C16.7326 17.7929 16.7326 17.3181 17.0255 17.0252ZM6.97467 17.0253C7.26756 17.3182 7.26756 17.7931 6.97467 18.086L4.75244 20.3082C4.45955 20.6011 3.98468 20.6011 3.69178 20.3082C3.39889 20.0153 3.39889 19.5404 3.69178 19.2476L5.91401 17.0253C6.2069 16.7324 6.68177 16.7324 6.97467 17.0253ZM12 19.25C12.4142 19.25 12.75 19.5858 12.75 20V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V20C11.25 19.5858 11.5858 19.25 12 19.25Z"/>
-                        </svg>
-                    </div>
+                    <DeviceTask />
+                    <LanguageTask />
+                    <DarkmodeTask />
                     {
                         (viewWidth <= 966)
                         ? <div className="nav_action nav_bar_menu_item" onClick={handleMenuToggleClick}>

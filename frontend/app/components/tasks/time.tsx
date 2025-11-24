@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function TimeAndDate() {
+export default function TimeAndDateTask() {
 
     const [,setNow] = useState(new Date());
 

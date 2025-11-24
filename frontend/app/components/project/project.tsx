@@ -3,10 +3,10 @@ import React, { ReactNode, useEffect, useState } from "react";
 import Frame from "../frame";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
-import ProjectInfo from "./project.details";
+import ProjectDetails from "./project.details";
 import ProjectCard, { ProjectData } from "./project.card";
 import AddProjectForm from "./project.addForm";
-import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
+import LanguageManager, { LanguageCode } from "@/global/languageSubscriber";
 
 interface ProjectInfoData {
     button_title: string;
@@ -39,10 +39,13 @@ interface ProjectProps {
 
 export default function Project({config}: ProjectProps) {
 
+    const urlParams = new URLSearchParams(window.location.search);
+    let init_id = Number(urlParams.get('project_id') ?? -1);
+
     const [data, setData] = useState<ProjectsData | null>(null);
     const [formState, setFormState] = useState(false);
-    const [selectedProject, setSelectedProject] = useState<number>(-1);
-    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    const [selectedProject, setSelectedProject] = useState<number>(init_id);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageManager.code);
 
     const handleLanguageChange = (code: LanguageCode) => {
         setLanguageCode(code);
@@ -51,18 +54,22 @@ export default function Project({config}: ProjectProps) {
     useEffect(() => {
         loadData<ProjectsData>(DataType.PROJECTASSET, languageCode).then((res) => {
             setData(res);
+            if (init_id != -1) {
+                init_id = -1;
+                setTimeout(() => {
+                    window.location.href = `#${window.location.href.split("#")[1]}`;
+                    history.replaceState(null, '', `${window.location.pathname}`);
+                }, 10);
+            }
         });
-        LanguageNotifier.subscribe(handleLanguageChange);
+        LanguageManager.subscribe(handleLanguageChange);
 
-        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+        return () => {LanguageManager.unsubscribe(handleLanguageChange)};
     }, [languageCode]);
-
-    const terminate = () => {
-        console.log("Projects: terminated");
-    };
 
     const openProject = (index: number) => {
         setSelectedProject(index);
+        history.replaceState(null, '', `${window.location.pathname}`);
     }
 
     const toggleForm = (state: boolean = false) => {
@@ -79,13 +86,13 @@ export default function Project({config}: ProjectProps) {
             />
         )
         return(
-            <section>
+            <section id="projects">
                 {
                     (formState)
                     ? <AddProjectForm pop={toggleForm} />
                     : null
                 }
-                <div id="projects" className={`container ${!config ? "" : "section_with_scrollbar"}`}>
+                <div className={`container ${!config ? "" : "section_with_scrollbar"}`}>
                     <h2>
                         {data.title}
                     </h2>
@@ -94,7 +101,8 @@ export default function Project({config}: ProjectProps) {
                     </p>
                     {   
                         (selectedProject >= 0)
-                        ? <ProjectInfo
+                        ? <ProjectDetails
+                            id={data.project_list[selectedProject].id}
                             title={data.project_list[selectedProject].title}
                             image={data.project_list[selectedProject].image}
                             categorie={data.project_list[selectedProject].categorie}
@@ -118,6 +126,7 @@ export default function Project({config}: ProjectProps) {
                                 {data.project_list.map((projectData, index) => (
                                     <ProjectCard
                                         key={index}
+                                        id={projectData.id}
                                         index={index}
                                         image={projectData.image}
                                         title={projectData.title}
@@ -139,7 +148,6 @@ export default function Project({config}: ProjectProps) {
             <Frame
                 title={config?.title}
                 icon_url={config?.icon}
-                onClose={terminate}
             >
                 {build()}
             </Frame>

@@ -1,7 +1,6 @@
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode } from "react";
 import NumberDetector from "../neuralnetwork/numberdetector";
-import CustomScrollBar from "@/widgets/customScrollBar";
-import LightBoxOverlay from "./project.gallery.overlay";
+import ProjectDetailsGallery, { GalleryData } from "./project.details.gallery";
 
 export enum  TestProgramm {
     NUMBERDETECTOR = 0
@@ -12,12 +11,8 @@ interface LinkData {
     link: string;
 }
 
-export interface GalleryData {
-    url: string;
-    description: string;
-}
-
 export interface ProjectDetailsProbs {
+    id: string;
     title: string;
     categorie: string;
     image: string;
@@ -38,22 +33,7 @@ export interface ProjectDetailsProbs {
     demo_programm?: TestProgramm;
 }
 
-export default function ProjectDetails({ title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, gallery_title, gallery, onClose, demo_programm }: ProjectDetailsProbs) {
-
-    const galleryContentRef = useRef<HTMLUListElement>(null);
-
-    const [openImageIndex, setOpenImage] = useState<number>(-1);
-
-    const [isDragging, setIsDragging] = useState(false);;
-
-    const onOpenImage = (index: number) => {
-        if (isDragging) return;
-        setOpenImage(index);
-    }
-
-    const onCloseImage = () => {
-        setOpenImage(-1);
-    }
+export default function ProjectDetails({ id, title, categorie, image, overview_title, overview_content, features_title, features_list, details_title, categorie_title, technologies_title, links_title, return_to_overview, label_list, link_list, gallery_title, gallery, onClose, demo_programm }: ProjectDetailsProbs) {
 
     const getDemoProgramm = (dempProgramm?: TestProgramm): ReactNode => {
         switch(dempProgramm) {
@@ -63,21 +43,22 @@ export default function ProjectDetails({ title, categorie, image, overview_title
     }
 
     return(
-        <div className="project_details">
-            <span 
+        <div id={id} className="project_details">
+            <a 
                 className="project_details_close_action"
+                href="#projects"
                 onClick={() => {
                     onClose(-1);
                 }}>
                 &#10229; {return_to_overview}
-            </span>
-            <div className="project_info_wrapper">
-                <div className="project_info_header">
-                    <img className="project_info_image" src={image} alt="" />
-                    <div className="project_info_header_content">
-                        <span className="project_info_title">
+            </a>
+            <div className="project_details_wrapper">
+                <div className="project_details_header">
+                    <img className="project_details_image" src={image} alt="" />
+                    <div className="project_details_header_content">
+                        <h4 className="project_details_title">
                             {title}
-                        </span>
+                        </h4>
                         <div className="project_details_labels">
                             {label_list.map((label, index) => (
                                 <span 
@@ -90,90 +71,51 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                         </div>
                     </div>
                 </div>
-                <div className="project_content_wrapper">
-                    {
-                        (gallery && gallery.length > 0)
-                        ? <div className="project_gallery_wrapper">
-                            <h4 className="project_details_heading">
-                                {gallery_title}
-                            </h4>
-                            <ul ref={galleryContentRef} className="project_gallery_content">
-                                {
-                                    gallery.map((image, index) => (
-                                        <li 
-                                            className="project_gallery_image_container"
-                                            key={index}>
-                                            <img 
-                                                className="project_gallery_image"
-                                                onClick={() => onOpenImage(index)}
-                                                src={image.url}
-                                                alt=""
-                                            />
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                            <CustomScrollBar 
-                                wrapperRef={galleryContentRef}
-                                setIsDragging={setIsDragging} />
-                            {
-                                (openImageIndex != -1)
-                                ? <LightBoxOverlay 
-                                    gallery={gallery} 
-                                    start={openImageIndex}
-                                    onClose={onCloseImage}
-                                />
-                                : null
-                            }
-                        </div>
-                        : null
-                    }
-                    <div className="project_info_content">
-                        <div className="project_info_content_left">
-                            <div>
-                                <h4 className="project_details_heading">
-                                    {overview_title}
-                                </h4>
-                                <p className="project_details_description">
-                                    {overview_content}
-                                </p>
-                            </div>
+                <div className="project_details_content_wrapper">
+                    <ProjectDetailsGallery 
+                        title={gallery_title}
+                        gallery={gallery}
+                    />
+                    <div className="project_details_content">
+                        <div className="project_details_content_left">
+                            <h5>
+                                {overview_title}
+                            </h5>
+                            <p className="project_details_description">
+                                {overview_content}
+                            </p>
                             {
                                 features_title && features_list && features_list.length > 0
-                                ? <div>
-                                    <h4 className="project_details_heading">
+                                ? <>
+                                    <h5>
                                         {features_title}
-                                    </h4>
-                                    <div className="project_info_features_wrapper">
+                                    </h5>
+                                    <div className="project_details_features_grid">
                                         {features_list.map((feature, index) => (
-                                            <div 
+                                            <span 
                                                 key={index}
-                                                className="project_info_features_content">
-                                                <span 
-                                                    className="project_info_features"
-                                                >
-                                                    {feature}
-                                                </span>
-                                            </div>
+                                                className="project_details_features" >
+                                                {feature}
+                                            </span>
                                         ))}
                                     </div>
-                                </div>
+                                </>
                                 : null
                             }
                         </div>
-                        <div className="project_info_content_right">
-                            <h4 className="project_details_heading">
+                        <div className="project_details_content_right">
+                            <h5>
                                 {details_title}
-                            </h4>
-                            <h5 className="project_details_sub_heading">
-                                {categorie_title.toUpperCase()}
                             </h5>
+                            <h6 className="project_details_sub_heading">
+                                {categorie_title.toUpperCase()}
+                            </h6>
                             <span className="project_details_categorie">
                                 {categorie}
                             </span>
-                            <h5 className="project_details_sub_heading">
+                            <h6 className="project_details_sub_heading">
                                 {technologies_title.toUpperCase()}
-                            </h5>
+                            </h6>
                             <div className="project_details_labels">
                                 {label_list.map((label, index) => (
                                     <span 
@@ -186,24 +128,22 @@ export default function ProjectDetails({ title, categorie, image, overview_title
                             </div>
                             {
                                 links_title && link_list && link_list.length > 0
-                                ? <h5 className="project_details_sub_heading">
-                                    {links_title.toUpperCase()}
-                                </h5>
-                                : null
-                            }
-                            {
-                                links_title && link_list && link_list.length > 0
-                                ? <div className="project_links">
-                                    {link_list.map((link, index) => (
-                                        <a key={index}
-                                           className="project_link"
-                                           href={link.link}
-                                           target="_blank"
-                                           rel="noopener noreferrer">
-                                            &#128279; {link.title}
-                                        </a> 
-                                    ))}
-                                </div>
+                                ? <>
+                                    <h6 className="project_details_sub_heading">
+                                        {links_title.toUpperCase()}
+                                    </h6>
+                                    <div className="project_links">
+                                        {link_list.map((link, index) => (
+                                            <a key={index}
+                                            className="project_link"
+                                            href={link.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                                &#128279; {link.title}
+                                            </a> 
+                                        ))}
+                                    </div>
+                                </>
                                 : null
                             }
                         </div>

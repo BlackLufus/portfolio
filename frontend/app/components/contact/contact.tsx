@@ -3,7 +3,7 @@ import { useState, useEffect, ReactNode, useRef } from "react";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
 import Frame from "../frame";
-import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
+import LanguageManager, { LanguageCode } from "@/global/languageSubscriber";
 import { sendContactMessage } from "@/services/sendContactMessage";
 
 interface ContactLinkData {
@@ -45,7 +45,7 @@ interface ContactProps {
 export default function Contact({config}: ContactProps) {
 
     const [data, setData] = useState<ContactData| null>(null);
-    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageManager.code);
     const [isLoading, setLoadingState] = useState(false);
     const [resultText, setResultText] = useState<string | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
@@ -130,9 +130,9 @@ export default function Contact({config}: ContactProps) {
         loadData<ContactData>(DataType.CONTACT, languageCode).then((res) => {
             setData(res);
         });
-        LanguageNotifier.subscribe(handleLanguageChange);
+        LanguageManager.subscribe(handleLanguageChange);
 
-        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+        return () => {LanguageManager.unsubscribe(handleLanguageChange)};
     }, [languageCode]);
 
     const terminate = () => {

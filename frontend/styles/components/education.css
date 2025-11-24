@@ -133,7 +133,7 @@
 
 .education_degree {
     font-weight: bold;
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: var(--font-color-1);
 }
 
@@ -148,7 +148,7 @@
     padding: 3px 10px;
     align-content: center;
     text-align: center;
-    font-size: var(--font-size-10);
+    font-size: 14px;
     color: var(--font-color-2);
     background-color: var(--background-color-2);
     border-radius: 20px;
@@ -170,7 +170,7 @@
 }
 
 .education_institution {
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-4);
 }
 
@@ -181,7 +181,7 @@
 }
 
 .education_summary {
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-2);
 }
 
@@ -196,7 +196,7 @@
     margin-top: 10px;
     line-height: 24px;
     white-space: pre-line;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-4);
 }
 

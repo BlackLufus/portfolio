@@ -1,4 +1,5 @@
-import { GalleryData } from "./project.details";
+import path from "path";
+import { GalleryData } from "./project.details.gallery";
 
 interface LinkData {
     title: string;
@@ -10,6 +11,7 @@ export interface LinksListData {
 }
 
 export interface ProjectData {
+    id: string;
     image: string;
     title: string;
     description: string;
@@ -22,6 +24,7 @@ export interface ProjectData {
 }
 
 interface ProjectCardProps {
+    id: string;
     index: number;
     image: string;
     title: string;
@@ -31,31 +34,41 @@ interface ProjectCardProps {
     onClick: (index: number) => void;
 };
 
-export default function ProjectCard({ index, image, title, description, labels, button_title, onClick }: ProjectCardProps) {
+export default function ProjectCard({ id, index, image, title, description, labels, button_title, onClick }: ProjectCardProps) {
     const delay = `${(index * 0.075)}s`;
+
+    const onAuxClixk = () => {
+        const url = new URL(path.join(window.location.origin, `#${id}`));
+        url.searchParams.set("project_id", index.toString());
+        window.open(url.toString(), '_blank');
+    }
+
     return (
         <div className="project_card" style={{"--delay": delay} as React.CSSProperties}>
-            <div 
-                className="project_image_container" 
+            <a 
+                className="project_image_link" 
+                href={`#${id}`}
+                onAuxClick={onAuxClixk}
                 onClick={() => {
                     onClick(index);
-            }}>
+                }}>
                 <img className="project_image" src={image} alt="" />
-            </div>
-            <div className="project_title_container">
-                <h4 
-                    className="third_heading project_title"
+            </a>
+            <a 
+                className="project_title_link"
+                href={`#${id}`}>
+                <h5 
+                    className="project_title"
+                    onAuxClick={onAuxClixk}
                     onClick={() => {
                             onClick(index);
                 }}>
                     {title}
-                </h4>
-            </div>
-            <div className="project_description_container">
-                <span className="description3 project_description">
-                    {description}
-                </span>
-            </div>
+                </h5>
+            </a>
+            <p className="project_card_description">
+                {description}
+            </p>
             <div className="project_labels_container">
                 {labels.map((label, index) => (
                     <span key={index} className="project_label">
@@ -63,15 +76,17 @@ export default function ProjectCard({ index, image, title, description, labels, 
                     </span>
                 ))}
             </div>
-            <div 
-                className="project_action_container" 
+            <a 
+                className="project_action_link" 
+                href={`#${id}`}
+                onAuxClick={onAuxClixk}
                 onClick={() => {
                     onClick(index);
                 }}>
                 <span className="project_action">
                     {button_title}
                 </span>
-            </div>
+            </a>
         </div>
     );
 }

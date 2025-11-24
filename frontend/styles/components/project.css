@@ -47,7 +47,7 @@
     transform: translateY(-10px);
 }
 
-.project_image_container {
+.project_image_link {
     height: 190px;
     width: 100%;
     overflow: hidden;
@@ -71,15 +71,9 @@
     scale: 1.1;
 }
 
-.project_title_container {
-    padding: 0 10px;
-    justify-items: left;
-    height: 50px;
-    text-align: left;
-    align-content: center;
-    font-weight: bold;
-    font-size: var(--font-size-7);
-    color: var(--font-color-1);
+.project_title_link {
+    display: block;
+    margin: 6px 10px;
 }
 
 .project_title {
@@ -87,7 +81,6 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    font-weight: bold;
     cursor: pointer;
 }
 
@@ -95,20 +88,14 @@
     color: var(--font-color-p);
 }
 
-.project_description_container {
-    padding: 0 10px;
-    height: 60px;
-}
-
-.project_description {
+.project_card_description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    margin: 6px 10px;
+    font-size: 16px;
+    color: var(--font-color-3);
     overflow: hidden;
-    text-align: left;
-    text-overflow: ellipsis;
-    font-size: var(--font-size-8);
-    color: var(--font-color-4);
 }
 
 .project_labels_container {
@@ -126,22 +113,22 @@
     padding: 2px 8px;
     margin-bottom: auto;
     border-radius: 8px;
-    font-size: var(--font-size-9);
+    font-size: 16px;
     color: var(--font-color-2);
     background-color: var(--background-color-1);
     border: 1px solid var(--border-color-2);
 }
 
-.project_action_container {
+.project_action_link {
     display: block;
     margin: 6px 10px;
-    background-color: #0080FF;
+    background-color: var(--preferred-color-theme);
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
 }
 
-.project_action_container:hover {
+.project_action_link:hover {
     box-shadow: 0 0 8px var(--font-color-p);
 }
 
@@ -151,7 +138,7 @@
     text-align: center;
     margin-right: 4px;
     padding: 4px;
-    font-size: var(--font-size-9);
+    font-size: 16px;
     color: #fff;
 }
 
@@ -201,6 +188,7 @@
 .project_details {
     position: relative;
     display: block;
+    padding-top: 75px;
     max-width: 1000px;
     margin-inline: auto;
     animation: project_info_popup 0.6s ease both;
@@ -223,7 +211,7 @@
     margin-block: 20px;
     padding: 4px 12px;
     border-radius: 1rem;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-3);
     cursor: pointer;
 }
@@ -233,11 +221,11 @@
 }
 
 .project_info_close {
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-3);
 }
 
-.project_info_wrapper {
+.project_details_wrapper {
     position: relative;
     display: block;
     border-radius: 20px;
@@ -247,20 +235,20 @@
     overflow: hidden;
 }
 
-.project_info_header {
+.project_details_header {
     position: relative;
     height: 310px;
     overflow: hidden;
 }
 
-.project_info_image {
+.project_details_image {
     height: 100%;
     width: 100%;
-    object-fit: cover; /* sorgt für abgeschnittenes, zentriertes Bild */
+    object-fit: cover;
     object-position: center;
 }
 
-.project_info_header_content {
+.project_details_header_content {
     position: absolute;
     display: block;
     margin-top: auto;
@@ -272,10 +260,8 @@
     background: linear-gradient(0deg, var(--background-color-2), transparent 70%) no-repeat;
 }
 
-.project_info_title {
-    font-weight: bold;
-    font-size: var(--font-size-4);
-    color: var(--font-color-1);
+.project_details_title {
+    font-size: 28px;
 }
 
 .project_details_labels {
@@ -285,7 +271,7 @@
     gap: 0.25rem;
 }
 
-.project_content_wrapper {
+.project_details_content_wrapper {
     position: relative;
     display: block;
     padding: 30px;
@@ -380,7 +366,7 @@
 }
 
 .light_box_overlay_counter_text {
-    font-size: var(--font-size-4);
+    font-size: 32px;
     color: white;
 }
 
@@ -602,28 +588,22 @@
 }
 
 .light_box_overlay_description {
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: #fff;
 }
 
-.project_info_content {
+.project_details_content {
     position: relative;
     display: flex;
     margin-inline: auto;
     max-width: 1000px;
 }
 
-.project_info_content_left {
+.project_details_content_left {
     display: block;
     padding-right: 30px;
     max-width: 70%;
     border-right: 1px solid var(--border-color-1);
-}
-
-.project_details_heading {
-    font-weight: bold;
-    font-size: var(--font-size-6);
-    color: var(--font-color-1);
 }
 
 .project_info_overview_content {
@@ -634,11 +614,11 @@
     margin-block: 0;
     padding-block: 20px;
     white-space: pre-line;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-3);
 }
 
-.project_info_features_wrapper {
+.project_details_features_grid {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr));
@@ -646,18 +626,14 @@
     gap: 10px;
 }
 
-.project_info_features_content {
+.project_details_features {
     position: relative;
     padding-left: 16px;
-}
-
-.project_info_features {
-    position: relative;
-    font-size: var(--font-size-9);
+    font-size: 16px;
     color: var(--font-color-3);
 }
 
-.project_info_features_content::after {
+.project_details_features::before {
     position: absolute;
     content: "";
     width: 6px;
@@ -668,7 +644,7 @@
     border-radius: 20px;
 }
 
-.project_info_content_right {
+.project_details_content_right {
     display: block;
     max-width: 30%;
     width: 100%;
@@ -678,14 +654,12 @@
 .project_details_sub_heading {
     padding-top: 20px;
     padding-bottom: 10px;
-    font-size: var(--font-size-9);
-    color: var(--font-color-3);
 }
 
 .project_details_categorie {
     position: relative;
     padding-left: 16px;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-1);
 }
 
@@ -745,13 +719,13 @@
         padding-block: 15px;
     }
 
-    .project_info_content_left {
+    .project_details_content_left {
         max-width: 100%;
         padding-right: 0;
         border: none;
     }
 
-    .project_info_content_right {
+    .project_details_content_right {
         max-width: 100%;
         padding-left: 0;
     }

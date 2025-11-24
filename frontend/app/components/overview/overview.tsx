@@ -1,9 +1,9 @@
 "use client";
 import loadData, { DataType } from "@/services/load_data";
-import Frame from "./frame";
+import Frame from "../frame";
 import { ReactNode, useEffect, useState } from "react";
 import Loading from "@/widgets/loader";
-import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
+import LanguageManager, { LanguageCode } from "@/global/languageSubscriber";
 
 interface OverviewData {
     title: string;
@@ -26,7 +26,7 @@ interface OverviewProps {
 export default function Overview({firstname, lastname, config}: OverviewProps) {
 
     const [data, setData] = useState<OverviewData | null>(null);
-    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageManager.code);
 
     const handleLanguageChange = (code: LanguageCode) => {
         setLanguageCode(code);
@@ -36,9 +36,9 @@ export default function Overview({firstname, lastname, config}: OverviewProps) {
         loadData<OverviewData>(DataType.OVERVIEW, languageCode).then((res) => {
             setData(res);
         });
-        LanguageNotifier.subscribe(handleLanguageChange);
+        LanguageManager.subscribe(handleLanguageChange);
 
-        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+        return () => {LanguageManager.unsubscribe(handleLanguageChange)};
     }, [languageCode]);
 
     const terminate = () => {

@@ -5,7 +5,7 @@ import { EducationData } from "./education.card";
 import EducationTimeline from "./education.timeline";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Loading from "@/widgets/loader";
-import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
+import LanguageManager, { LanguageCode } from "@/global/languageSubscriber";
 
 interface EducationGeneralData {
     title: string;
@@ -30,7 +30,7 @@ class EducationAttributes {
 export default function Education({ref, config}: EducationProps) {
 
     const [data, setSkillData] = useState<EducationGeneralData | null>(null);
-    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageManager.code);
     
     const handleLanguageChange = (code: LanguageCode) => {
         setLanguageCode(code);
@@ -49,9 +49,9 @@ export default function Education({ref, config}: EducationProps) {
         loadData<EducationGeneralData>(DataType.EDUCATION, languageCode).then((res) => {
             setSkillData(res);
         });
-        LanguageNotifier.subscribe(handleLanguageChange);
+        LanguageManager.subscribe(handleLanguageChange);
         
-        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+        return () => {LanguageManager.unsubscribe(handleLanguageChange)};
     }, [languageCode]);
 
     const build = ():ReactNode => {
@@ -65,7 +65,7 @@ export default function Education({ref, config}: EducationProps) {
         )
         return(
             // <div id={raw ? "education" : `education_${id}`} className={`education ${raw ? "" : "projects_with_scrollbar"}`}>
-            <section ref={education} id="section" className={`education ${!config ? "" : "section_with_scrollbar"}`}>
+            <section id="education" ref={education} className={`education ${!config ? "" : "section_with_scrollbar"}`}>
                 <div className="container">
                     <h2>
                         {data.title}

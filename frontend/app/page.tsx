@@ -1,37 +1,24 @@
 "use client";
-import "../styles/general.css";
-import "../styles/loader.css";
-import "../styles/main.css"
-import "../styles/theme-settings.css"
-import "../styles/frame.css"
-import "../styles/nav.css";
-import "../styles/components/numberdetector.css";
-import "../styles/components/overview.css";
-import "../styles/components/about_me.css";
-import "../styles/components/skills.css";
-import "../styles/components/project.css";
-import "../styles/components/education.css";
-import "../styles/components/contact.css";
-import "../styles/components/footer.css";
-import "../styles/components/form.css";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import loadData, { DataType } from "./services/load_data";
-import DesktopWebsite from "./components/taskbar/desktop_website";
-import DarkMode from "./components/taskbar/darkmode";
-import TimeAndDate from "./components/taskbar/time";
-import Language from "./components/taskbar/language";
-import StartButton from "./components/taskbar/start_button";
+import StartButton from "./components/tasks/start_button";
 import Loading from "./widgets/loader";
 import Navi from "./components/navigation/navigation";
-import Overview, { OverviewConfig } from "./components/overview";
+import Overview, { OverviewConfig } from "./components/overview/overview";
 import AboutMe, { AboutMeConfig } from "./components/aboutme/aboutme";
+import Skill from "./components/skills/skill";
 import Project, { ProjectConfig } from "./components/project/project";
 import Education, { EducationConfig } from "./components/education/eduction";
 import Contact, { ContactConfig } from "./components/contact/contact";
 import Footer from "./components/footer/footer";
-import Task, { TaskId } from "./components/taskbar/taskbar";
-import LanguageNotifier, { LanguageCode } from "./global/languageSubscriber";
-import Skill from "./components/skills/skill";
+import Task, { TaskId } from "./components/tasks/taskbar";
+import LanguageManager, { LanguageCode } from "./global/languageSubscriber";
+import DarkmodeThemeManager, { ColorThemeManager, DarkmodeCode } from "./global/dataThemeManager";
+import DeviceTask from "./components/tasks/deviceTask";
+import LanguageTask from "./components/tasks/languageTask";
+import DarkModeTask from "./components/tasks/darkmodeTask";
+import DeviceManager, { DeviceCode } from "./global/deviceManager";
+import TimeAndDateTask from "./components/tasks/time";
 
 interface GeneralData {
   firstname: string;
@@ -54,18 +41,13 @@ interface GeneralData {
 export default function Home() {
 
   const [data, setGeneralData] = useState<GeneralData | null>(null);
-  const [pageState, setWebsiteState] = useState(true);
-  const [darkmodeState, setDarkmodeState] = useState(true);
-  const [languageCode, setLanguageCode] = useState(LanguageCode.DE);
+  const [deviceCode, setDeviceCode] = useState<DeviceCode>(DeviceCode.WEBSITE);
+  const [darkmodeTheme, setDarkmodeTheme] = useState<string | null>(null);
+  const [colorTheme, setColorTheme] = useState(0);
+  const [languageCode, setLanguageCode] = useState<LanguageCode | null>(null);
   const [openComponents, setOpenComponents] = useState<React.ReactNode[]>([]);
 
   const webpageContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    loadData<GeneralData>(DataType.GENERAL, languageCode).then((res) => {
-        setGeneralData(res);
-    });
-  }, [languageCode]);
 
   async function handleTaskClick(taskId: TaskId) {
     const frame = async (taskId: TaskId): Promise<ReactNode> => {
@@ -86,26 +68,59 @@ export default function Home() {
     setOpenComponents((prev) => [...prev, node]);
   }
 
-  const handlePageClick = () => {
-    if (!pageState) {
+  const handleDeviceChanged = (code: DeviceCode) => {
+    if (code == DeviceCode.WEBSITE) {
       setOpenComponents([]);
     }
-    setWebsiteState(!pageState);
+    setDeviceCode(code);
   }
 
-  const handleLanguageClick = () => {
-    const newLanguageCode = languageCode == LanguageCode.DE ? LanguageCode.EN : LanguageCode.DE;
-    setLanguageCode(newLanguageCode)
-    LanguageNotifier.sendNotification(newLanguageCode);
+  const handleDarkmodeThemeChanged = (code: DarkmodeCode) => {
+    setDarkmodeTheme(code);
   }
 
-  const handleDarkmodeClick = () => {
-    document.documentElement.setAttribute(
-        'data-theme', 
-        darkmodeState ? 'dark' : 'light'
-    );
-    setDarkmodeState(!darkmodeState);
+  const handleColorThemeChanged = (index: number) => {
+    setColorTheme(index);
   }
+
+  const handleLanguageChanged = (code: LanguageCode) => {
+    setLanguageCode(code);
+  }
+
+  useEffect(() => {
+    const darkmodeCode = DarkmodeThemeManager.load();
+    DarkmodeThemeManager.subscribe(handleDarkmodeThemeChanged);
+    DarkmodeThemeManager.sendNotification(darkmodeCode);
+
+    const colorIndex = ColorThemeManager.load();
+    ColorThemeManager.subscribe(handleColorThemeChanged);
+    ColorThemeManager.sendNotification(colorIndex);
+
+    const languageCode = LanguageManager.load();
+    LanguageManager.subscribe(handleLanguageChanged);
+    LanguageManager.sendNotification(languageCode);
+
+    DeviceManager.subscribe(handleDeviceChanged);
+
+    return () => {
+      DarkmodeThemeManager.unsubscribe(handleDarkmodeThemeChanged)
+      ColorThemeManager.unsubscribe(handleColorThemeChanged);
+      LanguageManager.unsubscribe(handleLanguageChanged);
+      DeviceManager.unsubscribe(handleDeviceChanged);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (languageCode != null) {
+      loadData<GeneralData>(DataType.GENERAL, languageCode).then((res) => {
+        setGeneralData(res);
+      });
+    }
+  }, [languageCode]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", darkmodeTheme!);
+  }, [darkmodeTheme]);
 
   if (!data) return(
     <Loading 
@@ -118,7 +133,7 @@ export default function Home() {
   )
 
   return (
-    pageState
+    deviceCode == DeviceCode.WEBSITE
     ? <>
       <main ref={webpageContainerRef} className="webpage_wrapper">
         <Navi
@@ -129,13 +144,7 @@ export default function Home() {
           educationTitle={data.education.title}
           contactTitle={data.contact.title}
           desktopViewTitle={data.desktop_view}
-          languageTitle={data.language}
-          pageState={pageState}
-          handlePageClick={handlePageClick}
-          languageState={languageCode}
-          handleLanguageClick={handleLanguageClick}
-          darkmodeState={darkmodeState}
-          handleDarkmodeClick={handleDarkmodeClick} />
+          languageTitle={data.language} />
         <Overview 
           firstname={data.firstname}
           lastname={data.lastname}/>
@@ -156,7 +165,7 @@ export default function Home() {
           version={data.version} />
         </main>
       </>
-    : <div>
+    : <>
       <main id="desktop" className="desktop">
         <img className="background_image" src="images/bubbles.png" alt="bubbles" loading="lazy" />
         <div id="desktop_application" className="desktop_application">
@@ -199,18 +208,12 @@ export default function Home() {
         <div className="task_apps">
         </div>
         <div className="task_right">
-          <Language
-            state={languageCode}
-            onClick={handleLanguageClick}/>
-          <DarkMode 
-            state={darkmodeState} 
-            onclick={handleDarkmodeClick} />
-          <DesktopWebsite 
-            state={pageState} 
-            onClick={handlePageClick} />
-          <TimeAndDate />
+          <LanguageTask className="task_action" />
+          <DarkModeTask className="task_action" />
+          <DeviceTask className="task_action" />
+          <TimeAndDateTask />
         </div>
       </footer>
-    </div>
+    </>
   );
 }

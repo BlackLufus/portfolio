@@ -41,12 +41,12 @@
 
 .contact_link_title {
     font-weight: bold;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-2);
 }
 
 .contact_link_tag {
-    font-size: var(--font-size-9);
+    font-size: 16px;
     color: var(--font-color-3);
 }
 
@@ -133,7 +133,7 @@
 }
 
 .contact_form_success_message {
-    font-size: var(--font-size-5);
+    font-size: 26px;
     color: var(--font-color-2);
 }
 

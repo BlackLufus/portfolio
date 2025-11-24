@@ -18,7 +18,7 @@
     max-width: 1150px;
 }
 
-.about_me_skills_container {
+.skill_ulist {
     position: relative;
     display: flex;
     gap: 20px;
@@ -31,22 +31,22 @@
     -ms-overflow-style: none; /* IE / alter Edge */
 }
 
-.about_me_skills_container::-webkit-scrollbar {
+.skill_ulist::-webkit-scrollbar {
     display: none;
     height: 0px;
     width: 0;
 }
 
-.about_me_skills_container:hover {
+.skill_ulist:hover {
     cursor: grab;
     user-select: none;
 }
 
-.about_me_skills_container:active {
+.skill_ulist:active {
     cursor: grabbing;
 }
 
-.skill_item {
+.skill_card {
     position: relative;
     display: block;
     height: 220px;
@@ -59,54 +59,46 @@
     transition: transform 0.35s ease-out;
 }
 
-:root[data-theme="dark"] .skill_item {
+.skill_card::after {
+    position: absolute;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 6px;
+    background-color: var(--font-color-p);
+}
+
+:root[data-theme="dark"] .skill_card {
     background-color: var(--background-color-2);
 }
 
-.skill_item:hover {
+.skill_card:hover {
     transform: translateY(-7);
 }
 
-.skill_item_border_top {
-    border: 3px solid var(--font-color-p);
-}
-
-.skill_item_content {
+.skill_card_content {
     padding: 5px 15px;
 }
 
-.skill_item_header_container {
+.skill_card_header {
     display: flex;
     padding-block: 15px;
     align-items: center;
     gap: 10px;
 }
 
-.skill_item_logo > svg {
+.skill_card_logo > svg {
     height: 25px;
     width: 25px;
 }
 
-.skill_item_header {
-    font-weight: bold;
-    font-size: var(--font-size-6);
-    color: var(--font-color-1);
-}
-
-.skill_item_description_container {
-    position: relative;
-    margin-block: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.skill_item_description {
+.skill_card_description {
     max-width: 1150px;
-    font-size: var(--font-size-9);
+    font-size: 16px;
     color: var(--font-color-2);
 }
 
-.skill_item_label_container {
+.skill_card_progress_container {
     position: absolute;
     display: block;
     padding: 0 15px 15px 15px;
@@ -115,18 +107,18 @@
     left: 0;
 }
 
-.skill_item_label_description {
+.skill_card_progress_description {
     position: relative;
     display: flex;
     justify-content: space-between;
 }
 
-.skill_item_label_text {
-    font-size: var(--font-size-9);
+.skill_card_label_text {
+    font-size:16px;
     color: var(--font-color-2);
 }
 
-.skill_item_progress {
+.skill_card_progress {
     position: relative;
     height: 5px;
     width: 100%;
@@ -134,7 +126,7 @@
     border-radius: 20px;
 }
 
-.skill_item_progress::before {
+.skill_card_progress::before {
     position: absolute;
     content: "";
     left: 0;

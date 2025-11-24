@@ -55,7 +55,7 @@ export default function Skill() {
                 </p>
                 {
                     data
-                    ? <ul ref={skillsUlRef} className="about_me_skills_container">
+                    ? <ul ref={skillsUlRef} className="skill_ulist">
                         {data.skill_card_list.map((cardData, index) => (
                             <SkillCard
                                 key={index}

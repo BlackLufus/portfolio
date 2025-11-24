@@ -30,7 +30,7 @@
 }
 
 .number_detector_run_header {
-    font-size: var(--font-size-6);
+    font-size: 22px;
     color: var(--font-color-1);
 }
 
@@ -49,7 +49,7 @@
 }
 
 .number_detector_run_action {
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: var(--font-color-1);
 }
 
@@ -74,7 +74,7 @@
 
 .number_detector_header {
     font-weight: bold;
-    font-size: var(--font-size-6);
+    font-size: 22px;
     color: var(--font-color-1);
 }
 
@@ -117,7 +117,7 @@
 }
 
 .number_detector_action_predict_text {
-    font-size: var(--font-size-6);
+    font-size: 22px;
     color: var(--font-color-1);
 }
 
@@ -160,17 +160,17 @@
 }
 
 .number_detector_predict {
-    font-size: var(--font-size-2);
+    font-size: 56px;
     color: var(--font-color-7);
 }
 
 .number_detector_predict_rate_title {
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: var(--font-color-6);
 }
 
 .number_detector_predict_rate {
-    font-size: var(--font-size-5);
+    font-size: 26px;
     color: var(--font-color-4);
 }
 

@@ -67,7 +67,7 @@
 
 .form_title {
     font-weight: bold;
-    font-size: var(--font-size-4);
+    font-size: 32px;
     color: var(--font-color-1);
 }
 
@@ -76,7 +76,7 @@
 }
 
 .form_result_text {
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: #d00;
 }
 
@@ -86,7 +86,7 @@
 
 .form_label {
     text-transform: uppercase;
-    font-size: var(--font-size-6);
+    font-size: 22px;
     color: var(--font-color-1);
 }
 
@@ -97,7 +97,7 @@
 .form_input {
     width: 100%;
     padding-inline: 5px;
-    font-size: var(--font-size-6);
+    font-size: 22px;
     color: var(--font-color-3);
     /* background-color: var(--background-color-1); */
     border-radius: 8px;
@@ -109,7 +109,7 @@
     min-height: 100px;
     max-height: 300px;
     padding-inline: 5px;
-    font-size: var(--font-size-6);
+    font-size: 22px;
     color: var(--font-color-1);
     /* background-color: var(--background-color-2); */
     border-radius: 8px;
@@ -139,7 +139,7 @@
     padding: 2px 10px;
     align-content: center;
     text-align: center;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-2);
     background-color: var(--background-color-2);
     border-radius: 50px;
@@ -184,7 +184,7 @@
 .form_item_input {
     width: fit-content;
     max-width: 100px;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-2);
     border-radius: 4px;
     outline-width: 0;
@@ -250,7 +250,7 @@ input[type="file"] {
     background-color: var(--background-color-4);
     border-radius: 50px;
     cursor: pointer;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-1);
 }
 
@@ -261,7 +261,7 @@ input[type="file"] {
 .form_upload_selected_file {
     margin-block: auto;
     margin-right: auto;
-    font-size: var(--font-size-8);
+    font-size: 18px;
     color: var(--font-color-2);
 }
 
@@ -273,7 +273,7 @@ input[type="file"] {
 }
 
 .form_checkbox {
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: var(--font-color-1);
 }
 
@@ -303,7 +303,7 @@ input[type="checkbox"] {
     padding: 8px 30px;
     background-color: var(--font-color-p);
     border-radius: 12px;
-    font-size: var(--font-size-7);
+    font-size: 20px;
     color: var(--font-color-1);
     cursor: pointer;
 }

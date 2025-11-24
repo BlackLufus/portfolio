@@ -18,32 +18,27 @@ interface SkillCardProps {
 
 export default function SkillCard({title, logo, description, level_text, percent}:SkillCardProps) {
     return (
-        <li className="skill_item">
-            <div className="skill_item_border_top" />
-            <div className="skill_item_content">
-                <div className="skill_item_header_container">
-                    <IconSvg src={logo} className="skill_item_logo" />
-                    <span className="skill_item_header">
+        <li className="skill_card">
+            <div className="skill_card_content">
+                <div className="skill_card_header">
+                    <IconSvg src={logo} className="skill_card_logo" />
+                    <h5>
                         {title}
-                    </span>
+                    </h5>
                 </div>
-                <div className="skill_item_description_container">
-                    <span className="skill_item_description">
-                        {description}
-                    </span>
-                </div>
-                <div className="skill_item_label_container">
-                    <div className="skill_item_label_description">
-                        <span className="skill_item_label_text">
+                <span className="skill_card_description">
+                    {description}
+                </span>
+                <div className="skill_card_progress_container">
+                    <div className="skill_card_progress_description">
+                        <span className="skill_card_label_text">
                             {level_text}
                         </span>
-                        <span className="skill_item_label_text">
+                        <span className="skill_card_label_text">
                             {percent}%
                         </span>
                     </div>
-                    <div className="skill_item_progress" style={{"--fill-width": `${percent}%`} as React.CSSProperties}>
-
-                    </div>
+                    <div className="skill_card_progress" style={{"--fill-width": `${percent}%`} as React.CSSProperties}/>
                 </div>
             </div>
         </li>

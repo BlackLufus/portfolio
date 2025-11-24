@@ -3,7 +3,7 @@ import Frame from "../frame";
 import { ReactNode, useEffect, useState } from "react";
 import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
-import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
+import LanguageManager, { LanguageCode } from "@/global/languageSubscriber";
 
 interface CharacteristicsData {
     image: string;
@@ -42,7 +42,7 @@ interface AboutMeProps {
 export default function AboutMe({config}: AboutMeProps) {
 
     const [data, setAboutMeData] = useState<AboutMeData | null>(null);
-    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageNotifier.code);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageManager.code);
 
     const handleLanguageChange = (code: LanguageCode) => {
         setLanguageCode(code);
@@ -52,9 +52,9 @@ export default function AboutMe({config}: AboutMeProps) {
         loadData<AboutMeData>(DataType.ABOUTME, languageCode).then((res) => {
             setAboutMeData(res);
         });
-        LanguageNotifier.subscribe(handleLanguageChange);
+        LanguageManager.subscribe(handleLanguageChange);
     
-        return () => {LanguageNotifier.unsubscribe(handleLanguageChange)};
+        return () => {LanguageManager.unsubscribe(handleLanguageChange)};
     }, [languageCode]);
 
     const terminate = () => {
@@ -86,6 +86,30 @@ export default function AboutMe({config}: AboutMeProps) {
                             <p>
                                 {data?.description}
                             </p>
+                            <h5>
+                                {data.personal.title}
+                            </h5>
+                            <div className="about_me_characteristics_grid">
+                                {data.personal.characteristics_list.map((characteristic, index) => (
+                                    <span
+                                        key={index}
+                                        className="about_me_characteristic">
+                                            {characteristic.text}
+                                    </span>
+                                ))}
+                            </div>
+                            <h5>
+                                {data.professional.title}
+                            </h5>
+                            <div className="about_me_characteristics_grid">
+                                {data.professional.characteristics_list.map((characteristic, index) => (
+                                    <span
+                                        key={index}
+                                        className="about_me_characteristic">
+                                            {characteristic.data} {characteristic.text}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
