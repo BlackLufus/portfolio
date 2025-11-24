@@ -460,7 +460,7 @@
 }
 
 .light_box_overlay_image_container.slide {
-    animation: prev 0.35s ease
+    animation: prev 0.35s ease forwards
 }
 
 @keyframes prev {
