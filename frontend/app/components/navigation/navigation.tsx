@@ -3,6 +3,7 @@ import LanguageTask from "../tasks/languageTask";
 import DarkmodeTask from "../tasks/darkmodeTask";
 import DeviceTask from "../tasks/deviceTask";
 import { ColorThemeManager } from "@/global/dataThemeManager";
+import PaletteTask from "../tasks/paletteTask";
 
 interface NaviProbs {
     firstname: string;
@@ -102,11 +103,9 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
         }
         <nav ref={naviRef} onClick={handleNaviClick}>
             <div className={`container navi_bar_wrapper ${menuState ? "show": ""}`}>
-                <span className="navi_name gradient_text" onClick={() => {
-                    ColorThemeManager.sendNotification(ColorThemeManager.index + 1);
-                }}>
+                <a className="navi_name gradient_text" href={window.location.origin}>
                     {firstname} {lastname}
-                </span>
+                </a>
                 <ul className="nav_link_wrapper">
                     <li className="nav_link_item">
                         <a href="#about_me">{aboutMeTitle}</a>
@@ -123,6 +122,7 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                 </ul>
                 <div className="navi_bar_right">
                     <DeviceTask />
+                    <PaletteTask />
                     <LanguageTask />
                     <DarkmodeTask />
                     {
