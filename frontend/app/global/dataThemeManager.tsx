@@ -52,9 +52,9 @@ enum ColorScheme {
 
 export class ColorThemeManager {
     private static subscribers = Array<(index: number) => void>();
-    public static index: number = 1;
+    public static index: number = 4;
     public static load(): number {
-        const stored = localStorage.getItem('data-color-theme') ?? "1";
+        const stored = localStorage.getItem('data-color-theme') ?? "4";
         try {
             this.index = Number(stored)
             return this.index

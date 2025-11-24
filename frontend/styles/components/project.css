@@ -677,13 +677,12 @@
 .project_links {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .project_link {
     padding-block: 4px;
     background-color: var(--preferred-color-theme);
-    border: 1px solid var(--border-color-1);
     border-radius: 8px;
     text-align: center;
     font-size: 16px;
