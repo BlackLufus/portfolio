@@ -92,11 +92,12 @@ export default function ProjectDetails({ id, title, categorie, image, overview_t
                                     </h5>
                                     <div className="project_details_features_grid">
                                         {features_list.map((feature, index) => (
-                                            <span 
-                                                key={index}
-                                                className="project_details_features" >
-                                                {feature}
-                                            </span>
+                                            <div key={index}>
+                                                <span 
+                                                    className="project_details_features" >
+                                                    {feature}
+                                                </span>
+                                            </div>
                                         ))}
                                     </div>
                                 </>

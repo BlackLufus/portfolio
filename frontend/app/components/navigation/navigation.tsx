@@ -121,7 +121,7 @@ export default function Navi({firstname, lastname, aboutMeTitle, projectTitle, e
                     </li>
                 </ul>
                 <div className="navi_bar_right">
-                    <DeviceTask />
+                    {/* <DeviceTask /> */}
                     <PaletteTask />
                     <LanguageTask />
                     <DarkmodeTask />

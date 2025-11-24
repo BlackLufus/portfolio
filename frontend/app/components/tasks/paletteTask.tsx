@@ -13,7 +13,7 @@ export default function PaletteTask( {className}: PaletteTaskProbs ) {
             onClick={() => {
                 ColorThemeManager.sendNotification(ColorThemeManager.index + 1);
             }}>
-            <svg className="nav_action_item show" fill="var(--font-color-1)" height="28px" width="28px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg className="nav_action_item show" fill="var(--font-color-1)" height="24px" width="24px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <g>
                     <path d="M133.977,245.743c4.662,1.718,9.756,2.564,15.006,2.315c7.873-0.355,15.159-3.118,21.05-7.512
                         c5.9-4.4,10.456-10.425,13.043-17.428c1.73-4.668,2.564-9.759,2.319-15.007c-0.355-7.873-3.119-15.162-7.513-21.05
