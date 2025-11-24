@@ -104,4 +104,5 @@ p {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+    animation: rainbow 2s linear infinite;
 }

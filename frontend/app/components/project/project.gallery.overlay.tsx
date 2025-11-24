@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { GalleryData } from "./project.details";
 import { setTimeout } from "timers";
 import Point from "@/miscs/point";
+import { GalleryData } from "./project.details.gallery";
 
 interface LightBoxOverlayProbs {
     gallery: Array<GalleryData>;
