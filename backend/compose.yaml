@@ -7,6 +7,8 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - nw_database
     ports:
       - "5432:5432"
     volumes:
@@ -21,8 +23,23 @@ services:
       - db
     env_file:
       - .env
+    networks:
+      - nw_backend
+      - nw_database
     ports:
       - "7750:7750"
 
 volumes:
   pgdata:
+
+networks:
+  nw_backend:
+    external: true
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+  nw_database:
+    external: true
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"

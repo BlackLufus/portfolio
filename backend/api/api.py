@@ -101,6 +101,8 @@ def contact():
             PROJECT_ID = pn.getProjectId()
             ACCESS_TOKEN = pn.getAccessToken()
             FCM_TOKEN = pn.getFcmToken()
+            logger.info(f"PROJECT_ID {PROJECT_ID}")
+            logger.info(f"ACCESS_TOKEN {ACCESS_TOKEN}")
             r = requests.post(
                 f"https://fcm.googleapis.com/v1/projects/{PROJECT_ID}/messages:send",
                 headers={
@@ -124,7 +126,7 @@ def contact():
                     }
                 })
             )
-            print("Push Notification", r.status_code, r.reason)
+            logger.info(f"Push Notification {r.status_code} {r.reason}")
             return build_response(True, 201, message="The contact request was successfully sent.")
         else:
             return build_response(False, 403,
