@@ -1,0 +1,24 @@
+services:
+  frontend:
+    image: frontend-image
+    container_name: frontend
+    networks:
+      - nw_frontend
+      - nw_backend
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/www:/usr/share/nginx/html:ro
+    user: "1001"
+
+networks:
+  nw_frontend:
+    external: true
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+  nw_backend:
+    external: true
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
