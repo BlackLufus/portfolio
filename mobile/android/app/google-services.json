@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "241247222172",
-    "project_id": "notification-cef13",
-    "storage_bucket": "notification-cef13.firebasestorage.app"
+    "project_number": "332864725952",
+    "project_id": "portfolio-9d5a2",
+    "storage_bucket": "portfolio-9d5a2.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241247222172:android:caf9ac316e77e37f50f059",
+        "mobilesdk_app_id": "1:332864725952:android:bb5507e745dc017e1ede25",
         "android_client_info": {
-          "package_name": "com.example.mobile"
+          "package_name": "com.portfolio.mobile"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAa0s_keUJuRWLlCpwNaw1IS62GgZP9dSk"
+          "current_key": "AIzaSyAf0Hk-QkRw8Io47uAthyA5sku7rS9w6T8"
         }
       ],
       "services": {
