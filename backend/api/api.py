@@ -101,8 +101,6 @@ def contact():
             PROJECT_ID = pn.getProjectId()
             ACCESS_TOKEN = pn.getAccessToken()
             FCM_TOKEN = pn.getFcmToken()
-            logger.info(f"PROJECT_ID {PROJECT_ID}")
-            logger.info(f"ACCESS_TOKEN {ACCESS_TOKEN}")
             r = requests.post(
                 f"https://fcm.googleapis.com/v1/projects/{PROJECT_ID}/messages:send",
                 headers={
