@@ -51,23 +51,7 @@ class FirebasePushNotification {
 
     // Off handler on incoming notifications
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      final notification = message.notification;
-      final android = notification?.android;
-      if (notification != null && android != null) {
-        await localNotifications.show(
-          notification.hashCode,
-          notification.title,
-          notification.body,
-          const NotificationDetails(
-            android: AndroidNotificationDetails(
-              "High Importance Channel",
-              'High Importance Notifications',
-              importance: Importance.max,
-              priority: Priority.high,
-            ),
-          ),
-        );
-      }
+      showLocalNotification(message);
     });
   }
 
@@ -79,7 +63,28 @@ class FirebasePushNotification {
 
   // Handle background message
   static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async { 
+    showLocalNotification(message);
     _sendEvent(message);
+  }
+
+  static Future<void> showLocalNotification(RemoteMessage message) async {
+    final notification = message.notification;
+    final android = notification?.android;
+    if (notification != null && android != null) {
+      await localNotifications.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        const NotificationDetails(
+          android: AndroidNotificationDetails(
+            'default_channel',
+            'Default',
+            importance: Importance.max,
+            priority: Priority.high,
+          ),
+        ),
+      );
+    }
   }
 
   // Setup local notifications
