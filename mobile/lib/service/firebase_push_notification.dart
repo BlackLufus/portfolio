@@ -39,20 +39,18 @@ class FirebasePushNotification {
     });
 
     // Background handler on incoming notifications
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    FirebaseMessaging.onBackgroundMessage((RemoteMessage message) async {
+        _sendEvent(message);
+    });
 
     // Foreground handler on incoming notifications
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       _sendEvent(message);
+      await showLocalNotification(message);
     });
 
     // Notifications initial
     await setupLocalNotifications();
-
-    // Off handler on incoming notifications
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      showLocalNotification(message);
-    });
   }
 
   // Get fcm token
@@ -61,12 +59,7 @@ class FirebasePushNotification {
     print("FCM Token: $fcmToken");
   }
 
-  // Handle background message
-  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async { 
-    showLocalNotification(message);
-    _sendEvent(message);
-  }
-
+  // Show local notification
   static Future<void> showLocalNotification(RemoteMessage message) async {
     final notification = message.notification;
     final android = notification?.android;
