@@ -320,7 +320,7 @@ input[type="checkbox"] {
     background-color: var(--preferred-color-theme);
     border-radius: 12px;
     font-size: 20px;
-    color: var(--font-color-1);
+    color: #fff;
     cursor: pointer;
 }
 

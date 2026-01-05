@@ -32,7 +32,7 @@
     left: calc((100%/2) - 2px);
     border-radius: 100px;
     z-index: 1;
-    transition: height 0.6s ease-out;
+    transition: height 0.75s ease-out;
 }
 
 .education_timeline_line{
