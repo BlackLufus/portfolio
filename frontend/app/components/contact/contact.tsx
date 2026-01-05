@@ -196,7 +196,7 @@ export default function Contact({config}: ContactProps) {
                                         </span>
                                     </div>
                                 </a>
-                                <a className="contact_link" href={data.linkedin.url}>
+                                <a className="contact_link" href={data.xing.url}>
                                     <div className="contact_link_icon">
                                         <svg fill="#000000"  version="1.1" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 512 512">
                                             <g id="7935ec95c421cee6d86eb22ecd135960">

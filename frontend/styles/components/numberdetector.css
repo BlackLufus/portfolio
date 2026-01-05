@@ -10,18 +10,15 @@
 
 .number_detector_run_wrapper {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    align-content: center;
-    justify-items: center;
-    margin: auto;
+    align-items: center;
+    justify-content: center;
     background-color: var(--background-color-t7);
     backdrop-filter: blur(20px);
     z-index: 1;
-}
-
-.number_detector_run_container {
-    margin-inline: auto;
 }
 
 .number_detector_run_header_container {
@@ -48,8 +45,16 @@
     cursor: pointer;
 }
 
+.number_detector_button.clear {
+    background-color: #A52A2A;
+}
+
 .number_detector_button:hover {
     box-shadow: 0 0 8px var(--preferred-color-theme);
+}
+
+.number_detector_button.clear:hover {
+    box-shadow: 0 0 8px #A52A2A;
 }
 
 .number_detector_wrapper {
@@ -113,11 +118,13 @@
     margin-bottom: 30px;
     border-radius: 12px;
     border: 1px solid var(--border-color-1);
+    user-select: none;
     overflow: hidden;
 }
 
 .number_detector_preview_canvas {
     position: relative;
+    user-select: none;
     background-color: white;
 }
 

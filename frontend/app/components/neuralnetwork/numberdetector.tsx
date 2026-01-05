@@ -263,7 +263,7 @@ export default function NumberDetector() {
                         <button className="number_detector_button" onClick={handlePredictClick}>
                             Predict
                         </button>
-                        <button className="number_detector_button" onClick={clearCanvas}>
+                        <button className="number_detector_button clear" onClick={clearCanvas}>
                             Clear
                         </button>
                     </div>
