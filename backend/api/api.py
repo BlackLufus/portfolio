@@ -57,20 +57,13 @@ def get_tree():
 @api.route('/contact', methods=['POST'])
 def contact():
     try:
-        first_name = request.form.get('first_name')
-        if first_name is None or len(first_name) == 0:
+        full_name = request.form.get('full_name')
+        if full_name is None or len(full_name) == 0:
             return build_response(False, 400,
-                                error_message="first_name is required but not provided!")
-        elif len(first_name) > 64:
+                                error_message="Full name is required but not provided!")
+        elif len(full_name) > 64:
             return build_response(False, 400,
-                                error_message="first_name exceed length")
-        last_name = request.form.get('last_name')
-        if last_name is None or len(last_name) == 0:
-            return build_response(False, 400,
-                                error_message="last_name is required but not provided!")
-        elif len(last_name) > 64:
-            return build_response(False, 400,
-                                error_message="last_name exceed length")
+                                error_message="full_name exceed length")
         email = request.form.get('email')
         if email is not None and len(email) > 100:
             return build_response(False, 400,
@@ -88,13 +81,13 @@ def contact():
             return build_response(False, 400,
                                 error_message="message exceed length")
 
-        if first_name is None or last_name is None or message is None:
+        if full_name is None or message is None:
             return build_response(False, 400,
-                                error_message="'first_name', 'last_name' and/or 'message' was required but not provided!")
+                                error_message="'name' and/or 'message' was required but not provided!")
         
-        query = f"INSERT INTO contact (first_name, last_name, email, message) " \
+        query = f"INSERT INTO contact (full_name, email, message) " \
                 f"VALUES(%s, %s, %s, %s)"
-        values = (first_name, last_name, email, message)
+        values = (full_name, email, message)
 
         db_result = database.statement(query, values)
         if db_result is not None:
@@ -112,12 +105,11 @@ def contact():
                         "token": FCM_TOKEN,
                         "notification": {
                             "title": "Portfolio Nachricht",
-                            "body": f"Neue Nachricht von {first_name} {last_name}"
+                            "body": f"Neue Nachricht von {full_name}"
                         },
                         "data": {
                             "created_at": str(datetime.now()),
-                            "first_name": first_name,
-                            "last_name": last_name,
+                            "full_name": full_name,
                             "email": None if email is None or email == "" else email,
                             "message": message
                         }
@@ -147,8 +139,7 @@ def notifications():
                 SELECT 
                     id,
                     created_at, 
-                    first_name, 
-                    last_name, 
+                    full_name, 
                     email, 
                     message
                 FROM contact c 
@@ -161,12 +152,11 @@ def notifications():
         results = []
 
         if db_result is not None and len(db_result) >= 1:
-            for id, created_at, first_name, last_name, email, message in db_result:
+            for id, created_at, full_name, email, message in db_result:
                 results.append({
                     "id": id,
                     "created_at": str(created_at),
-                    "first_name": first_name,
-                    "last_name": last_name,
+                    "full_name": full_name,
                     "email": None if email is None or email == "" else email,
                     "message": message
                 })

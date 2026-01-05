@@ -104,6 +104,14 @@
     border: 1px solid var(--border-color-2);
 }
 
+.form_input:hover  {
+    border: 1px solid var(--preferred-color-theme);
+}
+
+.form_input:focus  {
+    outline: 2px solid var(--preferred-color-theme);
+}
+
 .form_textarea {
     width: 100%;
     min-height: 100px;
@@ -114,6 +122,14 @@
     /* background-color: var(--background-color-2); */
     border-radius: 8px;
     border: 1px solid var(--border-color-2);
+}
+
+.form_textarea:hover {
+    border: 1px solid var(--preferred-color-theme);
+}
+
+.form_textarea:focus  {
+    outline: 2px solid var(--preferred-color-theme);
 }
 
 .form_text_length_container {
