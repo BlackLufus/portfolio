@@ -171,7 +171,7 @@
 
 .education_institution {
     font-size: 18px;
-    color: var(--font-color-4);
+    color: var(--preferred-color-theme);
 }
 
 .education_summary_container {
@@ -197,7 +197,7 @@
     line-height: 24px;
     white-space: pre-line;
     font-size: 18px;
-    color: var(--font-color-4);
+    color: var(--font-color-3);
 }
 
 .application_filler {
