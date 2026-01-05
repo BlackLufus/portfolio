@@ -86,7 +86,7 @@ def contact():
                                 error_message="'name' and/or 'message' was required but not provided!")
         
         query = f"INSERT INTO contact (full_name, email, message) " \
-                f"VALUES(%s, %s, %s, %s)"
+                f"VALUES(%s, %s, %s)"
         values = (full_name, email, message)
 
         db_result = database.statement(query, values)
