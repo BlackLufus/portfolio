@@ -15,7 +15,7 @@
     padding-bottom: 5px;
     border-radius: 0.75rem;
     box-shadow: 2px 2px 8px #0008;
-    transition: transform 0.35s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
     opacity: 0;
     animation: project_card_popup 0.5s ease forwards, project_card_popup_scale 0.5s ease;
     animation-delay: var(--delay, 0s);
@@ -44,7 +44,7 @@
 }
 
 .project_card:hover {
-    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--preferred-color-theme);
 }
 
 .project_image_link {

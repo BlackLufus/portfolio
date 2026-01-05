@@ -238,17 +238,13 @@ export default function NumberDetector() {
     return(
         <div className="number_detector">
             <div ref={runRf} className="number_detector_run_wrapper">
-                <div className="number_detector_run_container">
-                    <div className="number_detector_run_header_container">
-                        <span className="number_detector_run_header">
-                            Run Demo Programm
-                        </span>
-                    </div>
-                    <div className="number_detector_run_action_container" onClick={handleOnRunClick}>
-                        <span className="number_detector_run_action">
-                            Enable
-                        </span>
-                    </div>
+                <p className="number_detector_run_header">
+                    Run Demo Programm
+                </p>
+                <div>
+                    <button className="number_detector_button" onClick={handleOnRunClick}>
+                        Enable
+                    </button>
                 </div>
             </div>
             <div className="number_detector_wrapper">
@@ -264,15 +260,11 @@ export default function NumberDetector() {
                         </canvas>
                     </div>
                     <div className="number_detector_actions_container">
-                        <button className="number_detector_action_predict">
-                            <span className="number_detector_action_predict_text" onClick={handlePredictClick}>
-                                Predict
-                            </span>
+                        <button className="number_detector_button" onClick={handlePredictClick}>
+                            Predict
                         </button>
-                        <button className="number_detector_action_predict" onClick={clearCanvas}>
-                            <span className="number_detector_action_predict_text">
-                                Clear
-                            </span>
+                        <button className="number_detector_button" onClick={clearCanvas}>
+                            Clear
                         </button>
                     </div>
                 </div>

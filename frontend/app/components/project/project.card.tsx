@@ -37,18 +37,11 @@ interface ProjectCardProps {
 export default function ProjectCard({ id, index, image, title, description, labels, button_title, onClick }: ProjectCardProps) {
     const delay = `${(index * 0.075)}s`;
 
-    const onAuxClixk = () => {
-        const url = new URL(path.join(window.location.origin, `#${id}`));
-        url.searchParams.set("project_id", index.toString());
-        window.open(url.toString(), '_blank');
-    }
-
     return (
         <div className="project_card" style={{"--delay": delay} as React.CSSProperties}>
             <a 
                 className="project_image_link" 
                 href={`#${id}`}
-                onAuxClick={onAuxClixk}
                 onClick={() => {
                     onClick(index);
                 }}>
@@ -59,7 +52,6 @@ export default function ProjectCard({ id, index, image, title, description, labe
                 href={`#${id}`}>
                 <h5 
                     className="project_title"
-                    onAuxClick={onAuxClixk}
                     onClick={() => {
                             onClick(index);
                 }}>
@@ -79,7 +71,6 @@ export default function ProjectCard({ id, index, image, title, description, labe
             <a 
                 className="project_action_link" 
                 href={`#${id}`}
-                onAuxClick={onAuxClixk}
                 onClick={() => {
                     onClick(index);
                 }}>
