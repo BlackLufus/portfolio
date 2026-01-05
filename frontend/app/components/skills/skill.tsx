@@ -4,6 +4,7 @@ import loadData, { DataType } from "@/services/load_data";
 import Loading from "@/widgets/loader";
 import LanguageNotifier, { LanguageCode } from "@/global/languageSubscriber";
 import CustomScrollBar from "@/widgets/customScrollBar";
+import LanguageManager from "@/global/languageSubscriber";
 
 export interface SkillData {
     title: string;
@@ -18,7 +19,7 @@ export default function Skill() {
 
     const [data, setSkillData] = useState<SkillData | null>(null);
     const skillsUlRef = useRef<HTMLUListElement>(null);
-    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageCode.DE);
+    const [languageCode, setLanguageCode] = useState<LanguageCode>(LanguageManager.code);
 
     const handleLanguageChange = (code: LanguageCode) => {
         setLanguageCode(code);
