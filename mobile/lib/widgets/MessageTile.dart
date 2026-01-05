@@ -7,8 +7,7 @@ import 'package:portfolio/widgets/app_theme_color.dart';
 class MessageTile extends StatefulWidget {
   final int id;
   final DateTime createdAt;
-  final String firstName;
-  final String lastName;
+  final String fullName;
   final String? email;
   final String message;
   final Function onDelete;
@@ -17,8 +16,7 @@ class MessageTile extends StatefulWidget {
     super.key,
     required this.id,
     required this.createdAt,
-    required this.firstName, 
-    required this.lastName, 
+    required this.fullName, 
     required this.email, 
     required this.message,
     required this.onDelete,
@@ -67,7 +65,7 @@ class _MessageTileState extends State<MessageTile> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "${widget.firstName} ${widget.lastName}",
+                  widget.fullName,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -78,7 +76,7 @@ class _MessageTileState extends State<MessageTile> {
                   alignment: Alignment.bottomRight,
                   child: GestureDetector(
                     onTap: () {
-                      OptionsDialog.show(context, "Nachricht lösche", "Du bist dabei die Nachricht von ${widget.firstName} ${widget.lastName} zu löschen, fortfahren?", (OptionsDialogStatus status) async {
+                      OptionsDialog.show(context, "Nachricht lösche", "Du bist dabei die Nachricht von ${widget.fullName} zu löschen, fortfahren?", (OptionsDialogStatus status) async {
                         if (status == OptionsDialogStatus.apply) {
                           await FetchNotification.delete(widget.id);
                           widget.onDelete(widget.id);

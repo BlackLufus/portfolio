@@ -6,16 +6,14 @@ import 'package:http/http.dart' as http;
 class NotificationData {
   final int id;
   final DateTime createdAt;
-  final String firstName;
-  final String lastName;
+  final String fullName;
   final String? email;
   final String message;
 
   const NotificationData({
     required this.id,
     required this.createdAt,
-    required this.firstName,
-    required this.lastName,
+    required this.fullName,
     required this.email,
     required this.message
   });
@@ -24,8 +22,7 @@ class NotificationData {
     print(DateTime.parse("${DateTime.parse(json['created_at'] as String)}z").toLocal());
     return NotificationData(
       id: json['id'],
-      firstName: json['first_name'] as String,
-      lastName: json['last_name'] as String,
+      fullName: json['full_name'] as String,
       email: json['email'] != null ? json['email'] as String : null,
       message: json['message'] as String,
       createdAt: DateTime.parse("${DateTime.parse(json['created_at'] as String)}z").toLocal(),

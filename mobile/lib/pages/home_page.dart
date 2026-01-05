@@ -180,8 +180,7 @@ class _HomePage extends State<HomePage> {
             MessageTile(
               id: item.id,
               createdAt: item.createdAt,
-              firstName: item.firstName,
-              lastName: item.lastName,
+              fullName: item.fullName,
               email: item.email,
               message: item.message,
               onDelete: onDelete,
