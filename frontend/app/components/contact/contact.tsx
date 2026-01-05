@@ -79,7 +79,7 @@ export default function Contact({config}: ContactProps) {
 
         try {
             if (
-                formData.get('name') === '' ||
+                formData.get('full_name') === '' ||
                 form.checkValidity() === false
             ) {
                 setErrorText(data!.form_name_error_message)
@@ -243,7 +243,7 @@ export default function Contact({config}: ContactProps) {
                                         <label className="form_label">
                                             {data.form_name}
                                         </label>
-                                        <input className="form_input" type="text" name="name" id="name" maxLength={64} />
+                                        <input className="form_input" type="text" name="full_name" id="full_name" maxLength={64} />
                                     </div>
                                     <div className="form_section">
                                         <label className="form_label" htmlFor="email">
